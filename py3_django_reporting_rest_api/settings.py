@@ -37,7 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'reporting',
 ]
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
