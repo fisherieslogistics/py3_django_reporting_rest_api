@@ -4,16 +4,7 @@ from django.contrib.postgres.fields import JSONField
 class EventHeader(models.Model):
 
     id = models.UUIDField(primary_key=True)
-    eventId = models.CharField(max_length=50)
-    vesselNumber = models.IntegerField()
-    isVesselUsed = models.BooleanField()
-    completed = models.DateTimeField()
-    tripID = models.CharField(max_length=50)
-    eventVersion = models.DateTimeField()
-    notes = models.TextField()
-    completedDateTime = models.DateTimeField()
-    amendmentReason = models.TextField()
-    trip = models.ForeignKey('Trip', blank=False)
+
 
 
 class FishingEvent(models.Model):
@@ -30,11 +21,21 @@ class FishingEvent(models.Model):
     eventSpecificDetails = JSONField()
     eventHeader = models.ForeignKey('EventHeader')
     mitigationDeviceCodes = JSONField()
+    vesselNumber = models.IntegerField()
+    isVesselUsed = models.BooleanField()
+    completed = models.DateTimeField()
+    eventVersion = models.DateTimeField()
+    notes = models.TextField()
+    completedDateTime = models.DateTimeField()
+    amendmentReason = models.TextField()
+    trip = models.ForeignKey('Trip', blank=False)
+    archived = models.BooleanField()
 
 
 class FishSpecies(models.Model):
 
     id = models.UUIDField(primary_key=True)
+    speciesType = models.CharField(max_length=20)
     code = models.CharField(max_length=3)
     description = models.CharField(max_length=50, blank=True)
     otherNames = models.TextField(max_length=50, blank=True)
@@ -73,17 +74,6 @@ class Port(models.Model):
     endLocation = JSONField()
 
 
-class NonFishProtectedSpecies(models.Model):
-
-    id = models.UUIDField(primary_key=True)
-    code = models.CharField(max_length=3)
-    description = models.CharField(max_length=50)
-    otherNames = models.TextField(max_length=50)
-    fullName = models.CharField(max_length=50)
-    scientificName = models.CharField(max_length=50)
-    image = models.CharField(max_length=50)
-
-
 class NonFishProtectedSpeciesInteractionEvent(models.Model):
 
     id = models.UUIDField(primary_key=True)
@@ -97,6 +87,14 @@ class NonFishProtectedSpeciesInteractionEvent(models.Model):
     eventHeader = JSONField()
     fishingEvent = models.ForeignKey('FishingEvent', blank=True)
     trip = models.ForeignKey('Trip', blank=True)
+    isVesselUsed = models.BooleanField()
+    completed = models.DateTimeField()
+    eventVersion = models.DateTimeField()
+    notes = models.TextField()
+    completedDateTime = models.DateTimeField()
+    amendmentReason = models.TextField()
+    trip = models.ForeignKey('Trip', blank=False)
+    archived = models.BooleanField()
 
 
 class Vessel(models.Model):
