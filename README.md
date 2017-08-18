@@ -52,3 +52,9 @@ For OSX setup
               'PORT': '',
           }
       }
+
+* setup the superuser
+  * python3 manage.py createsuperuser
+  * follow instructions in the shell
+  * python3 manage.py runserver
+  * have fun with the admin interface
