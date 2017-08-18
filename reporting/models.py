@@ -1,11 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
 
-class EventHeader(models.Model):
-
-    id = models.UUIDField(primary_key=True)
-
-
 
 class FishingEvent(models.Model):
 
@@ -19,7 +14,6 @@ class FishingEvent(models.Model):
     locationAtEnd = JSONField()
     lineString = JSONField()
     eventSpecificDetails = JSONField()
-    eventHeader = models.ForeignKey('EventHeader')
     mitigationDeviceCodes = JSONField()
     vesselNumber = models.IntegerField()
     isVesselUsed = models.BooleanField()
@@ -28,11 +22,11 @@ class FishingEvent(models.Model):
     notes = models.TextField()
     completedDateTime = models.DateTimeField()
     amendmentReason = models.TextField()
-    trip = models.ForeignKey('Trip', blank=False)
+    trip = models.ForeignKey("Trip", blank=False)
     archived = models.BooleanField()
 
 
-class FishSpecies(models.Model):
+class Species(models.Model):
 
     id = models.UUIDField(primary_key=True)
     speciesType = models.CharField(max_length=20)
@@ -47,8 +41,10 @@ class FishSpecies(models.Model):
 class FishCatch(models.Model):
 
     id = models.UUIDField(primary_key=True)
-    fishSpecies = models.ForeignKey('FishSpecies')
-    fishingEvent = models.ForeignKey('FishingEvent')
+    species = models.ForeignKey("Species")
+    weightKgs = models.IntegerField()
+    fishingEvent = models.ForeignKey("FishingEvent",
+                                     related_name="fishCatches")
 
 
 class Trip(models.Model):
@@ -60,40 +56,37 @@ class Trip(models.Model):
     endTime = models.DateTimeField()
     startLocation = JSONField()
     endLocation = JSONField()
-    unloadPort = models.ForeignKey('Port')
-    vessel = models.ForeignKey('Vessel')
+    unloadPort = models.ForeignKey("Port")
+    vessel = models.ForeignKey("Vessel")
 
 
 class Port(models.Model):
 
     id = models.UUIDField(primary_key=True)
-    personInCharge = models.CharField(max_length=50)
-    startTime = models.DateTimeField()
-    endTime = models.DateTimeField()
-    startLocation = JSONField()
-    endLocation = JSONField()
+    name = models.CharField(max_length=50)
+    location = JSONField()
 
 
 class NonFishProtectedSpeciesInteractionEvent(models.Model):
 
     id = models.UUIDField(primary_key=True)
     seabirdCaptureCode = models.CharField(max_length=3)
-    nonFishProtectedSpecies = models.ForeignKey('NonFishProtectedSpecies')
+    nonFishProtectedSpecies = models.ForeignKey("Species")
     estimatedWeightKg = models.DecimalField(decimal_places=4, max_digits=12)
     numberUninjured = models.IntegerField(blank=True)
     numberInjured = models.IntegerField(blank=True)
     numberDead = models.IntegerField(blank=True)
     tags = JSONField()
     eventHeader = JSONField()
-    fishingEvent = models.ForeignKey('FishingEvent', blank=True)
-    trip = models.ForeignKey('Trip', blank=True)
+    fishingEvent = models.ForeignKey("FishingEvent", blank=True)
+    trip = models.ForeignKey("Trip", blank=True)
     isVesselUsed = models.BooleanField()
     completed = models.DateTimeField()
     eventVersion = models.DateTimeField()
     notes = models.TextField()
     completedDateTime = models.DateTimeField()
     amendmentReason = models.TextField()
-    trip = models.ForeignKey('Trip', blank=False)
+    trip = models.ForeignKey("Trip", blank=False)
     archived = models.BooleanField()
 
 
@@ -109,7 +102,7 @@ class ProcessedState(models.Model):
     id = models.UUIDField(primary_key=True)
     code = models.CharField(max_length=3)
     fullName = models.CharField(max_length=50)
-    fishSpecies = models.ForeignKey('FishSpecies')
+    species = models.ForeignKey("Species")
     conversionFactor = models.DecimalField(decimal_places=4, max_digits=12)
 
 
