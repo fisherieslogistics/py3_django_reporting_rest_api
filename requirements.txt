@@ -1,0 +1,5 @@
+django
+django-rest-framework
+django_extensions
+pygments
+psycopg2
