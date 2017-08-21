@@ -24,18 +24,17 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 COPY docker/nginx-app.conf /etc/nginx/sites-available/default
 COPY docker/supervisor-app.conf /etc/supervisor/conf.d/
 
-# COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism
-# to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
-
+# COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
 COPY requirements_frozen.txt /home/docker/code/
 RUN pip3 install -r /home/docker/code/requirements_frozen.txt
 
 # add (the rest of) our code
 # TODO - distribution? pack it in an egg?
 COPY docker/uwsgi* /home/docker/code/
-COPY reporting/ /home/docker/code/app/reporting/
+COPY reporting /home/docker/code/app/reporting/
 COPY py3_django_reporting_rest_api /home/docker/code/app/py3_django_reporting_rest_api/
 RUN mv /home/docker/code/app/py3_django_reporting_rest_api/settings_dist.py /home/docker/code/app/py3_django_reporting_rest_api/settings.py
+COPY build/static /home/docker/volatile/static/
 
 EXPOSE 80
 CMD ["supervisord", "-n"]

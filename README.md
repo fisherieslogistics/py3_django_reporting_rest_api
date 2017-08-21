@@ -7,20 +7,14 @@ For OSX setup
   * brew doctor
   * brew update
   * brew install python3
-  * sudo easy_install install pip3 <<<<<??? that didn’t work
+  * sudo pip3 install virtualenv
 
 * run docker-postgres
 
-* install django / python things
-
-  * pip3 update <<<<<??? that didn’t work
-  * sudo pip3 install virtualenv
-
 * setup the env
 ```
-python3 -m venv .fllenv
+make setup
 source .fllenv/bin/activate
-pip install -r requirements_frozen.txt
 ```
 
 * make your settings.py have this in it

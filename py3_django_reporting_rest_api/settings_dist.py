@@ -14,7 +14,7 @@ SECRET_KEY = '+ec=dq4fm(yt0*x^9z0qw$-64ln_z83yjem#m#f4aG1fei5ZsA'
 DEBUG = False
 
 # TODO - why?
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -126,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/docker/volatile/static/'
 
 # TODO logging inside a docker container
 LOGGING = {
