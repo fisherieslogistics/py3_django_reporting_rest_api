@@ -5,25 +5,23 @@ from django.contrib.postgres.fields import JSONField
 class FishingEvent(models.Model):
 
     id = models.UUIDField(primary_key=True)
+    RAId = models.CharField(max_length=100, blank=True)
     numberInTrip = models.IntegerField(blank=True)
     targetSpecies = models.CharField(max_length=50, blank=True)
     datetimeAtStart = models.DateTimeField(blank=False)
     datetimeAtEnd = models.DateTimeField(blank=True)
-    committed = models.BooleanField()
+    committed = models.BooleanField(default=True)
     locationAtStart = JSONField()
     locationAtEnd = JSONField()
-    lineString = JSONField()
+    lineString = JSONField(blank=True)
     eventSpecificDetails = JSONField()
-    mitigationDeviceCodes = JSONField()
+    mitigationDeviceCodes = JSONField(blank=True)
     vesselNumber = models.IntegerField()
-    isVesselUsed = models.BooleanField()
-    completed = models.DateTimeField()
-    eventVersion = models.DateTimeField()
-    notes = models.TextField()
-    completedDateTime = models.DateTimeField()
-    amendmentReason = models.TextField()
+    isVesselUsed = models.BooleanField(default=True)
+    notes = models.TextField(blank=True)
+    amendmentReason = models.TextField(blank=True)
     trip = models.ForeignKey("Trip", blank=False)
-    archived = models.BooleanField()
+    archived = models.BooleanField(default=False)
 
 
 class Species(models.Model):
@@ -50,6 +48,7 @@ class FishCatch(models.Model):
 class Trip(models.Model):
 
     id = models.UUIDField(primary_key=True)
+    RAId = models.CharField(max_length=100, blank=True)
     personInCharge = models.CharField(max_length=50)
     ETA = models.DateTimeField()
     startTime = models.DateTimeField()
