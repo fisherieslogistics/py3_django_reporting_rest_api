@@ -44,8 +44,6 @@ urlpatterns = [
     url(r"^", include(router.urls)),
     url(r"^api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     url(r"^admin/", admin.site.urls),
-#    url(r'^trips/$', views.TripList.as_view()),
-#    url(r'^trips/(?P<pk>[0-9]+)/$', views.TripDetail.as_view()),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
 ]
