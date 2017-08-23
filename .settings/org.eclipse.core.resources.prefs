@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//reporting/migrations/0005_remove_fishingevent_completeddatetime.py=utf-8
+encoding//reporting/migrations/0007_auto_20170821_2337.py=utf-8
+encoding//reporting/migrations/0008_auto_20170822_0325.py=utf-8
+encoding//reporting/migrations/0009_auto_20170823_0645.py=utf-8

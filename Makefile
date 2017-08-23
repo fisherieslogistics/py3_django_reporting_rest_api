@@ -1,4 +1,4 @@
-ENV=.fllenv
+ENV=~/fllenv
 ENV_BIN=$(ENV)/bin/
 setup:
 	python3 -m venv $(ENV)

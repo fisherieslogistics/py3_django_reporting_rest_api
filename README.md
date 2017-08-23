@@ -17,19 +17,6 @@ make setup
 source .fllenv/bin/activate
 ```
 
-* make your settings.py have this in it
-
-    * DATABASES = {
-          'default': {
-              'ENGINE': 'django.db.backends.postgresql_psycopg2',
-              'NAME': 'somedb',
-              'USER': 'myprojectuser',
-              'PASSWORD': 'password',
-              'HOST': 'localhost',
-              'PORT': '',
-          }
-      }
-
 * setup the superuser
   * python3 manage.py createsuperuser
   * follow instructions in the shell
