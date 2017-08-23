@@ -1,26 +1,35 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
+from django.contrib.auth.models import AbstractUser
+
+class Organisation(models.Model):
+    id = models.UUIDField(primary_key=True)
+    fullName = models.CharField(max_length=120)
+
+
+class User(AbstractUser):
+    organisation = models.ForeignKey("Organisation", null=True)
 
 
 class FishingEvent(models.Model):
 
     id = models.UUIDField(primary_key=True)
-    RAId = models.CharField(max_length=100, blank=True)
-    numberInTrip = models.IntegerField(blank=True)
-    targetSpecies = models.CharField(max_length=50, blank=True)
-    datetimeAtStart = models.DateTimeField(blank=False)
-    datetimeAtEnd = models.DateTimeField(blank=True)
+    RAId = models.CharField(max_length=100, null=True)
+    numberInTrip = models.IntegerField(null=True)
+    targetSpecies = models.CharField(max_length=50, null=True)
+    datetimeAtStart = models.DateTimeField(null=False)
+    datetimeAtEnd = models.DateTimeField(null=True)
     committed = models.BooleanField(default=True)
     locationAtStart = JSONField()
     locationAtEnd = JSONField()
-    lineString = JSONField(blank=True)
+    lineString = JSONField(null=True)
     eventSpecificDetails = JSONField()
-    mitigationDeviceCodes = JSONField(blank=True)
+    mitigationDeviceCodes = JSONField(null=True)
     vesselNumber = models.IntegerField()
     isVesselUsed = models.BooleanField(default=True)
-    notes = models.TextField(blank=True)
-    amendmentReason = models.TextField(blank=True)
-    trip = models.ForeignKey("Trip", blank=False)
+    notes = models.TextField(null=True)
+    amendmentReason = models.TextField(null=True)
+    trip = models.ForeignKey("Trip", null=False)
     archived = models.BooleanField(default=False)
 
 
@@ -29,11 +38,11 @@ class Species(models.Model):
     id = models.UUIDField(primary_key=True)
     speciesType = models.CharField(max_length=20)
     code = models.CharField(max_length=3)
-    description = models.CharField(max_length=50, blank=True)
-    otherNames = models.TextField(max_length=50, blank=True)
-    fullName = models.CharField(max_length=50, blank=True)
-    scientificName = models.CharField(max_length=50, blank=True)
-    image = models.CharField(max_length=50, blank=True)
+    description = models.CharField(max_length=50, null=True)
+    otherNames = models.TextField(max_length=50, null=True)
+    fullName = models.CharField(max_length=50, null=True)
+    scientificName = models.CharField(max_length=50, null=True)
+    image = models.CharField(max_length=50, null=True)
 
 
 class FishCatch(models.Model):
@@ -48,7 +57,8 @@ class FishCatch(models.Model):
 class Trip(models.Model):
 
     id = models.UUIDField(primary_key=True)
-    RAId = models.CharField(max_length=100, blank=True)
+    organisation = models.ForeignKey("Organisation", null=False)
+    RAId = models.CharField(max_length=100, null=True)
     personInCharge = models.CharField(max_length=50)
     ETA = models.DateTimeField()
     startTime = models.DateTimeField()
@@ -66,32 +76,32 @@ class Port(models.Model):
     location = JSONField()
 
 
-class NonFishProtectedSpeciesInteractionEvent(models.Model):
+class NonFishingEvent(models.Model):
 
     id = models.UUIDField(primary_key=True)
     seabirdCaptureCode = models.CharField(max_length=3)
     nonFishProtectedSpecies = models.ForeignKey("Species")
     estimatedWeightKg = models.DecimalField(decimal_places=4, max_digits=12)
-    numberUninjured = models.IntegerField(blank=True)
-    numberInjured = models.IntegerField(blank=True)
-    numberDead = models.IntegerField(blank=True)
+    numberUninjured = models.IntegerField(null=True)
+    numberInjured = models.IntegerField(null=True)
+    numberDead = models.IntegerField(null=True)
     tags = JSONField()
     eventHeader = JSONField()
-    fishingEvent = models.ForeignKey("FishingEvent", blank=True)
-    trip = models.ForeignKey("Trip", blank=True)
+    fishingEvent = models.ForeignKey("FishingEvent", null=True)
+    trip = models.ForeignKey("Trip", null=True)
     isVesselUsed = models.BooleanField()
     completed = models.DateTimeField()
     eventVersion = models.DateTimeField()
     notes = models.TextField()
     completedDateTime = models.DateTimeField()
     amendmentReason = models.TextField()
-    trip = models.ForeignKey("Trip", blank=False)
     archived = models.BooleanField()
 
 
 class Vessel(models.Model):
 
     id = models.UUIDField(primary_key=True)
+    organisation = models.ForeignKey("Organisation", null=False)
     name = models.CharField(max_length=50)
     registration = models.IntegerField()
 
@@ -109,5 +119,4 @@ class FishReciever(models.Model):
 
     id = models.UUIDField(primary_key=True)
     fullName = models.CharField(max_length=50)
-
-# Create your models here.
+    #TODO - is this maybe an organisation?
