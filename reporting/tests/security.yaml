@@ -1,0 +1,20 @@
+# data security (read others data, write others data)
+
+---
+- config:
+    - testset: "REST data security tests"
+
+- test:
+    name: "Login"
+    method: POST
+    headers: {"Content-Type": "application/json"}
+    url: "/api-token-auth/"
+    body: '{"username": "resttester", "password": "testrester"}'
+    extract_binds:
+        - 'jwt': {'jsonpath_mini': 'token'}
+
+- template: &post
+    headers: {template: {"Authorization": "JWT $jwt", "Content-Type": "application/json"}}
+    method: POST
+      
+# TODO

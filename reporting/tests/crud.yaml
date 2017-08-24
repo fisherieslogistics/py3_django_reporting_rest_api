@@ -1,0 +1,58 @@
+# https://github.com/svanoort/pyresttest
+# check that auth is needed
+# smoke (create, read, delete? -> should not work)
+# data security (read others data, write others data)
+
+---
+- config:
+    - testset: "REST smoke tests"
+
+- test:
+    name: "Login"
+    method: POST
+    headers: {"Content-Type": "application/json"}
+    url: "/api-token-auth/"
+    body: '{"username": "resttester", "password": "testrester"}'
+    extract_binds:
+        - 'jwt': {'jsonpath_mini': 'token'}
+
+- template: &post
+    headers: {template: {"Authorization": "JWT $jwt", "Content-Type": "application/json"}}
+    method: POST
+
+- template: &get
+    headers: {template: {"Authorization": "JWT $jwt", "Content-Type": "application/json"}}
+    method: GET
+      
+- test: 
+    name: "Create port"
+    <<: *post
+    body: '{"name": "Port of Timaru", "location": {"lat": 45, "lon": 45}}'
+    url: "/ports/"
+    extract_binds: 
+        - 'port_id': {'jsonpath_mini': 'id'}
+
+- test: 
+    name: "List ports"
+    <<: *get
+    url: "/ports/"
+    validators:
+      - compare: {raw_body: , comparator: 'contains', expected: {template: $port_id}}
+      - compare: {raw_body: , comparator: 'contains', expected: 'Timaru'}
+  
+- test:
+    name: "Create vessel"
+    <<: *post
+    body: '{"name": "Sea Ward", "registration": 12}'
+    url: "/vessels/"
+    extract_binds: 
+        - 'vessel_id': {'jsonpath_mini': 'id'}
+
+- test: 
+    name: "List vessels"
+    <<: *get
+    url: "/vessels/"
+    validators:
+      - compare: {raw_body: , comparator: 'contains', expected: {template: $vessel_id}}
+      - compare: {raw_body: , comparator: 'contains', expected: 'Sea Ward'}
+    
