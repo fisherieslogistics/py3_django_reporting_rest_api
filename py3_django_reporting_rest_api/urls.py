@@ -21,7 +21,7 @@ from reporting.models import FishCatch, Species, Trip, Vessel, Port,\
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from rest_framework.urlpatterns import format_suffix_patterns
-from reporting import views
+from reporting.views import fishingEventWithCatches
 from reporting.serializers import TripViewSet, SpeciesViewSet, PortViewSet, NonFishProtectedSpeciesInteractionEventViewSet,\
     VesselViewSet, ProcessedStateViewSet, FishCatchViewSet, FishingEventViewSet, FishRecieverViewSet
 
@@ -46,4 +46,5 @@ urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^fishingEventWithCatches/', fishingEventWithCatches),
 ]
