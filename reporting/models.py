@@ -1,6 +1,15 @@
 import uuid
 from django.db import models
 from django.contrib.postgres.fields import JSONField
+from django.contrib.auth.models import AbstractUser
+
+class Organisation(models.Model):
+    id = models.UUIDField(primary_key=True)
+    fullName = models.CharField(max_length=120)
+
+
+class User(AbstractUser):
+    organisation = models.ForeignKey("Organisation", null=True)
 
 
 class FishingEvent(models.Model):
@@ -14,14 +23,14 @@ class FishingEvent(models.Model):
     committed = models.BooleanField(default=True)
     locationAtStart = JSONField()
     locationAtEnd = JSONField()
-    lineString = JSONField(blank=True)
+    lineString = JSONField(null=True)
     eventSpecificDetails = JSONField()
-    mitigationDeviceCodes = JSONField(blank=True)
+    mitigationDeviceCodes = JSONField(null=True)
     vesselNumber = models.IntegerField()
     isVesselUsed = models.BooleanField(default=True)
-    notes = models.TextField(blank=True)
-    amendmentReason = models.TextField(blank=True)
-    trip = models.ForeignKey("Trip", blank=False)
+    notes = models.TextField(null=True)
+    amendmentReason = models.TextField(null=True)
+    trip = models.ForeignKey("Trip", null=False)
     archived = models.BooleanField(default=False)
 
 
@@ -30,11 +39,11 @@ class Species(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     speciesType = models.CharField(max_length=20)
     code = models.CharField(max_length=3)
-    description = models.CharField(max_length=50, blank=True)
-    otherNames = models.TextField(max_length=50, blank=True)
-    fullName = models.CharField(max_length=50, blank=True)
-    scientificName = models.CharField(max_length=50, blank=True)
-    image = models.CharField(max_length=50, blank=True)
+    description = models.CharField(max_length=50, null=True)
+    otherNames = models.TextField(max_length=50, null=True)
+    fullName = models.CharField(max_length=50, null=True)
+    scientificName = models.CharField(max_length=50, null=True)
+    image = models.CharField(max_length=50, null=True)
 
 
 class FishCatch(models.Model):
@@ -67,26 +76,25 @@ class Port(models.Model):
     location = JSONField()
 
 
-class NonFishProtectedSpeciesInteractionEvent(models.Model):
+class NonFishingEvent(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     seabirdCaptureCode = models.CharField(max_length=3)
     nonFishProtectedSpecies = models.ForeignKey("Species")
     estimatedWeightKg = models.DecimalField(decimal_places=4, max_digits=12)
-    numberUninjured = models.IntegerField(blank=True)
-    numberInjured = models.IntegerField(blank=True)
-    numberDead = models.IntegerField(blank=True)
+    numberUninjured = models.IntegerField(null=True)
+    numberInjured = models.IntegerField(null=True)
+    numberDead = models.IntegerField(null=True)
     tags = JSONField()
     eventHeader = JSONField()
-    fishingEvent = models.ForeignKey("FishingEvent", blank=True)
-    trip = models.ForeignKey("Trip", blank=True)
+    fishingEvent = models.ForeignKey("FishingEvent", null=True)
+    trip = models.ForeignKey("Trip", null=True)
     isVesselUsed = models.BooleanField()
     completed = models.DateTimeField()
     eventVersion = models.DateTimeField()
     notes = models.TextField()
     completedDateTime = models.DateTimeField()
     amendmentReason = models.TextField()
-    trip = models.ForeignKey("Trip", blank=False)
     archived = models.BooleanField()
 
 
@@ -110,5 +118,4 @@ class FishReciever(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     fullName = models.CharField(max_length=50)
-
-# Create your models here.
+    #TODO - is this maybe an organisation?

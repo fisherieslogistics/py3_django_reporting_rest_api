@@ -1,5 +1,5 @@
 from rest_framework import serializers, viewsets
-from reporting.models import Trip, FishingEvent, Species, FishCatch, FishReciever, NonFishProtectedSpeciesInteractionEvent,\
+from reporting.models import Trip, FishingEvent, Species, FishCatch, FishReciever, NonFishingEvent,\
     Port, ProcessedState, Vessel
 
 class TripSerializer(serializers.HyperlinkedModelSerializer):
@@ -61,10 +61,10 @@ class PortViewSet(viewsets.ModelViewSet):
     serializer_class  = PortSerializer
 
 
-class NonFishProtectedSpeciesInteractionEventSerializer(serializers.HyperlinkedModelSerializer):
+class NonFishEventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
-        model = NonFishProtectedSpeciesInteractionEvent
+        model = NonFishingEvent
         fields = (
         "id",
         "seabirdCaptureCode",
@@ -88,9 +88,9 @@ class NonFishProtectedSpeciesInteractionEventSerializer(serializers.HyperlinkedM
         )
 
 
-class NonFishProtectedSpeciesInteractionEventViewSet(viewsets.ModelViewSet):
-    queryset = NonFishProtectedSpeciesInteractionEvent.objects.all()
-    serializer_class = NonFishProtectedSpeciesInteractionEventSerializer
+class NonFishEventViewSet(viewsets.ModelViewSet):
+    queryset = NonFishingEvent.objects.all()
+    serializer_class = NonFishEventSerializer
 
 
 class VesselSerializer(serializers.HyperlinkedModelSerializer):

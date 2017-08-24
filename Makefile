@@ -1,4 +1,4 @@
-ENV=.fllenv
+ENV=~/fllenv
 ENV_BIN=$(ENV)/bin/
 setup:
 	python3 -m venv $(ENV)
@@ -16,3 +16,8 @@ upgrade-libs:
 	.fllenv_upgrade/bin/pip install -r requirements.txt
 	.fllenv_upgrade/bin/pip freeze >requirements_frozen.txt
 	rm -rf .fllenv_upgrade
+
+test-rest:
+	$(ENV_BIN)pip install -r requirements_tests.txt
+	- echo "from reporting.models import User; User.objects.create_superuser('resttester', 'rest@test.com', 'testrester')" | python manage.py shell
+	resttest.py http://localhost:8000 reporting/tests/rest.yaml
