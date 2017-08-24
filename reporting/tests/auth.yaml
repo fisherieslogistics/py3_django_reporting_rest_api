@@ -1,0 +1,48 @@
+# https://github.com/svanoort/pyresttest
+# check that auth is needed
+# smoke (create, read, delete? -> should not work)
+# data security (read others data, write others data)
+
+---
+- config:
+    - testset: "REST authentication tests"
+
+- test:
+    name: "Failed Login"
+    method: POST
+    headers: {"Content-Type": "application/json"}
+    url: "/api-token-auth/"
+    body: '{"username": "resttester", "password": "wrong_password"}'
+    expected_status: [400]
+
+- template: &post
+    headers: {template: {"Content-Type": "application/json"}}
+    method: POST
+    expected_status: [401]
+
+- template: &get
+    headers: {template: {"Content-Type": "application/json"}}
+    method: GET
+    expected_status: [401]
+      
+- test: 
+    name: "List ports"
+    <<: *get
+    url: "/ports/"
+
+- test: 
+    name: "Create port"
+    <<: *post
+    body: '{"name": "Port of Timaru", "location": {"lat": 45, "lon": 45}}'
+    url: "/ports/"
+
+- test: 
+    name: "List vessels"
+    <<: *get
+    url: "/vessels/"
+
+- test:
+    name: "Create vessel"
+    <<: *post
+    body: '{"name": "Sea Ward", "registration": 12}'
+    url: "/vessels/"
