@@ -4,3 +4,4 @@ django_extensions
 pygments
 psycopg2
 djangorestframework-jwt
+django-cors-headers

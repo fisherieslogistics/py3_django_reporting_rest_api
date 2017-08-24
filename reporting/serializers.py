@@ -7,6 +7,7 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Trip
         fields = (
+        "RAId",
         "id",
         "personInCharge",
         "ETA",
@@ -154,21 +155,9 @@ class FishingEventSerializer(serializers.HyperlinkedModelSerializer):
             "targetSpecies",
             "datetimeAtStart",
             "datetimeAtEnd",
-            "committed",
             "locationAtStart",
             "locationAtEnd",
-            "lineString",
-            "eventSpecificDetails",
-            "mitigationDeviceCodes",
             "vesselNumber",
-            "isVesselUsed",
-            "completed",
-            "eventVersion",
-            "notes",
-            "completedDateTime",
-            "amendmentReason",
-            "trip",
-            "archived",
         )
 
 
