@@ -34,6 +34,7 @@ COPY docker/uwsgi* /home/docker/code/
 COPY reporting /home/docker/code/app/reporting/
 COPY py3_django_reporting_rest_api /home/docker/code/app/py3_django_reporting_rest_api/
 RUN mv /home/docker/code/app/py3_django_reporting_rest_api/settings_dist.py /home/docker/code/app/py3_django_reporting_rest_api/settings.py
+COPY manage.py /home/docker/code/app/manage.py
 COPY build/static /home/docker/volatile/static/
 
 EXPOSE 80

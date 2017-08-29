@@ -7,8 +7,10 @@ setup:
 build-docker: setup
 	rm -rf build
 	$(ENV_BIN)python manage.py collectstatic
-	docker build -t django_rest_api .
+	docker build -t rest-api .
 	rm -rf build
+	docker tag rest-api fisherylogistics/rest-api:latest
+	docker push fisherylogistics/rest-api:latest
 
 upgrade-libs:
 	rm -rf .fllenv_upgrade
