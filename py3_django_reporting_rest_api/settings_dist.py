@@ -8,6 +8,17 @@ DEBUG = False
 # TODO - why?
 ALLOWED_HOSTS = ['*']
 
+DATABASES = {
+  'default': {
+      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+      'NAME': 'reporting',
+      'USER': 'reportingadmin',
+      'PASSWORD': 'nomorediscriminationagainstwhitepeopleindunedin',
+      'HOST': 'fllpostgres',
+      'PORT': '',
+  }
+}
+
 # TODO logging inside a docker container
 LOGGING = {
     'version': 1,

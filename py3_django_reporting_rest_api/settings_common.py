@@ -83,24 +83,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'py3_django_reporting_rest_api.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-DATABASES = {
-  'default': {
-      'ENGINE': 'django.db.backends.postgresql_psycopg2',
-      'NAME': 'reporting',
-      'USER': 'reportingadmin',
-      'PASSWORD': 'nomorediscriminationagainstwhitepeopleindunedin',
-      'HOST': 'localhost',
-      'PORT': '',
-  }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
