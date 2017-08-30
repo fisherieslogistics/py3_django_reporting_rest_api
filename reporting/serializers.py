@@ -1,5 +1,5 @@
 from rest_framework import serializers, viewsets
-from reporting.models import Trip, FishingEvent, Species, FishCatch, FishReciever, NonFishingEvent,\
+from reporting.models import Trip, FishingEvent, Species, FishCatch, NonFishingEvent,\
     Port, ProcessedState, Vessel
 
 class TripSerializer(serializers.HyperlinkedModelSerializer):
@@ -126,21 +126,6 @@ class ProcessedStateSerializer(serializers.HyperlinkedModelSerializer):
 class ProcessedStateViewSet(viewsets.ModelViewSet):
     queryset = ProcessedState.objects.all()
     serializer_class = ProcessedStateSerializer
-
-
-class FishRecieverSerializer(serializers.HyperlinkedModelSerializer):
-
-    class Meta:
-        model = FishReciever
-        fields = (
-        "id",
-        "fullName",
-        )
-
-
-class FishRecieverViewSet(viewsets.ModelViewSet):
-    queryset = FishReciever.objects.all()
-    serializer_class = FishRecieverSerializer
 
 
 class FishingEventSerializer(serializers.HyperlinkedModelSerializer):

@@ -58,6 +58,7 @@ class FishCatch(models.Model):
 class Trip(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    organisation = models.ForeignKey("Organisation", null=True)
     RAId = models.CharField(max_length=100, blank=True)
     personInCharge = models.CharField(max_length=50)
     ETA = models.DateTimeField()
@@ -103,6 +104,7 @@ class Vessel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     registration = models.IntegerField()
+    organisation = models.ForeignKey("Organisation", null=True)
 
 
 class ProcessedState(models.Model):
@@ -112,10 +114,3 @@ class ProcessedState(models.Model):
     fullName = models.CharField(max_length=50)
     species = models.ForeignKey("Species")
     conversionFactor = models.DecimalField(decimal_places=4, max_digits=12)
-
-
-class FishReciever(models.Model):
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    fullName = models.CharField(max_length=50)
-    #TODO - is this maybe an organisation?

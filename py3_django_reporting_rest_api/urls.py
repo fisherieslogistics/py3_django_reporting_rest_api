@@ -15,12 +15,8 @@ Including another URLconf
 """,
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth.models import User
-from reporting.models import FishCatch, Species, Trip, Vessel, Port,\
-    NonFishingEvent, FishingEvent, FishReciever, ProcessedState
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
-from rest_framework.urlpatterns import format_suffix_patterns
 from reporting.views import fishingEventWithCatches
 from reporting.serializers import TripViewSet, SpeciesViewSet, PortViewSet, NonFishEventViewSet,\
     VesselViewSet, ProcessedStateViewSet, FishCatchViewSet, FishingEventViewSet
