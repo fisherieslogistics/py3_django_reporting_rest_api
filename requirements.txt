@@ -1,5 +1,6 @@
 django
 django-rest-framework
+django-filter
 django_extensions
 pygments
 psycopg2

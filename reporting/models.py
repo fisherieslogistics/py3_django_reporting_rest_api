@@ -58,7 +58,8 @@ class FishCatch(models.Model):
 class Trip(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    organisation = models.ForeignKey("Organisation", null=True)
+    organisation = models.ForeignKey("Organisation", null=False)
+    creator = models.ForeignKey("User", null=False)
     RAId = models.CharField(max_length=100, blank=True)
     personInCharge = models.CharField(max_length=50)
     ETA = models.DateTimeField()
@@ -73,6 +74,7 @@ class Trip(models.Model):
 class Port(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    organisation = models.ForeignKey("Organisation", null=False)
     name = models.CharField(max_length=50)
     location = JSONField()
 
@@ -104,7 +106,7 @@ class Vessel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     registration = models.IntegerField()
-    organisation = models.ForeignKey("Organisation", null=True)
+    organisation = models.ForeignKey("Organisation", null=False)
 
 
 class ProcessedState(models.Model):

@@ -1,5 +1,6 @@
 # https://github.com/svanoort/pyresttest
 ---
 - import: auth.yaml
+- import: admin.yaml
 - import: crud.yaml
 - import: security.yaml

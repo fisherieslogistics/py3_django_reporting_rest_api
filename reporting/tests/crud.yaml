@@ -23,7 +23,7 @@
 - template: &get
     headers: {template: {"Authorization": "JWT $jwt", "Content-Type": "application/json"}}
     method: GET
-      
+
 - test: 
     name: "Create port"
     <<: *post

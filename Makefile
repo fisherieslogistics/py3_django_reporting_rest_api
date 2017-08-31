@@ -21,5 +21,5 @@ upgrade-libs:
 
 test-rest:
 	$(ENV_BIN)pip install -r requirements_tests.txt
-	- echo "from reporting.models import User; User.objects.filter(username='resttester').delete(); User.objects.create_superuser('resttester', 'rest@test.com', 'testrester')" | python manage.py shell
+	- python manage.py shell <reporting/tests/prepare_test_database.py
 	cd reporting/tests && $(ENV_BIN)resttest.py http://localhost:8000 all.yaml

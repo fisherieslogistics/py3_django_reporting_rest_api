@@ -1,22 +1,40 @@
-from rest_framework import serializers, viewsets
+from rest_framework import serializers, viewsets, filters
 from reporting.models import Trip, FishingEvent, Species, FishCatch, NonFishingEvent,\
-    Port, ProcessedState, Vessel
+    Port, ProcessedState, Vessel, Organisation
 
-class TripSerializer(serializers.HyperlinkedModelSerializer):
+
+class MyOrganisationFilter(filters.BaseFilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        user = request.user
+        if user.organisation:
+            return queryset.filter(organisation=user.organisation)
+        else:
+            return queryset # for staff/superuser 
+
+
+class MyOrganisationMixIn():
+    filter_backends = (MyOrganisationFilter,)
+    def perform_create(self, serializer):
+        serializer.validated_data['organisation_id'] = self.request.user.organisation.id
+        viewsets.ModelViewSet.perform_create(self, serializer)
+    
+
+class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Trip
         fields = (
-        "RAId",
-        "id",
-        "personInCharge",
-        "ETA",
-        "startTime",
-        "endTime",
-        "startLocation",
-        "endLocation",
-        "unloadPort",
-        "vessel",
+            "organisation"
+            "RAId",
+            "id",
+            "personInCharge",
+            "ETA",
+            "startTime",
+            "endTime",
+            "startLocation",
+            "endLocation",
+            "unloadPort",
+            "vessel"
         )
 
 
@@ -55,12 +73,12 @@ class PortSerializer(serializers.HyperlinkedModelSerializer):
         "name",
         "location",
         )
+    # TODO owner = serializers.ReadOnlyField(source='owner.username')
 
-
-class PortViewSet(viewsets.ModelViewSet):
+class PortViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = Port.objects.all()
     serializer_class  = PortSerializer
-
+    
 
 class NonFishEventSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -105,7 +123,7 @@ class VesselSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
-class VesselViewSet(viewsets.ModelViewSet):
+class VesselViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = Vessel.objects.all()
     serializer_class = VesselSerializer
 
@@ -163,3 +181,14 @@ class FishCatchSerializer(serializers.HyperlinkedModelSerializer):
 class FishCatchViewSet(viewsets.ModelViewSet):
     queryset = FishCatch.objects.all()
     serializer_class = FishCatchSerializer
+
+class OrganisationSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Organisation
+        fields = ("id", "fullName")
+
+
+class OrganisationViewSet(viewsets.ModelViewSet):
+    queryset = Organisation.objects.all()
+    serializer_class = OrganisationSerializer

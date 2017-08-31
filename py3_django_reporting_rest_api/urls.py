@@ -19,7 +19,8 @@ from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from reporting.views import fishingEventWithCatches
 from reporting.serializers import TripViewSet, SpeciesViewSet, PortViewSet, NonFishEventViewSet,\
-    VesselViewSet, ProcessedStateViewSet, FishCatchViewSet, FishingEventViewSet
+    VesselViewSet, ProcessedStateViewSet, FishCatchViewSet, FishingEventViewSet,\
+    OrganisationViewSet
 
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -32,6 +33,7 @@ router.register(r"species", SpeciesViewSet)
 router.register(r"nonfishprotecteds", NonFishEventViewSet)
 router.register(r"processedStates", ProcessedStateViewSet)
 router.register(r"species", SpeciesViewSet)
+router.register(r"organisations", OrganisationViewSet)
 
 
 # Wire up our API using automatic URL routing.
