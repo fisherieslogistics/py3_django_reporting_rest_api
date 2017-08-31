@@ -28,14 +28,14 @@
     name: "Create Organisation"
     <<: *post
     body: '{"fullName": "Rimu Industries Inc."}'
-    url: "/organisations/"
+    url: "/rest-api/organisations/"
     extract_binds: 
         - 'organisation_id': {'jsonpath_mini': 'id'}
 
 - test: 
     name: "List Organisations"
     <<: *get
-    url: "/organisations/"
+    url: "/rest-api/organisations/"
     validators:
       - compare: {raw_body: , comparator: 'contains', expected: {template: $organisation_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Rimu Industries Inc.'}

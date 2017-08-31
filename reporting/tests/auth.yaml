@@ -28,21 +28,21 @@
 - test: 
     name: "List ports"
     <<: *get
-    url: "/ports/"
+    url: "/rest-api/ports/"
 
 - test: 
     name: "Create port"
     <<: *post
     body: '{"name": "Port of Timaru", "location": {"lat": 45, "lon": 45}}'
-    url: "/ports/"
+    url: "/rest-api/ports/"
 
 - test: 
     name: "List vessels"
     <<: *get
-    url: "/vessels/"
+    url: "/rest-api/vessels/"
 
 - test:
     name: "Create vessel"
     <<: *post
     body: '{"name": "Sea Ward", "registration": 12}'
-    url: "/vessels/"
+    url: "/rest-api/vessels/"

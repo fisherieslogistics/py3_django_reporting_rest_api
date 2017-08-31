@@ -28,14 +28,14 @@
     name: "Create port"
     <<: *post
     body: '{"name": "Port of Timaru", "location": {"lat": 45, "lon": 45}}'
-    url: "/ports/"
+    url: "/rest-api/ports/"
     extract_binds: 
         - 'port_id': {'jsonpath_mini': 'id'}
 
 - test: 
     name: "List ports"
     <<: *get
-    url: "/ports/"
+    url: "/rest-api/ports/"
     validators:
       - compare: {raw_body: , comparator: 'contains', expected: {template: $port_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Timaru'}
@@ -44,14 +44,14 @@
     name: "Create vessel"
     <<: *post
     body: '{"name": "Sea Ward", "registration": 12}'
-    url: "/vessels/"
+    url: "/rest-api/vessels/"
     extract_binds: 
         - 'vessel_id': {'jsonpath_mini': 'id'}
 
 - test: 
     name: "List vessels"
     <<: *get
-    url: "/vessels/"
+    url: "/rest-api/vessels/"
     validators:
       - compare: {raw_body: , comparator: 'contains', expected: {template: $vessel_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Sea Ward'}
