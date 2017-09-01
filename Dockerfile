@@ -13,6 +13,7 @@ RUN apt-get update && \
 		python3-pip \
 		nginx \
 		supervisor \
+		binutils libproj-dev gdal-bin \
 	&& pip3 install -U pip setuptools && \
    rm -rf /var/lib/apt/lists/*
 
