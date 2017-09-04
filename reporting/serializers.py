@@ -24,7 +24,7 @@ class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer
     class Meta:
         model = Trip
         fields = (
-            "organisation"
+            "organisation",
             "RAId",
             "id",
             "personInCharge",
