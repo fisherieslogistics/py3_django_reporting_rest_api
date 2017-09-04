@@ -9,22 +9,23 @@ class MyOrganisationFilter(filters.BaseFilterBackend):
         if user.organisation:
             return queryset.filter(organisation=user.organisation)
         else:
-            return queryset # for staff/superuser 
+            return queryset# for staff/superuser
 
 
 class MyOrganisationMixIn():
     filter_backends = (MyOrganisationFilter,)
+
     def perform_create(self, serializer):
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
         viewsets.ModelViewSet.perform_create(self, serializer)
-    
+
 
 class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Trip
         fields = (
-            "organisation"
+            "organisation",
             "RAId",
             "id",
             "personInCharge",
@@ -48,14 +49,14 @@ class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Species
         fields = (
-        "id",
-        "speciesType",
-        "code",
-        "description",
-        "otherNames",
-        "fullName",
-        "scientificName",
-        "image",
+            "id",
+            "speciesType",
+            "code",
+            "description",
+            "otherNames",
+            "fullName",
+            "scientificName",
+            "image",
         )
 
 
@@ -69,41 +70,42 @@ class PortSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Port
         fields = (
-        "id",
-        "name",
-        "location",
+            "id",
+            "organisation",
+            "name",
+            "location",
         )
     # TODO owner = serializers.ReadOnlyField(source='owner.username')
 
 class PortViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = Port.objects.all()
-    serializer_class  = PortSerializer
-    
+    serializer_class = PortSerializer
+
 
 class NonFishEventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = NonFishingEvent
         fields = (
-        "id",
-        "seabirdCaptureCode",
-        "nonFishProtectedSpecies",
-        "estimatedWeightKg",
-        "numberUninjured",
-        "numberInjured",
-        "numberDead",
-        "tags",
-        "eventHeader",
-        "fishingEvent",
-        "trip",
-        "isVesselUsed",
-        "completed",
-        "eventVersion",
-        "notes",
-        "completedDateTime",
-        "amendmentReason",
-        "trip",
-        "archived",
+            "id",
+            "seabirdCaptureCode",
+            "nonFishProtectedSpecies",
+            "estimatedWeightKg",
+            "numberUninjured",
+            "numberInjured",
+            "numberDead",
+            "tags",
+            "eventHeader",
+            "fishingEvent",
+            "trip",
+            "isVesselUsed",
+            "completed",
+            "eventVersion",
+            "notes",
+            "completedDateTime",
+            "amendmentReason",
+            "trip",
+            "archived",
         )
 
 
@@ -117,9 +119,10 @@ class VesselSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Vessel
         fields = (
-        "id",
-        "name",
-        "registration",
+            "id",
+            "organisation",
+            "name",
+            "registration",
         )
 
 
@@ -133,11 +136,11 @@ class ProcessedStateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ProcessedState
         fields = (
-        "id",
-        "code",
-        "fullName",
-        "Species",
-        "conversionFactor",
+            "id",
+            "code",
+            "fullName",
+            "Species",
+            "conversionFactor",
         )
 
 
@@ -181,6 +184,7 @@ class FishCatchSerializer(serializers.HyperlinkedModelSerializer):
 class FishCatchViewSet(viewsets.ModelViewSet):
     queryset = FishCatch.objects.all()
     serializer_class = FishCatchSerializer
+
 
 class OrganisationSerializer(serializers.HyperlinkedModelSerializer):
 
