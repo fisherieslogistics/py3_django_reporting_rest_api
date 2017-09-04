@@ -18,6 +18,9 @@ class User(AbstractUser):
     class Meta:
         db_table = 'auth_user'
 
+    def __str__(self):
+        return self.email
+
 
 class FishingEvent(models.Model):
 
@@ -37,8 +40,10 @@ class FishingEvent(models.Model):
     isVesselUsed = models.BooleanField(default=True)
     notes = models.TextField(null=True)
     amendmentReason = models.TextField(null=True)
-    trip = models.ForeignKey("Trip", null=False)
     archived = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "%s %s" % (self.trip.vessel.name, self.datetimeAtStart)
 
 
 class Species(models.Model):
@@ -52,6 +57,10 @@ class Species(models.Model):
     scientificName = models.CharField(max_length=50, null=True)
     image = models.CharField(max_length=50, null=True)
 
+    def __str__(self):
+        return self.code
+
+
 
 class FishCatch(models.Model):
 
@@ -60,6 +69,9 @@ class FishCatch(models.Model):
     weightKgs = models.IntegerField()
     fishingEvent = models.ForeignKey("FishingEvent",
                                      related_name="fishCatches")
+
+    def __str__(self):
+        return "%s %s" % (self.species.code, self.fishingEvent.trip.vessel.name)
 
 
 class Trip(models.Model):
@@ -77,6 +89,9 @@ class Trip(models.Model):
     unloadPort = models.ForeignKey("Port")
     vessel = models.ForeignKey("Vessel")
 
+    def __str__(self):
+        return "%s %s" % (self.vessel.name, self.startTime)
+
 
 class Port(models.Model):
 
@@ -84,6 +99,9 @@ class Port(models.Model):
     organisation = models.ForeignKey("Organisation", null=False)
     name = models.CharField(max_length=50)
     location = JSONField()
+
+    def __str__(self):
+        return self.name
 
 
 class NonFishingEvent(models.Model):
@@ -115,6 +133,9 @@ class Vessel(models.Model):
     registration = models.IntegerField()
     organisation = models.ForeignKey("Organisation", null=False)
 
+    def __str__(self):
+        return self.name
+
 
 class ProcessedState(models.Model):
 
@@ -123,3 +144,6 @@ class ProcessedState(models.Model):
     fullName = models.CharField(max_length=50)
     species = models.ForeignKey("Species")
     conversionFactor = models.DecimalField(decimal_places=4, max_digits=12)
+
+    def __str__(self):
+        return self.code
