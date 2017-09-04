@@ -1,6 +1,6 @@
 from rest_framework import serializers, viewsets, filters
 from reporting.models import Trip, FishingEvent, Species, FishCatch, NonFishingEvent,\
-    Port, ProcessedState, Vessel, Organisation
+    Port, ProcessedState, Vessel, Organisation, User
 
 
 class MyOrganisationFilter(filters.BaseFilterBackend):
@@ -20,7 +20,25 @@ class MyOrganisationMixIn():
         viewsets.ModelViewSet.perform_create(self, serializer)
 
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = User
+        fields = (
+            "organisation",
+            "id",
+            "username",
+            "email",
+        )
+
+
+class UserViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer):
+    fishingEvents = serializers.PrimaryKeyRelatedField(many=True, queryset=FishingEvent.objects.all())
 
     class Meta:
         model = Trip
@@ -35,7 +53,8 @@ class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer
             "startLocation",
             "endLocation",
             "unloadPort",
-            "vessel"
+            "vessel",
+            "fishingEvents",
         )
 
 
