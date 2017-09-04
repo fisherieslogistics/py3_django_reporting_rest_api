@@ -69,9 +69,10 @@ class PortSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Port
         fields = (
-        "id",
-        "name",
-        "location",
+            "id",
+            "organisation",
+            "name",
+            "location",
         )
     # TODO owner = serializers.ReadOnlyField(source='owner.username')
 
