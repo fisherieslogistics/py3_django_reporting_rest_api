@@ -2,11 +2,7 @@ from py3_django_reporting_rest_api.settings_common import *
 
 SECRET_KEY = '+ec=dq4fm(yt0*x^9z0qw$-64ln_z83yjem#m#f4aG1fei5ZsA'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
-# TODO - why?
-ALLOWED_HOSTS = ['*']
 
 DATABASES = {
   'default': {
