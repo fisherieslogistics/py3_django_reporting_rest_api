@@ -40,6 +40,7 @@ class FishingEvent(models.Model):
     isVesselUsed = models.BooleanField(default=True)
     notes = models.TextField(null=True)
     amendmentReason = models.TextField(null=True)
+    trip = models.ForeignKey("Trip", null=False, related_name="fishingEvents")
     archived = models.BooleanField(default=False)
 
     def __str__(self):
