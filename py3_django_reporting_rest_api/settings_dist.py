@@ -19,23 +19,40 @@ DATABASES = {
   }
 }
 
-# TODO logging inside a docker container
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'fluent_fmt': {
+            '()': 'fluent.handler.FluentRecordFormatter',
+            'format': {
+                'level': '%(levelname)s',
+                #'hostname': '%(hostname)s',
+                'where': '%(module)s.%(funcName)s:%(lineno)s',
+                'message': '%(msg)s',
+                'stack_trace': '%(exc_text)s'
+            }
+        }
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': '/tmp/debug.log',
         },
-       'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
+        'fluentd': {
+            'level': 'DEBUG',
+            'class': 'fluent.handler.FluentHandler',
+            'host': 'fluentd',
+            'port': 24224,
+            'tag': 'test.logging',
+            'formatter': 'fluent_fmt',
+            'level': 'DEBUG'
+        }
+   },
     'loggers': {
         'django': {
-            'handlers': ['file', 'console'],
+            'handlers': ['fluentd', 'file'],
             'level': 'DEBUG',
             'propagate': True,
         },
