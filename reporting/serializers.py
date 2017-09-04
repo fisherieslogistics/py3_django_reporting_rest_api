@@ -117,9 +117,10 @@ class VesselSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Vessel
         fields = (
-        "id",
-        "name",
-        "registration",
+            "id",
+            "organisation",
+            "name",
+            "registration",
         )
 
 
@@ -133,11 +134,11 @@ class ProcessedStateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ProcessedState
         fields = (
-        "id",
-        "code",
-        "fullName",
-        "Species",
-        "conversionFactor",
+            "id",
+            "code",
+            "fullName",
+            "Species",
+            "conversionFactor",
         )
 
 
