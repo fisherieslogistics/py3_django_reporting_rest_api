@@ -1,7 +1,5 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.forms import UserCreationForm
-from django import forms
 
 from reporting.models import FishCatch, Species, Trip, Vessel, Port,\
     NonFishingEvent, FishingEvent, ProcessedState, Organisation, User
