@@ -3,13 +3,20 @@ from django.db import models
 from django.contrib.postgres.fields import JSONField
 from django.contrib.auth.models import AbstractUser
 
+
 class Organisation(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     fullName = models.CharField(max_length=120)
 
+    def __str__(self):
+        return self.fullName
+
 
 class User(AbstractUser):
     organisation = models.ForeignKey("Organisation", null=True)
+
+    class Meta:
+        db_table = 'auth_user'
 
 
 class FishingEvent(models.Model):
