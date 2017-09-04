@@ -32,11 +32,14 @@ LOGGING = {
             'facility': 'local0',
             'address': '/dev/log',
             'formatter': 'syslog_fmt',
-        }
+        },
+       'console': {
+            'class': 'logging.StreamHandler',
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['syslog'],
+            'handlers': ['syslog', 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },
