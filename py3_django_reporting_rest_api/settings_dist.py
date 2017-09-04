@@ -23,29 +23,20 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'fluent_fmt': {
-            '()': 'fluent.handler.FluentRecordFormatter',
-            'format': {
-                'level': '%(levelname)s',
-                'hostname': '%(hostname)s',
-                'where': '%(module)s.%(funcName)s'
-            }
-        }
+        'syslog_fmt': {'format': "%(asctime)s %(levelname)-5.5s [%(process)d:%(threadName)s][%(name)s.%(module)s.%(funcName)s:%(lineno)d] %(message)s"}
     },
     'handlers': {
-        'fluentd': {
+        'syslog': {
             'level': 'DEBUG',
-            'class': 'fluent.handler.FluentHandler',
-            'host': 'localhost',
-            'port': 24224,
-            'tag': 'test.logging',
-            'formatter': 'fluent_fmt',
-            'level': 'DEBUG'
+            'class': 'logging.handlers.SysLogHandler',
+            'facility': 'local0',
+            'address': '/dev/log',
+            'formatter': 'syslog_fmt',
         }
     },
     'loggers': {
         'django': {
-            'handlers': ['fluentd'],
+            'handlers': ['syslog'],
             'level': 'DEBUG',
             'propagate': True,
         },
