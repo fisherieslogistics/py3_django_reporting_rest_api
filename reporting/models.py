@@ -25,11 +25,11 @@ class User(AbstractUser):
 class FishingEvent(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    RAId = models.CharField(max_length=100, blank=True)
-    numberInTrip = models.IntegerField(blank=True)
-    targetSpecies = models.CharField(max_length=50, blank=True)
-    datetimeAtStart = models.DateTimeField(blank=False)
-    datetimeAtEnd = models.DateTimeField(blank=True)
+    RAId = models.CharField(max_length=100, null=True)
+    numberInTrip = models.IntegerField(null=True)
+    targetSpecies = models.CharField(max_length=50, null=True)
+    datetimeAtStart = models.DateTimeField(null=True)
+    datetimeAtEnd = models.DateTimeField(null=True)
     committed = models.BooleanField(default=True)
     locationAtStart = JSONField()
     locationAtEnd = JSONField()
@@ -79,8 +79,8 @@ class Trip(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey("Organisation", null=False)
-    creator = models.ForeignKey("User", null=False)
-    RAId = models.CharField(max_length=100, blank=True)
+    creator = models.ForeignKey("User", null=True)
+    RAId = models.CharField(max_length=100, null=True)
     personInCharge = models.CharField(max_length=50)
     ETA = models.DateTimeField()
     startTime = models.DateTimeField()
