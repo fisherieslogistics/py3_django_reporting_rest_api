@@ -21,6 +21,7 @@ def fishingEventWithCatches(request):
     fishingEvent.trip = trip
     fishingEvent.committed = True
     fishingEvent.isVesselUsed = fishingEventDict['isVesselUsed']
+    fishingEvent.RAId = fishingEventDict['RAId']
 
     fishingEvent.save()
 
