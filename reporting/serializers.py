@@ -9,7 +9,7 @@ class MyOrganisationFilter(filters.BaseFilterBackend):
         if user.organisation:
             return queryset.filter(organisation=user.organisation)
         else:
-            return queryset# for staff/superuser
+            return queryset # for staff/superuser
 
 
 class MyOrganisationMixIn():
@@ -43,7 +43,6 @@ class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer
     class Meta:
         model = Trip
         fields = (
-            "organisation",
             "RAId",
             "id",
             "personInCharge",
@@ -94,7 +93,6 @@ class PortSerializer(serializers.HyperlinkedModelSerializer):
         model = Port
         fields = (
             "id",
-            "organisation",
             "name",
             "location",
         )
@@ -143,7 +141,6 @@ class VesselSerializer(serializers.HyperlinkedModelSerializer):
         model = Vessel
         fields = (
             "id",
-            "organisation",
             "name",
             "registration",
         )

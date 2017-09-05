@@ -1,7 +1,4 @@
-# https://github.com/svanoort/pyresttest
-# check that auth is needed
-# smoke (create, read, delete? -> should not work)
-# data security (read others data, write others data)
+# check that auth is needed for all api calls
 
 ---
 - config:
