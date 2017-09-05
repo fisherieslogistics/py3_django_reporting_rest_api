@@ -6,7 +6,7 @@ SECRET_KEY = '+ec=dq4fm(yt0*x^9z0qw$-64ln_z83yjem#m#f4z36*cnk7ve'
 
 DATABASES = {
   'default': {
-      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+      'ENGINE': 'django.contrib.gis.db.backends.postgis',
       'NAME': 'reporting',
       'USER': 'reportingadmin',
       'PASSWORD': 'nomorediscriminationagainstwhitepeopleindunedin',

@@ -36,20 +36,33 @@ class Migration(migrations.Migration):
             name='datetimeAtEnd',
             field=models.DateTimeField(null=True),
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='fishingevent',
+            name='lineString'            
+        ),
+        migrations.AddField(
             model_name='fishingevent',
             name='lineString',
             field=django.contrib.gis.db.models.fields.LineStringField(geography=True, null=True, srid=4326),
+            
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='fishingevent',
+            name='locationAtEnd'            
+        ),
+        migrations.AddField(
             model_name='fishingevent',
             name='locationAtEnd',
-            field=django.contrib.gis.db.models.fields.PointField(geography=True, srid=4326),
+            field=django.contrib.gis.db.models.fields.PointField(null=True, geography=True, srid=4326),
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='fishingevent',
+            name='locationAtStart'            
+        ),
+        migrations.AddField(
             model_name='fishingevent',
             name='locationAtStart',
-            field=django.contrib.gis.db.models.fields.PointField(geography=True, srid=4326),
+            field=django.contrib.gis.db.models.fields.PointField(null=True, geography=True, srid=4326),
         ),
         migrations.AlterField(
             model_name='fishingevent',
@@ -71,10 +84,14 @@ class Migration(migrations.Migration):
             name='trip',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='reporting.Trip'),
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='port',
+            name='location'            
+        ),
+        migrations.AddField(
             model_name='port',
             name='location',
-            field=django.contrib.gis.db.models.fields.PointField(geography=True, srid=4326),
+            field=django.contrib.gis.db.models.fields.PointField(null=True, geography=True, srid=4326),
         ),
         migrations.AlterField(
             model_name='processedstate',
@@ -86,15 +103,23 @@ class Migration(migrations.Migration):
             name='RAId',
             field=models.CharField(max_length=100, null=True),
         ),
-        migrations.AlterField(
+        migrations.RemoveField(
             model_name='trip',
-            name='endLocation',
-            field=django.contrib.gis.db.models.fields.PointField(geography=True, srid=4326),
+            name='startLocation'            
         ),
-        migrations.AlterField(
+        migrations.AddField(
             model_name='trip',
             name='startLocation',
-            field=django.contrib.gis.db.models.fields.PointField(geography=True, srid=4326),
+            field=django.contrib.gis.db.models.fields.PointField(null=True, geography=True, srid=4326),
+        ),
+        migrations.RemoveField(
+            model_name='trip',
+            name='endLocation'            
+        ),
+        migrations.AddField(
+            model_name='trip',
+            name='endLocation',
+            field=django.contrib.gis.db.models.fields.PointField(null=True, geography=True, srid=4326),
         ),
         migrations.AlterField(
             model_name='trip',

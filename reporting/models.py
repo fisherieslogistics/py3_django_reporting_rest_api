@@ -32,8 +32,8 @@ class FishingEvent(models.Model):
     datetimeAtStart = models.DateTimeField(null=True)
     datetimeAtEnd = models.DateTimeField(null=True)
     committed = models.BooleanField(default=True)
-    locationAtStart = models.PointField(geography=True)
-    locationAtEnd = models.PointField(geography=True)
+    locationAtStart = models.PointField(geography=True, null=True)
+    locationAtEnd = models.PointField(geography=True, null=True)
     lineString = models.LineStringField(null=True, geography=True)
     eventSpecificDetails = JSONField()
     mitigationDeviceCodes = JSONField(null=True)
@@ -83,8 +83,8 @@ class Trip(models.Model):
     ETA = models.DateTimeField()
     startTime = models.DateTimeField()
     endTime = models.DateTimeField()
-    startLocation = models.PointField(geography=True)
-    endLocation = models.PointField(geography=True)
+    startLocation = models.PointField(geography=True, null=True)
+    endLocation = models.PointField(geography=True, null=True)
     unloadPort = models.ForeignKey("Port", on_delete=PROTECT)
     vessel = models.ForeignKey("Vessel", on_delete=PROTECT)
 
@@ -96,7 +96,7 @@ class Port(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey("Organisation", null=False, on_delete=CASCADE)
     name = models.CharField(max_length=50)
-    location = models.PointField(geography=True)
+    location = models.PointField(geography=True, null=True)
 
     def __str__(self):
         return self.name
