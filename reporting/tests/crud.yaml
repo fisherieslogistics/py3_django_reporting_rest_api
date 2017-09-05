@@ -24,6 +24,15 @@
     headers: {template: {"Authorization": "JWT $jwt", "Content-Type": "application/json"}}
     method: GET
 
+- test:
+    name: "Create Organisation"
+    <<: *post
+    body: '{"name": "Test Org", "location": {"lat": 45, "lon": 45}}'
+    url: "/rest-api/ports/"
+    extract_binds:
+        - 'port_id': {'jsonpath_mini': 'id'}
+
+
 - test: 
     name: "Create port"
     <<: *post
