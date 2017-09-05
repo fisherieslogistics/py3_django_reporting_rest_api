@@ -14,22 +14,26 @@ RUN apt-get update && \
 		nginx \
 		supervisor \
 		binutils libproj-dev gdal-bin \
+		rsyslog \
 	&& pip3 install -U pip setuptools && \
    rm -rf /var/lib/apt/lists/*
 
 # install uwsgi now because it takes a little while
 RUN pip3 install uwsgi
 
+# COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
+COPY requirements_frozen.txt /home/docker/code/
+RUN pip3 install -r /home/docker/code/requirements_frozen.txt
+
+
 # setup all the configfiles
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 COPY docker/nginx-app.conf /etc/nginx/sites-available/default
 COPY docker/supervisor-app.conf /etc/supervisor/conf.d/
 COPY docker/dhparam.pem /etc/ssl/certs/
+COPY docker/syslog.conf /etc/rsyslog.d/catchhub.conf
 
-# COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
-COPY requirements_frozen.txt /home/docker/code/
-RUN pip3 install -r /home/docker/code/requirements_frozen.txt
-
+	
 # add (the rest of) our code
 # TODO - distribution? pack it in an egg?
 COPY docker/uwsgi* /home/docker/code/

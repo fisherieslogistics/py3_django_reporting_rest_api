@@ -1,6 +1,6 @@
 from rest_framework import serializers, viewsets, filters
 from reporting.models import Trip, FishingEvent, Species, FishCatch, NonFishingEvent,\
-    Port, ProcessedState, Vessel, Organisation
+    Port, ProcessedState, Vessel, Organisation, User
 
 
 class MyOrganisationFilter(filters.BaseFilterBackend):
@@ -9,22 +9,41 @@ class MyOrganisationFilter(filters.BaseFilterBackend):
         if user.organisation:
             return queryset.filter(organisation=user.organisation)
         else:
-            return queryset # for staff/superuser 
+            return queryset# for staff/superuser
 
 
 class MyOrganisationMixIn():
     filter_backends = (MyOrganisationFilter,)
+
     def perform_create(self, serializer):
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
         viewsets.ModelViewSet.perform_create(self, serializer)
-    
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = User
+        fields = (
+            "organisation",
+            "id",
+            "username",
+            "email",
+        )
+
+
+class UserViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
 
 class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer):
+    fishingEvents = serializers.PrimaryKeyRelatedField(many=True, queryset=FishingEvent.objects.all())
 
     class Meta:
         model = Trip
         fields = (
-            "organisation"
+            "organisation",
             "RAId",
             "id",
             "personInCharge",
@@ -34,7 +53,8 @@ class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer
             "startLocation",
             "endLocation",
             "unloadPort",
-            "vessel"
+            "vessel",
+            "fishingEvents",
         )
 
 
@@ -42,20 +62,24 @@ class TripViewSet(viewsets.ModelViewSet):
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
 
+    def perform_create(self, serializer):
+        serializer.validated_data['creator_id'] = self.request.user.id
+        viewsets.ModelViewSet.perform_create(self, serializer)
+
 
 class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Species
         fields = (
-        "id",
-        "speciesType",
-        "code",
-        "description",
-        "otherNames",
-        "fullName",
-        "scientificName",
-        "image",
+            "id",
+            "speciesType",
+            "code",
+            "description",
+            "otherNames",
+            "fullName",
+            "scientificName",
+            "image",
         )
 
 
@@ -69,41 +93,42 @@ class PortSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Port
         fields = (
-        "id",
-        "name",
-        "location",
+            "id",
+            "organisation",
+            "name",
+            "location",
         )
     # TODO owner = serializers.ReadOnlyField(source='owner.username')
 
 class PortViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = Port.objects.all()
-    serializer_class  = PortSerializer
-    
+    serializer_class = PortSerializer
+
 
 class NonFishEventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = NonFishingEvent
         fields = (
-        "id",
-        "seabirdCaptureCode",
-        "nonFishProtectedSpecies",
-        "estimatedWeightKg",
-        "numberUninjured",
-        "numberInjured",
-        "numberDead",
-        "tags",
-        "eventHeader",
-        "fishingEvent",
-        "trip",
-        "isVesselUsed",
-        "completed",
-        "eventVersion",
-        "notes",
-        "completedDateTime",
-        "amendmentReason",
-        "trip",
-        "archived",
+            "id",
+            "seabirdCaptureCode",
+            "nonFishProtectedSpecies",
+            "estimatedWeightKg",
+            "numberUninjured",
+            "numberInjured",
+            "numberDead",
+            "tags",
+            "eventHeader",
+            "fishingEvent",
+            "trip",
+            "isVesselUsed",
+            "completed",
+            "eventVersion",
+            "notes",
+            "completedDateTime",
+            "amendmentReason",
+            "trip",
+            "archived",
         )
 
 
@@ -117,9 +142,10 @@ class VesselSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Vessel
         fields = (
-        "id",
-        "name",
-        "registration",
+            "id",
+            "organisation",
+            "name",
+            "registration",
         )
 
 
@@ -133,11 +159,11 @@ class ProcessedStateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ProcessedState
         fields = (
-        "id",
-        "code",
-        "fullName",
-        "Species",
-        "conversionFactor",
+            "id",
+            "code",
+            "fullName",
+            "Species",
+            "conversionFactor",
         )
 
 
@@ -181,6 +207,7 @@ class FishCatchSerializer(serializers.HyperlinkedModelSerializer):
 class FishCatchViewSet(viewsets.ModelViewSet):
     queryset = FishCatch.objects.all()
     serializer_class = FishCatchSerializer
+
 
 class OrganisationSerializer(serializers.HyperlinkedModelSerializer):
 

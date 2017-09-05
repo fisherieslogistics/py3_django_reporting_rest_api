@@ -10,9 +10,18 @@ class Organisation(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     fullName = models.CharField(max_length=120)
 
+    def __str__(self):
+        return self.fullName
+
 
 class User(AbstractUser):
     organisation = models.ForeignKey("Organisation", null=True, on_delete=CASCADE)
+
+    class Meta:
+        db_table = 'auth_user'
+
+    def __str__(self):
+        return self.email
 
 
 class FishingEvent(models.Model):
@@ -20,7 +29,7 @@ class FishingEvent(models.Model):
     RAId = models.CharField(max_length=100, null=True)
     numberInTrip = models.IntegerField(null=True)
     targetSpecies = models.CharField(max_length=50, null=True)
-    datetimeAtStart = models.DateTimeField(null=False)
+    datetimeAtStart = models.DateTimeField(null=True)
     datetimeAtEnd = models.DateTimeField(null=True)
     committed = models.BooleanField(default=True)
     locationAtStart = models.PointField(geography=True)
@@ -32,8 +41,11 @@ class FishingEvent(models.Model):
     isVesselUsed = models.BooleanField(default=True)
     notes = models.TextField(null=True)
     amendmentReason = models.TextField(null=True)
-    trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE)
+    trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE, related_name="fishingEvents")
     archived = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "%s %s" % (self.trip.vessel.name, self.datetimeAtStart)
 
 
 class Species(models.Model):
@@ -46,6 +58,10 @@ class Species(models.Model):
     scientificName = models.CharField(max_length=50, null=True)
     image = models.CharField(max_length=50, null=True)
 
+    def __str__(self):
+        return self.code
+
+
 
 class FishCatch(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -53,6 +69,9 @@ class FishCatch(models.Model):
     weightKgs = models.IntegerField()
     fishingEvent = models.ForeignKey("FishingEvent",
                                      related_name="fishCatches", on_delete=CASCADE)
+
+    def __str__(self):
+        return "%s %s" % (self.species.code, self.fishingEvent.trip.vessel.name)
 
 
 class Trip(models.Model):
@@ -69,12 +88,18 @@ class Trip(models.Model):
     unloadPort = models.ForeignKey("Port", on_delete=PROTECT)
     vessel = models.ForeignKey("Vessel", on_delete=PROTECT)
 
+    def __str__(self):
+        return "%s %s" % (self.vessel.name, self.startTime)
+
 
 class Port(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey("Organisation", null=False, on_delete=CASCADE)
     name = models.CharField(max_length=50)
     location = models.PointField(geography=True)
+
+    def __str__(self):
+        return self.name
 
 
 class NonFishingEvent(models.Model):
@@ -104,6 +129,8 @@ class Vessel(models.Model):
     registration = models.IntegerField()
     organisation = models.ForeignKey("Organisation", null=False, on_delete=CASCADE)
 
+    def __str__(self):
+        return self.name
 
 class VesselLocation(models.Model):
     vessel = ForeignKey("Vessel", null=False, on_delete=CASCADE)
@@ -125,3 +152,6 @@ class ProcessedState(models.Model):
     fullName = models.CharField(max_length=50)
     species = models.ForeignKey("Species", on_delete=PROTECT)
     conversionFactor = models.DecimalField(decimal_places=4, max_digits=12)
+
+    def __str__(self):
+        return self.code

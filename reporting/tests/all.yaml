@@ -3,4 +3,5 @@
 - import: auth.yaml
 - import: admin.yaml
 - import: crud.yaml
+- import: fishingTrip.yaml
 - import: security.yaml
