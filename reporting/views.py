@@ -6,9 +6,7 @@ import json
 # Create your views here.
 @csrf_exempt
 def fishingEventWithCatches(request):
-    print(request.body)
     fishingEventDict = json.loads(request.body.decode('utf-8'))
-    print(fishingEventDict)
     trip = Trip.objects.get(RAId=fishingEventDict['tripRAId'])
     fishingEvent = FishingEvent()
     fishingEvent.locationAtEnd = fishingEventDict['locationAtEnd']
@@ -21,6 +19,7 @@ def fishingEventWithCatches(request):
     fishingEvent.trip = trip
     fishingEvent.committed = True
     fishingEvent.isVesselUsed = fishingEventDict['isVesselUsed']
+    fishingEvent.targetSpecies = fishingEventDict['targetSpecies']
     fishingEvent.RAId = fishingEventDict['RAId']
 
     fishingEvent.save()
