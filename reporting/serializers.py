@@ -37,13 +37,12 @@ class UserViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class TripSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer):
+class TripSerializer(serializers.HyperlinkedModelSerializer):
     fishingEvents = serializers.PrimaryKeyRelatedField(many=True, queryset=FishingEvent.objects.all())
 
     class Meta:
         model = Trip
         fields = (
-            "organisation",
             "RAId",
             "id",
             "personInCharge",
@@ -64,6 +63,7 @@ class TripViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.validated_data['creator_id'] = self.request.user.id
+        serializer.validated_data['organisation_id'] = self.request.user.organisation.id
         viewsets.ModelViewSet.perform_create(self, serializer)
 
 
@@ -83,18 +83,17 @@ class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
-class SpeciesViewSet(viewsets.ModelViewSet):
+class SpeciesViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = Species.objects.all()
     serializer_class = SpeciesSerializer
 
 
-class PortSerializer(serializers.HyperlinkedModelSerializer):
+class PortSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Port
         fields = (
             "id",
-            "organisation",
             "name",
             "location",
         )
@@ -143,7 +142,6 @@ class VesselSerializer(serializers.HyperlinkedModelSerializer):
         model = Vessel
         fields = (
             "id",
-            "organisation",
             "name",
             "registration",
         )
