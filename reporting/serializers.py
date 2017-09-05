@@ -9,7 +9,7 @@ class MyOrganisationFilter(filters.BaseFilterBackend):
         if user.organisation:
             return queryset.filter(organisation=user.organisation)
         else:
-            return queryset# for staff/superuser
+            return queryset # for staff/superuser
 
 
 class MyOrganisationMixIn():

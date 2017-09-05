@@ -1,5 +1,4 @@
 # https://github.com/svanoort/pyresttest
-# check that auth is needed
 # smoke (create, read, delete? -> should not work)
 # data security (read others data, write others data)
 
@@ -16,6 +15,16 @@
     extract_binds:
         - 'jwt': {'jsonpath_mini': 'token'}
 
+- test:
+    name: "Login as hacker"
+    method: POST
+    headers: {"Content-Type": "application/json"}
+    url: "/api-token-auth/"
+    body: '{"username": "resthacker", "password": "testhack"}'
+    extract_binds:
+        - 'jwt_hacker': {'jsonpath_mini': 'token'}
+
+
 - template: &post
     headers: {template: {"Authorization": "JWT $jwt", "Content-Type": "application/json"}}
     method: POST
@@ -24,6 +33,16 @@
     headers: {template: {"Authorization": "JWT $jwt", "Content-Type": "application/json"}}
     method: GET
 
+- template: &post_hacker
+    headers: {template: {"Authorization": "JWT $jwt_hacker", "Content-Type": "application/json"}}
+    method: POST
+
+- template: &get_hacker
+    headers: {template: {"Authorization": "JWT $jwt_hacker", "Content-Type": "application/json"}}
+    method: GET
+
+
+### Ports
 - test:
     name: "Create Organisation"
     <<: *post
@@ -33,35 +52,78 @@
         - 'port_id': {'jsonpath_mini': 'id'}
 
 
-- test: 
+- test:
     name: "Create port"
     <<: *post
     body: '{"name": "Port of Timaru", "location": {"lat": 45, "lon": 45}}'
     url: "/rest-api/ports/"
-    extract_binds: 
+    extract_binds:
         - 'port_id': {'jsonpath_mini': 'id'}
 
-- test: 
+- test:
     name: "List ports"
     <<: *get
     url: "/rest-api/ports/"
     validators:
       - compare: {raw_body: , comparator: 'contains', expected: {template: $port_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Timaru'}
-  
+
+- test:
+    name: "List ports as hacker"
+    <<: *get_hacker
+    url: "/rest-api/ports/"
+    validators:
+      - compare: {jsonpath_mini: ".", comparator: 'count_eq', expected: 0}
+
+- test:
+    name: "Read port details"
+    <<: *get
+    url: {template: "/rest-api/ports/$port_id/"}
+    validators:
+      - compare: {raw_body: , comparator: 'contains', expected: {template: $port_id}}
+      - compare: {raw_body: , comparator: 'contains', expected: 'Timaru'}
+
+- test:
+    name: "Read port details as hacker"
+    <<: *get_hacker
+    url: {template: "/rest-api/ports/$port_id/"}
+    expected_status: [404]
+
+
+### Vessels
 - test:
     name: "Create vessel"
     <<: *post
     body: '{"name": "Sea Ward", "registration": 12}'
     url: "/rest-api/vessels/"
-    extract_binds: 
+    extract_binds:
         - 'vessel_id': {'jsonpath_mini': 'id'}
 
-- test: 
+- test:
     name: "List vessels"
     <<: *get
     url: "/rest-api/vessels/"
     validators:
       - compare: {raw_body: , comparator: 'contains', expected: {template: $vessel_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Sea Ward'}
-    
+
+- test:
+    name: "List vessels as hacker"
+    <<: *get_hacker
+    url: "/rest-api/vessels/"
+    validators:
+      - compare: {jsonpath_mini: ".", comparator: 'count_eq', expected: 0}
+
+- test:
+    name: "Read vessel details"
+    <<: *get
+    url: {template: "/rest-api/vessels/$vessel_id/"}
+    validators:
+      - compare: {raw_body: , comparator: 'contains', expected: {template: $vessel_id}}
+      - compare: {raw_body: , comparator: 'contains', expected: 'Sea Ward'}
+
+- test:
+    name: "Read vessel details as hacker"
+    <<: *get_hacker
+    url: {template: "/rest-api/vessels/$vessel_id/"}
+    expected_status: [404]
