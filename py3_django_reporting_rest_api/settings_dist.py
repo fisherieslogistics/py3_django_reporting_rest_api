@@ -15,6 +15,9 @@ DATABASES = {
   }
 }
 
+import logging
+logging.raiseExceptions = False # don't fail when syslog is not available
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
