@@ -78,8 +78,8 @@ class FishCatch(models.Model):
 class Trip(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    organisation = models.ForeignKey("Organisation", null=True)
-    creator = models.ForeignKey("User", null=True)
+    organisation = models.ForeignKey("Organisation", null=False)
+    creator = models.ForeignKey("User", null=False)
     RAId = models.CharField(max_length=100, null=True)
     personInCharge = models.CharField(max_length=50)
     ETA = models.DateTimeField()
