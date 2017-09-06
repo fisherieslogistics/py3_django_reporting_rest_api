@@ -6,7 +6,6 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 
-
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -14,6 +13,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunSQL(
+            "DELETE FROM reporting_fishingevent WHERE creator_id IS NOT NULL",
+        ),
         migrations.AddField(
             model_name='fishingevent',
             name='creator',
