@@ -64,11 +64,7 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
-<<<<<<< HEAD
-class TripViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
-=======
 class TripViewSet(MyOrganisationMixIn, MyUserMixIn, viewsets.ModelViewSet):
->>>>>>> seializer_mixin_for_fishingevent
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
 
