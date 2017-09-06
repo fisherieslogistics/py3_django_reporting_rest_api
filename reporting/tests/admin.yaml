@@ -39,3 +39,35 @@
     validators:
       - compare: {raw_body: , comparator: 'contains', expected: {template: $organisation_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Rimu Industries Inc.'}
+
+
+- test:
+    name: "Login as hacker"
+    method: POST
+    headers: {"Content-Type": "application/json"}
+    url: "/api-token-auth/"
+    body: '{"username": "resthacker", "password": "testhack"}'
+    extract_binds:
+        - 'jwt_hacker': {'jsonpath_mini': 'token'}
+
+- template: &post_hacker
+    headers: {template: {"Authorization": "JWT $jwt_hacker", "Content-Type": "application/json"}}
+    method: POST
+    expected_status: [403]
+
+- template: &get_hacker
+    headers: {template: {"Authorization": "JWT $jwt_hacker", "Content-Type": "application/json"}}
+    method: GET
+    expected_status: [403]
+
+- test: 
+    name: "Create Organisation - check superuser permission"
+    <<: *post_hacker
+    body: '{"fullName": "Disallowed Industries Inc."}'
+    url: "/rest-api/organisations/"
+
+- test: 
+    name: "List Organisations - check superuser permission"
+    <<: *get_hacker
+    url: "/rest-api/organisations/"
+      
