@@ -70,7 +70,6 @@
       "endTime": "$t3",
       "startLocation": "$home",
       "endLocation": "$home",
-      "fishingEvents": [],
       "unloadPort": "$port_id",
       "vessel": "$vessel_id"
       }'
@@ -87,8 +86,7 @@
     <<: *post
     body: { template:
        '{
-        "catches": [{ "weight": 100, "species": "XXX" }],
-        "fishCatches": [],
+        "fishCatches": [{ "weightKgs": 100, "species": "$species_id" }],
         "numberInTrip": 1,
         "targetSpecies": "COC",
         "datetimeAtStart": "$t1",
@@ -97,7 +95,7 @@
         "locationAtStart": "$start",
         "locationAtEnd": "$end",
         "lineString": null,
-        "eventSpecificDetails": {"fishingMethod": "H","numberOfPeople": 1},
+        "eventSpecificDetails": {"fishingMethod": "H", "numberOfPeople": 1},
         "mitigationDeviceCodes": "[]",
         "vesselNumber": 123213123,
         "vesselId": "$vessel_id",
