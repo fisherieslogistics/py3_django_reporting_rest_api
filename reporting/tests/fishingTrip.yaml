@@ -45,9 +45,17 @@
     name: "Create port"
     <<: *post
     body: '{"name": "Trumps Wall", "location": "POINT(171.1535947 -44.3788682)"}'
-    url: "/ports/"
+    url: "/rest-api/ports/"
     extract_binds:
         - 'port_id': {'jsonpath_mini': 'id'}
+
+- test:
+    name: "List species"
+    <<: *get
+    url: "/rest-api/species/"
+    extract_binds:
+        - 'species_id': {'jsonpath_mini': 0.id}
+
 
 - test:
     name: "Create a Trip"
@@ -60,73 +68,75 @@
       "ETA": "$t2",
       "startTime": "$t1",
       "endTime": "$t3",
-      "startLocation": $home,
-      "endLocation": $home,
+      "startLocation": "$home",
+      "endLocation": "$home",
       "fishingEvents": [],
-      "unloadPort": "http://localhost:8000/rest-api/ports/$port_id/",
-      "vessel": "http://localhost:8000/rest-api/vessels/$vessel_id/"
+      "unloadPort": "$port_id",
+      "vessel": "$vessel_id"
       }'
     }
     url: "/rest-api/trips/"
     extract_binds:
         - 'tripRAId': {'jsonpath_mini': 'RAId'}
+        - 'trip_id': {'jsonpath_mini': 'id'}
 
 
 - test:
-    name: "Create a Fishing Event"
+    name: "Create a Fishing Event With Catches"
     generator_binds: { t1: today, t2: today, start: geopoint, end: geopoint, t3: today }
     <<: *post
     body: { template:
        '{
-        "fishCatches": [{ "weight": 100, "code": "COC" }],
+        "catches": [{ "weight": 100, "species": "XXX" }],
+        "fishCatches": [],
         "numberInTrip": 1,
         "targetSpecies": "COC",
         "datetimeAtStart": "$t1",
         "datetimeAtEnd": "$t2",
         "committed": true,
-        "locationAtStart": $start,
-        "locationAtEnd": $end,
-        "lineString": "{}",
+        "locationAtStart": "$start",
+        "locationAtEnd": "$end",
+        "lineString": null,
         "eventSpecificDetails": {"fishingMethod": "H","numberOfPeople": 1},
         "mitigationDeviceCodes": "[]",
         "vesselNumber": 123213123,
         "vesselId": "$vessel_id",
         "isVesselUsed": true,
         "completedDateTime": "$t3",
-        "tripRAId": "$tripRAId",
+        "trip": "$trip_id",
         "RAId": "80293305-f619-4c38-8b21-09369ae6a4e3"
        }'
     }
-    url: "/fishingEventWithCatches/"
+    url: "/rest-api/fishingEventsWithCatches/"
     extract_binds:
         - 'fishing_event_id': {'jsonpath_mini': 'id'}
 
 
 - test:
-    name: "Create another Fishing Event"
+    name: "Create a Fishing Event Without Catches"
     generator_binds: { t1: today, t2: today, start: geopoint, end: geopoint, t3: today }
     <<: *post
     body: { template:
        '{
-        "fishCatches": [{ "weight": 120, "code": "COC" }],
-        "numberInTrip": 2,
+        "numberInTrip": 1,
         "targetSpecies": "COC",
         "datetimeAtStart": "$t1",
         "datetimeAtEnd": "$t2",
         "committed": true,
-        "locationAtStart": $start,
-        "locationAtEnd": $end,
-        "lineString": "{}",
+        "locationAtStart": "$start",
+        "locationAtEnd": "$end",
+        "lineString": null,
         "eventSpecificDetails": {"fishingMethod": "H","numberOfPeople": 1},
         "mitigationDeviceCodes": "[]",
         "vesselNumber": 123213123,
         "vesselId": "$vessel_id",
         "isVesselUsed": true,
         "completedDateTime": "$t3",
-        "tripRAId": "$tripRAId",
-        "RAId": "80293305-f619-4c38-8b21-09369ae6a4e3"
+        "trip": "$trip_id",
+        "RAId": "80293305-f619-4c38-8b21-09369ae6a999"
        }'
     }
-    url: "/fishingEventWithCatches/"
+    url: "/rest-api/fishingEvents/"
     extract_binds:
         - 'fishing_event_id': {'jsonpath_mini': 'id'}
+
