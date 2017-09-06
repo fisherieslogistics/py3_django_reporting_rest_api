@@ -17,15 +17,15 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
-from reporting.views import fishingEventWithCatches
 from reporting.serializers import TripViewSet, SpeciesViewSet, PortViewSet, NonFishEventViewSet,\
-    VesselViewSet, ProcessedStateViewSet, FishCatchViewSet, FishingEventViewSet,\
+    VesselViewSet, ProcessedStateViewSet, FishCatchViewSet, FishingEventViewSet, FishingEventWithCatchesViewSet,\
     OrganisationViewSet, UserViewSet
 
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r"fishCatches", FishCatchViewSet)
 router.register(r"fishingEvents", FishingEventViewSet)
+router.register(r"fishingEventsWithCatches", FishingEventWithCatchesViewSet)
 router.register(r"trips", TripViewSet)
 router.register(r"users", UserViewSet)
 router.register(r"ports", PortViewSet)
@@ -45,5 +45,4 @@ urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
-    url(r'^fishingEventWithCatches/', fishingEventWithCatches),
 ]
