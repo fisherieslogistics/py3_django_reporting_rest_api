@@ -17,7 +17,14 @@ class MyOrganisationMixIn():
 
     def perform_create(self, serializer):
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
-        viewsets.ModelViewSet.perform_create(self, serializer)
+        super().perform_create(self, serializer)
+
+
+class MyUserMixIn():
+
+    def perform_create(self, serializer):
+        serializer.validated_data['creator_id'] = self.request.user.id
+        super().perform_create(self, serializer)
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -57,13 +64,13 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
+<<<<<<< HEAD
 class TripViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
+=======
+class TripViewSet(MyOrganisationMixIn, MyUserMixIn, viewsets.ModelViewSet):
+>>>>>>> seializer_mixin_for_fishingevent
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
-
-    def perform_create(self, serializer):
-        serializer.validated_data['creator_id'] = self.request.user.id
-        super().perform_create(self, serializer)
 
 
 class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
@@ -170,24 +177,34 @@ class ProcessedStateViewSet(viewsets.ModelViewSet):
 
 
 class FishingEventSerializer(serializers.HyperlinkedModelSerializer):
-
     fishCatches = serializers.PrimaryKeyRelatedField(many=True, queryset=FishCatch.objects.all())
 
     class Meta:
         model = FishingEvent
         fields = (
-            "fishCatches",
+            "id",
+            "RAId",
             "numberInTrip",
             "targetSpecies",
             "datetimeAtStart",
             "datetimeAtEnd",
+            "committed",
             "locationAtStart",
             "locationAtEnd",
+            "lineString",
+            "eventSpecificDetails",
+            "mitigationDeviceCodes",
             "vesselNumber",
+            "isVesselUsed",
+            "notes",
+            "amendmentReason",
+            "trip",
+            "archived",
+            "fishCatches",
         )
 
 
-class FishingEventViewSet(viewsets.ModelViewSet):
+class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
     queryset = FishingEvent.objects.all()
     serializer_class = FishingEventSerializer
 
