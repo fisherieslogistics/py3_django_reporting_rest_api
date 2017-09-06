@@ -9,7 +9,7 @@ class MyOrganisationFilter(filters.BaseFilterBackend):
         if user.organisation:
             return queryset.filter(organisation=user.organisation)
         else:
-            return queryset # for staff/superuser
+            return queryset #for staff/superuser
 
 
 class MyOrganisationMixIn():
@@ -17,17 +17,17 @@ class MyOrganisationMixIn():
 
     def perform_create(self, serializer):
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
-        super().perform_create(self, serializer)
+        super().perform_create(serializer)
 
 
 class MyUserMixIn():
 
     def perform_create(self, serializer):
         serializer.validated_data['creator_id'] = self.request.user.id
-        super().perform_create(self, serializer)
+        super().perform_create(serializer)
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
@@ -44,7 +44,7 @@ class UserViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class TripSerializer(serializers.HyperlinkedModelSerializer):
+class TripSerializer(serializers.ModelSerializer):
     fishingEvents = serializers.PrimaryKeyRelatedField(many=True, queryset=FishingEvent.objects.all())
 
     class Meta:
@@ -69,7 +69,7 @@ class TripViewSet(MyOrganisationMixIn, MyUserMixIn, viewsets.ModelViewSet):
     serializer_class = TripSerializer
 
 
-class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
+class SpeciesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Species
@@ -85,12 +85,12 @@ class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
-class SpeciesViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
+class SpeciesViewSet(viewsets.ModelViewSet):
     queryset = Species.objects.all()
     serializer_class = SpeciesSerializer
 
 
-class PortSerializer(MyOrganisationMixIn, serializers.HyperlinkedModelSerializer):
+class PortSerializer(MyOrganisationMixIn, serializers.ModelSerializer):
 
     class Meta:
         model = Port
@@ -106,7 +106,7 @@ class PortViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     serializer_class = PortSerializer
 
 
-class NonFishEventSerializer(serializers.HyperlinkedModelSerializer):
+class NonFishEventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NonFishingEvent
@@ -138,7 +138,7 @@ class NonFishEventViewSet(viewsets.ModelViewSet):
     serializer_class = NonFishEventSerializer
 
 
-class VesselSerializer(serializers.HyperlinkedModelSerializer):
+class VesselSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Vessel
@@ -154,7 +154,7 @@ class VesselViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     serializer_class = VesselSerializer
 
 
-class ProcessedStateSerializer(serializers.HyperlinkedModelSerializer):
+class ProcessedStateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProcessedState
@@ -172,8 +172,7 @@ class ProcessedStateViewSet(viewsets.ModelViewSet):
     serializer_class = ProcessedStateSerializer
 
 
-class FishingEventSerializer(serializers.HyperlinkedModelSerializer):
-    fishCatches = serializers.PrimaryKeyRelatedField(many=True, queryset=FishCatch.objects.all())
+class FishingEventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FishingEvent
@@ -206,7 +205,7 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
 
 
 # Serializers define the API representation.
-class FishCatchSerializer(serializers.HyperlinkedModelSerializer):
+class FishCatchSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FishCatch
@@ -219,7 +218,7 @@ class FishCatchViewSet(viewsets.ModelViewSet):
     serializer_class = FishCatchSerializer
 
 
-class OrganisationSerializer(serializers.HyperlinkedModelSerializer):
+class OrganisationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Organisation
