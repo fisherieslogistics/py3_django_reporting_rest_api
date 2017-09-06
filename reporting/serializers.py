@@ -195,13 +195,61 @@ class FishingEventSerializer(serializers.ModelSerializer):
             "amendmentReason",
             "trip",
             "archived",
-            "fishCatches",
         )
 
 
 class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
     queryset = FishingEvent.objects.all()
     serializer_class = FishingEventSerializer
+
+
+class FishingEventWithCatchesSerializer(serializers.ModelSerializer):
+    fishCatches = serializers.SerializerMethodField()
+
+    def fishCatches(self):
+        fishingEvent_id = self.validated_data['id']
+        if fishingEvent_id:
+            return FishCatch.objects.filter(fishingEvent__id=fishingEvent_id)
+        return  None
+
+    class Meta:
+        model = FishingEvent
+        fields = (
+            "id",
+            "RAId",
+            "numberInTrip",
+            "targetSpecies",
+            "datetimeAtStart",
+            "datetimeAtEnd",
+            "committed",
+            "locationAtStart",
+            "locationAtEnd",
+            "lineString",
+            "eventSpecificDetails",
+            "mitigationDeviceCodes",
+            "vesselNumber",
+            "isVesselUsed",
+            "notes",
+            "amendmentReason",
+            "trip",
+            "archived",
+            "fishCatches",
+        )
+
+
+
+class FishingEventWithCatchesViewSet(MyUserMixIn, viewsets.ModelViewSet):
+    queryset = FishingEvent.objects.all()
+    serializer_class = FishingEventWithCatchesSerializer
+
+    def perform_create(self, serializer):
+        fishcatchdata = serializer.initial_data['catches']
+        serializer.validated_data['fishCatches'] = []
+        super().perform_create(serializer)
+        fEvent = FishingEvent.objects.filter(RAId=serializer.validated_data['RAId'])[0]
+        for fishcatch in fishcatchdata:
+            species = Species.objects.filter(code=fishcatch['species'])[0]
+            FishCatch.objects.create(species=species, weightKgs=fishcatch['weight'], fishingEvent=fEvent)
 
 
 # Serializers define the API representation.
