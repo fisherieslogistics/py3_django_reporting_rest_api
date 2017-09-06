@@ -44,8 +44,13 @@
 - test:
     name: "Create port"
     <<: *post
+<<<<<<< HEAD
     body: '{"name": "Trumps Wall", "location": {"lat": -45, "lon": 170}}'
     url: "/rest-api/ports/"
+=======
+    body: '{"name": "Trumps Wall", "location": "POINT(171.1535947 -44.3788682)"}'
+    url: "/ports/"
+>>>>>>> master
     extract_binds:
         - 'port_id': {'jsonpath_mini': 'id'}
 

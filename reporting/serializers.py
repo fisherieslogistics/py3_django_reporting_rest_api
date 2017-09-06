@@ -57,14 +57,13 @@ class TripSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
-class TripViewSet(viewsets.ModelViewSet):
+class TripViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
 
     def perform_create(self, serializer):
         serializer.validated_data['creator_id'] = self.request.user.id
-        serializer.validated_data['organisation_id'] = self.request.user.organisation.id
-        viewsets.ModelViewSet.perform_create(self, serializer)
+        super().perform_create(self, serializer)
 
 
 class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
