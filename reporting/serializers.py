@@ -63,7 +63,7 @@ class TripViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.validated_data['creator_id'] = self.request.user.id
-        viewsets.ModelViewSet.perform_create(self, serializer)
+        super().perform_create(self, serializer)
 
 
 class SpeciesSerializer(serializers.HyperlinkedModelSerializer):
