@@ -42,6 +42,7 @@ class FishingEvent(models.Model):
     notes = models.TextField(null=True)
     amendmentReason = models.TextField(null=True)
     trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE, related_name="fishingEvents")
+    creator = models.ForeignKey("User", null=False, on_delete=CASCADE)
     archived = models.BooleanField(default=False)
 
     def __str__(self):
@@ -136,7 +137,7 @@ class VesselLocation(models.Model):
     vessel = ForeignKey("Vessel", null=False, on_delete=CASCADE)
     timestamp = models.DateTimeField(null=False)
     location = models.PointField(geography=True, null=False)
-    
+
     class Meta:
         # this workaround is here because django doesn't support composite primary key.
         # https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys
