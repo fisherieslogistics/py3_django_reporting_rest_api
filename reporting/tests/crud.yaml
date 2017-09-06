@@ -55,7 +55,7 @@
 - test:
     name: "Create port"
     <<: *post
-    body: '{"name": "Port of Timaru", "location": {"lat": 45, "lon": 45}}'
+    body: '{"name": "Port of Timaru", "location": "POINT(171.1535947 -44.3788682)"}'
     url: "/rest-api/ports/"
     extract_binds:
         - 'port_id': {'jsonpath_mini': 'id'}
