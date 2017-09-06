@@ -37,7 +37,7 @@
     name: "Create vessel"
     <<: *post
     body: '{"name": "USS Trump", "registration": 99}'
-    url: "/vessels/"
+    url: "/rest-api/vessels/"
     extract_binds:
         - 'vessel_id': {'jsonpath_mini': 'id'}
 
@@ -62,11 +62,12 @@
       "endTime": "$t3",
       "startLocation": $home,
       "endLocation": $home,
-      "unloadPort": "http://localhost:8000/ports/$port_id/",
-      "vessel": "http://localhost:8000/vessels/$vessel_id/"
+      "fishingEvents": [],
+      "unloadPort": "http://localhost:8000/rest-api/ports/$port_id/",
+      "vessel": "http://localhost:8000/rest-api/vessels/$vessel_id/"
       }'
     }
-    url: "/trips/"
+    url: "/rest-api/trips/"
     extract_binds:
         - 'tripRAId': {'jsonpath_mini': 'RAId'}
 

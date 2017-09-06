@@ -20,4 +20,3 @@ org = Organisation.objects.create(fullName="Hackers Inc.")
 User.objects.filter(username='resthacker').delete();\
 u = User.objects.create_user('resthacker', 'resthack@test.com', 'testhack', organisation=org)
 u.groups.add(skipper)
-

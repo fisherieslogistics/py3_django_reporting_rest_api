@@ -43,15 +43,16 @@
 
 
 ### Ports
-- test: 
+
+- test:
     name: "Create port"
     <<: *post
     body: '{"name": "Port of Timaru", "location": "POINT(171.1535947 -44.3788682)"}'
     url: "/rest-api/ports/"
-    extract_binds: 
+    extract_binds:
         - 'port_id': {'jsonpath_mini': 'id'}
 
-- test: 
+- test:
     name: "List ports"
     <<: *get
     url: "/rest-api/ports/"
@@ -59,14 +60,14 @@
       - compare: {raw_body: , comparator: 'contains', expected: {template: $port_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Timaru'}
 
-- test: 
+- test:
     name: "List ports as hacker"
     <<: *get_hacker
     url: "/rest-api/ports/"
     validators:
       - compare: {jsonpath_mini: ".", comparator: 'count_eq', expected: 0}
-  
-- test: 
+
+- test:
     name: "Read port details"
     <<: *get
     url: {template: "/rest-api/ports/$port_id/"}
@@ -74,7 +75,7 @@
       - compare: {raw_body: , comparator: 'contains', expected: {template: $port_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Timaru'}
 
-- test: 
+- test:
     name: "Read port details as hacker"
     <<: *get_hacker
     url: {template: "/rest-api/ports/$port_id/"}
@@ -87,10 +88,10 @@
     <<: *post
     body: '{"name": "Sea Ward", "registration": 12}'
     url: "/rest-api/vessels/"
-    extract_binds: 
+    extract_binds:
         - 'vessel_id': {'jsonpath_mini': 'id'}
 
-- test: 
+- test:
     name: "List vessels"
     <<: *get
     url: "/rest-api/vessels/"
@@ -98,14 +99,14 @@
       - compare: {raw_body: , comparator: 'contains', expected: {template: $vessel_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Sea Ward'}
 
-- test: 
+- test:
     name: "List vessels as hacker"
     <<: *get_hacker
     url: "/rest-api/vessels/"
     validators:
       - compare: {jsonpath_mini: ".", comparator: 'count_eq', expected: 0}
-  
-- test: 
+
+- test:
     name: "Read vessel details"
     <<: *get
     url: {template: "/rest-api/vessels/$vessel_id/"}
@@ -113,9 +114,8 @@
       - compare: {raw_body: , comparator: 'contains', expected: {template: $vessel_id}}
       - compare: {raw_body: , comparator: 'contains', expected: 'Sea Ward'}
 
-- test: 
+- test:
     name: "Read vessel details as hacker"
     <<: *get_hacker
     url: {template: "/rest-api/vessels/$vessel_id/"}
     expected_status: [404]
-  

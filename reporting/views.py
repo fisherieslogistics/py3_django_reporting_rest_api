@@ -8,6 +8,7 @@ import json
 def fishingEventWithCatches(request):
     fishingEventDict = json.loads(request.body.decode('utf-8'))
     trip = Trip.objects.get(RAId=fishingEventDict['tripRAId'])
+
     fishingEvent = FishingEvent()
     fishingEvent.locationAtEnd = fishingEventDict['locationAtEnd']
     fishingEvent.locationAtStart = fishingEventDict['locationAtStart']
