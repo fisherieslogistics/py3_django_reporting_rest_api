@@ -1,0 +1,5 @@
+*.launch
+*.md
+Makefile
+Dockerfile
+**/tests

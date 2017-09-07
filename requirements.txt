@@ -6,4 +6,3 @@ pygments
 psycopg2
 djangorestframework-jwt
 django-cors-headers
-fluent-logger
