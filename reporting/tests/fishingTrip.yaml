@@ -105,7 +105,7 @@
         "RAId": "80293305-f619-4c38-8b21-09369ae6a4e3"
        }'
     }
-    url: "/rest-api/fishingEventsWithCatches/"
+    url: "/rest-api/fishingEvents/"
     extract_binds:
         - 'fishing_event_id': {'jsonpath_mini': 'id'}
 
