@@ -1,5 +1,6 @@
 # forked from from https://github.com/dockerfiles/django-uwsgi-nginx
 FROM ubuntu:16.04
+ENV TZ=Pacific/Auckland
 
 # Install required packages and remove the apt packages cache when done.
 # TODO removed this - is it needed? apt-get upgrade -y && \ 	
@@ -14,8 +15,11 @@ RUN apt-get update && \
 		supervisor \
 		binutils libproj-dev gdal-bin \
 		rsyslog \
-	&& pip3 install -U pip setuptools && \
-   rm -rf /var/lib/apt/lists/*
+		tzdata \
+	&& pip3 install -U pip setuptools \
+	&& cp /usr/share/zoneinfo/$TZ /etc/localtime \
+	&& echo $TZ > /etc/timezone \
+    && rm -rf /var/lib/apt/lists/*
 
 # install uwsgi now because it takes a little while
 RUN pip3 install uwsgi
