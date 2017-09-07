@@ -28,6 +28,7 @@ _group_permissions = {
             'add_vessel',
             'change_vessel',
             'delete_vessel',
+            'read_species',
         ]
     }
 }

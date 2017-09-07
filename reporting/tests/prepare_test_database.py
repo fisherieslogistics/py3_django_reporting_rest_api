@@ -1,5 +1,5 @@
 from reporting.models import User
-from reporting.models import Organisation
+from reporting.models import Organisation, Species
 from django.contrib.auth.models import Group
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -20,3 +20,9 @@ org = Organisation.objects.create(fullName="Hackers Inc.")
 User.objects.filter(username='resthacker').delete();\
 u = User.objects.create_user('resthacker', 'resthack@test.com', 'testhack', organisation=org)
 u.groups.add(skipper)
+Species.objects.filter(code='XXX').delete()
+Species.objects.create(code='XXX', description='xxxxx',
+                       image='eimage', speciesType='xfishx',
+                       fullName='ccxxcc', scientificName='ppoopp',
+                       otherNames='iiooii')
+

@@ -87,7 +87,7 @@ class Trip(models.Model):
     startLocation = models.PointField(geography=True, null=True)
     endLocation = models.PointField(geography=True, null=True)
     unloadPort = models.ForeignKey("Port", on_delete=PROTECT)
-    vessel = models.ForeignKey("Vessel", on_delete=PROTECT)
+    vessel = models.ForeignKey("Vessel", on_delete=PROTECT, related_name="trips")
 
     def __str__(self):
         return "%s %s" % (self.vessel.name, self.startTime)

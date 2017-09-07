@@ -8,7 +8,6 @@ def maybe(percent=50):
 def geojsonpoint(config):
     lat = config['lat']
     lon = config['lon']
-    p = '{"type": "Point",'
 
     def thegenerator():
         latmove = random.randrange(10) / 1000
@@ -23,8 +22,8 @@ def geojsonpoint(config):
             newLon -= lonmove
         else:
             newLon += lonmove
-        c = '"coordinates":[{l}, {la}]'.format(l=lon, la=lat)
-        gp = p + c + '}'
+        gp = 'POINT({} {})'.format(newlat, newLon)
+
         while(True):
             yield gp
 

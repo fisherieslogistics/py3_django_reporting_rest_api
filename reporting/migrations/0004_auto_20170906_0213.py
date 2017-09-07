@@ -13,13 +13,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunSQL(
-            "DELETE FROM reporting_fishingevent WHERE creator_id IS NOT NULL",
-        ),
         migrations.AddField(
             model_name='fishingevent',
             name='creator',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(null=True, default=None, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
             preserve_default=False,
         ),
         migrations.AlterField(
