@@ -211,7 +211,7 @@ class FishingEventExpandSerializer(MyUserMixIn, serializers.ModelSerializer):
 
     class Meta:
         model = FishingEvent
-        fishingEventFields = fishingEventFields
+        fields = fishingEventFields
 
 
 class FishingEventViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
@@ -222,6 +222,7 @@ class FishingEventViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     @detail_route(methods=['get'])
     def expanded(self, request, pk=None):
         serializer = FishingEventExpandSerializer(data=request.data)
+        serializer.is_valid()
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
