@@ -52,7 +52,6 @@ class SpeciesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Species
         fields = (
-            "id",
             "speciesType",
             "code",
             "description",
@@ -68,7 +67,7 @@ class SpeciesViewSet(viewsets.ModelViewSet):
     serializer_class = SpeciesSerializer
 
 
-class PortSerializer(MyOrganisationMixIn, serializers.ModelSerializer):
+class PortSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Port
@@ -187,7 +186,7 @@ fishingEventFields = (
 )
 
 
-class FishingEventSerializer(MyUserMixIn, serializers.ModelSerializer):
+class FishingEventSerializer(serializers.ModelSerializer):
 
     fishCatches = serializers.PrimaryKeyRelatedField(many=True, queryset=FishCatch.objects.all())
 
@@ -195,7 +194,7 @@ class FishingEventSerializer(MyUserMixIn, serializers.ModelSerializer):
         model = FishingEvent
         fields = fishingEventFields
 
-class FishingEventSubmitSerializer(MyUserMixIn, serializers.ModelSerializer):
+class FishingEventSubmitSerializer(serializers.ModelSerializer):
 
     trip = serializers.PrimaryKeyRelatedField(many=False, queryset=Trip.objects.all())
     fishCatches = FishCatchSerializer(many=True)
@@ -205,7 +204,7 @@ class FishingEventSubmitSerializer(MyUserMixIn, serializers.ModelSerializer):
         fields = fishingEventFields
 
 
-class FishingEventExpandSerializer(MyUserMixIn, serializers.ModelSerializer):
+class FishingEventExpandSerializer(serializers.ModelSerializer):
 
     fishCatches = FishCatchSerializer(many=True)
 
@@ -214,7 +213,7 @@ class FishingEventExpandSerializer(MyUserMixIn, serializers.ModelSerializer):
         fields = fishingEventFields
 
 
-class FishingEventViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
+class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
 
     queryset = FishingEvent.objects.all()
     serializer_class = FishingEventSerializer
@@ -228,6 +227,7 @@ class FishingEventViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = FishingEventSubmitSerializer(data=request.data)
         serializer.is_valid()
+        serializer.validated_data['creator_id'] = self.request.user.id
         fishData = serializer.validated_data.pop('fishCatches')
         serializer.create(serializer.validated_data)
         serializer.save()
@@ -263,7 +263,7 @@ tripFields = (
 )
 
 
-class TripSerializer(MyOrganisationMixIn, MyUserMixIn, serializers.ModelSerializer):
+class TripSerializer(serializers.ModelSerializer):
 
     fishingEvents = serializers.PrimaryKeyRelatedField(many=True, queryset=FishingEvent.objects.all())
 
@@ -272,7 +272,7 @@ class TripSerializer(MyOrganisationMixIn, MyUserMixIn, serializers.ModelSerializ
         fields = tripFields + ("fishingEvents",)
 
 
-class TripExpandSerializer(MyOrganisationMixIn, serializers.ModelSerializer):
+class TripExpandSerializer(serializers.ModelSerializer):
 
     fishingEvents = FishingEventViewSet(many=True, queryset=FishingEvent.objects.all())
 
@@ -280,7 +280,7 @@ class TripExpandSerializer(MyOrganisationMixIn, serializers.ModelSerializer):
         model = Trip
         fields = tripFields + ("fishingEvents",)
 
-class TripSubmitSerializer(MyOrganisationMixIn, MyUserMixIn, serializers.ModelSerializer):
+class TripSubmitSerializer(serializers.ModelSerializer):
     unloadPort = serializers.PrimaryKeyRelatedField(many=False, queryset=Port.objects.all())
     vessel = serializers.PrimaryKeyRelatedField(many=False, queryset=Vessel.objects.all())
 
@@ -289,7 +289,7 @@ class TripSubmitSerializer(MyOrganisationMixIn, MyUserMixIn, serializers.ModelSe
         fields = tripFields
 
 
-class TripViewSet(viewsets.ModelViewSet):
+class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
 
     queryset = Trip.objects.all()
     serializer_class = TripSerializer

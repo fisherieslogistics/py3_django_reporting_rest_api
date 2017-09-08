@@ -53,8 +53,6 @@
     name: "List species"
     <<: *get
     url: "/rest-api/species/"
-    extract_binds:
-        - 'species_id': {'jsonpath_mini': 0.id}
 
 
 - test:
@@ -86,7 +84,7 @@
     <<: *post
     body: { template:
        '{
-        "fishCatches": [{ "weightKgs": 100, "species": "$species_id" }],
+        "fishCatches": [{ "weightKgs": 100, "species": "XXX" }],
         "numberInTrip": 1,
         "targetSpecies": "COC",
         "datetimeAtStart": "$t1",

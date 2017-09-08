@@ -50,9 +50,8 @@ class FishingEvent(models.Model):
 
 
 class Species(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    code = models.CharField(max_length=3, primary_key=True, editable=False)
     speciesType = models.CharField(max_length=20)
-    code = models.CharField(max_length=3)
     description = models.CharField(max_length=50, null=True)
     otherNames = models.TextField(max_length=50, null=True)
     fullName = models.CharField(max_length=50, null=True)
