@@ -2,7 +2,7 @@ import uuid
 from django.contrib.gis.db import models
 from django.contrib.postgres.fields import JSONField
 from django.contrib.auth.models import AbstractUser
-from django.db.models.deletion import CASCADE, PROTECT
+from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 
 
@@ -28,7 +28,7 @@ class FishingEvent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     RAId = models.CharField(max_length=100, null=True)
     numberInTrip = models.IntegerField(null=True)
-    targetSpecies = models.CharField(max_length=50, null=True)
+    targetSpecies = models.ForeignKey("Species", on_delete=CASCADE, null=True)
     datetimeAtStart = models.DateTimeField(null=True)
     datetimeAtEnd = models.DateTimeField(null=True)
     committed = models.BooleanField(default=True)
@@ -65,7 +65,7 @@ class Species(models.Model):
 
 class FishCatch(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    species = models.ForeignKey("Species", on_delete=PROTECT)
+    species = models.ForeignKey("Species", on_delete=CASCADE)
     weightKgs = models.IntegerField()
     fishingEvent = models.ForeignKey("FishingEvent",
                                      related_name="fishCatches", on_delete=CASCADE)
@@ -85,8 +85,8 @@ class Trip(models.Model):
     endTime = models.DateTimeField()
     startLocation = models.PointField(geography=True, null=True)
     endLocation = models.PointField(geography=True, null=True)
-    unloadPort = models.ForeignKey("Port", on_delete=PROTECT)
-    vessel = models.ForeignKey("Vessel", on_delete=PROTECT, related_name="trips")
+    unloadPort = models.ForeignKey("Port", on_delete=CASCADE)
+    vessel = models.ForeignKey("Vessel", on_delete=CASCADE, related_name="trips")
 
     def __str__(self):
         return "%s %s" % (self.vessel.name, self.startTime)
@@ -105,7 +105,7 @@ class Port(models.Model):
 class NonFishingEvent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     seabirdCaptureCode = models.CharField(max_length=3)
-    nonFishProtectedSpecies = models.ForeignKey("Species", on_delete=PROTECT)
+    nonFishProtectedSpecies = models.ForeignKey("Species", on_delete=CASCADE)
     estimatedWeightKg = models.DecimalField(decimal_places=4, max_digits=12)
     numberUninjured = models.IntegerField(null=True)
     numberInjured = models.IntegerField(null=True)
@@ -150,7 +150,7 @@ class ProcessedState(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     code = models.CharField(max_length=3)
     fullName = models.CharField(max_length=50)
-    species = models.ForeignKey("Species", on_delete=PROTECT)
+    species = models.ForeignKey("Species", on_delete=CASCADE)
     conversionFactor = models.DecimalField(decimal_places=4, max_digits=12)
 
     def __str__(self):
