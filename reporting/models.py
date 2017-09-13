@@ -24,6 +24,16 @@ class User(AbstractUser):
         return self.email
 
 
+class ReplicationReadyModel(models.Model):
+    class Meta:
+        abstract = True
+
+    # this adds fields necessary for couchpost to be able to replicate data to couchdb
+    created = models.DateTimeField(null=False, auto_now_add=True)
+    updated = models.DateTimeField(null=False, auto_now=True)
+    active = models.BooleanField(null=False, default=True)
+
+
 class FishingEvent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     RAId = models.CharField(max_length=100, null=True)
@@ -49,7 +59,7 @@ class FishingEvent(models.Model):
         return "%s %s" % (self.trip.vessel.name, self.datetimeAtStart)
 
 
-class Species(models.Model):
+class Species(ReplicationReadyModel):
     code = models.CharField(max_length=3, primary_key=True, editable=False)
     speciesType = models.CharField(max_length=20)
     description = models.CharField(max_length=50, null=True)
@@ -60,7 +70,6 @@ class Species(models.Model):
 
     def __str__(self):
         return self.code
-
 
 
 class FishCatch(models.Model):
@@ -92,7 +101,7 @@ class Trip(models.Model):
         return "%s %s" % (self.vessel.name, self.startTime)
 
 
-class Port(models.Model):
+class Port(ReplicationReadyModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey("Organisation", null=False, on_delete=CASCADE)
     name = models.CharField(max_length=50)
@@ -123,7 +132,7 @@ class NonFishingEvent(models.Model):
     archived = models.BooleanField()
 
 
-class Vessel(models.Model):
+class Vessel(ReplicationReadyModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50)
     registration = models.IntegerField()
@@ -131,6 +140,7 @@ class Vessel(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class VesselLocation(models.Model):
     vessel = ForeignKey("Vessel", null=False, on_delete=CASCADE)
