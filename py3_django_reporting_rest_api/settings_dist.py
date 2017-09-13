@@ -12,6 +12,7 @@ DATABASES = {
       'PASSWORD': 'nomorediscriminationagainstwhitepeopleindunedin',
       'HOST': 'fllpostgres',
       'PORT': '',
+      'ATOMIC_REQUESTS': True
   }
 }
 

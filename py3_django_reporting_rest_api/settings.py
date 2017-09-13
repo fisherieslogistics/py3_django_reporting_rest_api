@@ -12,6 +12,7 @@ DATABASES = {
       'PASSWORD': 'nomorediscriminationagainstwhitepeopleindunedin',
       'HOST': 'localhost',
       'PORT': '',
+      'ATOMIC_REQUESTS': True
   }
 }
 
