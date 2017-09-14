@@ -1,271 +1,4052 @@
 [
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SNX", "description": "Small Snapper"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CAC","description":"Cancer Crab"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CRB","description":"Crab"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PAD","description":"Paddle Crab"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPI","description":"Spider Crab"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PRA","description":"Prawn"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SCI","description":"Scampi"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MUN","description":"Munidagregaria"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CRA","description":"Rock Lobster"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PHC","description":"Packhorse Rock Lobster"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PRK","description":"Prawn Killer"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SLO","description":"Spanish Lobster"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SCC","description":"Sea Cucumber"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SFI","description":"Starfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SUR","description":"Kina"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BEM","description":"Blue Marlin"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BKM","description":"Black Marlin"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SAI","description":"Sailfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SSF","description":"Shortbill Spearfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"STM","description":"Striped Marlin"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SWO","description":"Broadbill Swordfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CHI","description":"Chimaerasp."}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GSH","description":"Ghost Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GSP","description":"Pale Ghost Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LCH","description":"Long-nosed Chimaera"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BFL","description":"Black Flounder"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BRI","description":"Brill"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ESO","description":"N.Z.Sole"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"FLA","description":"Flats"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GFL","description":"Greenback Flounder"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LSO","description":"Lemon Sole"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SFL","description":"Sand Flounder"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TUR","description":"Turbot"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WIT","description":"Witch"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"YBF","description":"Yellow-belly Flounder"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"AGR","description":"Ribbonfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ANC","description":"Anchovy"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ATO","description":"Antarctic Toothfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BAR","description":"Barracouta"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BAS","description":"Bass Groper"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BBE","description":"Banded Bellowsfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BCA","description":"Barracudina"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BCD","description":"Black Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BCO","description":"Blue Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BCR","description":"Blue Cusk Eel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BEL","description":"Bellowsfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BGZ","description":"Banded Giant Stargazer"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BMA","description":"Blue Maomao"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BNS","description":"Bluenose"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BOA","description":"Sowfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BOE","description":"Black Oreo"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BOX","description":"Boxfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BPF","description":"Banded Wrasse"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BRC","description":"Northern Bastard Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BRZ","description":"Brown Stargazer"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BSP","description":"Big-scale Pomfret"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BUT","description":"Butterfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BYX","description":"Alfonsino & Long-finned Beryx"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CAN","description":"Brown Brotula"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CDL","description":"Cardinal Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CMO","description":"Copper Moki"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DEA","description":"Dealfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DIS","description":"Discfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DOF","description":"Dolphinfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DSS","description":"Deepsea Smelt"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ELE","description":"Elephant Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"EMP","description":"Emperor"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"EPD","description":"White Cardinalfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"EPL","description":"Bigeye Cardinalfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"EPR","description":"Robust Cardinalfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"FHD","description":"Deepsea Flathead"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"FLY","description":"Flying Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"FRO","description":"Frostfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GAR","description":"Garfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GMU","description":"Grey Mullet"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GSE","description":"Snake Mackerel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GTR","description":"Marblefish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GUR","description":"Gurnard"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HAG","description":"Hagfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HAK","description":"Hake"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HAP","description":"Hapuku"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HJO","description":"Johnsons Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HOK","description":"Hoki"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HPB","description":"Hapuku&Bass"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ICX","description":"Icefishes"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"JDO","description":"John Dory"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"JGU","description":"Japanese Gurnard"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"JMA","description":"Jack Mackerel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"KAH","description":"Kahawai"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"KEL","description":"Kelpfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"KIN","description":"Kingfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"KOH","description":"Koheru"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"KTA","description":"King Tarakihi"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LAN","description":"Lantern Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LDO","description":"Lookdown Dory"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LEA","description":"Leatherjacket"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LEG","description":"Giant Lepidion"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LEP","description":"Escolar"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LFB","description":"Longfinned Boarfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LIN","description":"Ling"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MDO","description":"Mirror Dory"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MOK","description":"Moki"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MOO","description":"Moonfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MRL","description":"Moray Cods"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"NOT","description":"Antarctic Rock Cods"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OAR","description":"Oarfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OEO","description":"Oreos"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OFH","description":"Oilfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OPE","description":"Orange Perch"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ORH","description":"Orange Roughy"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PAR","description":"Parore"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PGR","description":"Plunderfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PIG","description":"Pigfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PIL","description":"Pilchard"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PIP","description":"Pipefish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PMA","description":"Pink Maomao"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"POP","description":"Porcupine Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"POR","description":"Porae"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PTO","description":"Patagonian Toothfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RAG","description":"Ragfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RBM","description":"Rays Bream"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RBT","description":"Redbait"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RBY","description":"Ruby Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RCO","description":"Red Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RDO","description":"Rosy Dory"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RHY","description":"Common Roughy"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RIB","description":"Ribaldo"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RMO","description":"Red Moki"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ROC","description":"Rock Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RPE","description":"Red Perch"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RRC","description":"Red Scorpion Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RSN","description":"Red Snapper"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RUD","description":"Rudderfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SAM","description":"Quinnat Salmon"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SAU","description":"Saury"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SBO","description":"Southern Boarfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SBW","description":"Southern Blue Whiting"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SCG","description":"Scaly Gurnard"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SDO","description":"Silver Dory"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SEM","description":"Small Eye Moray Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SFN","description":"Spinyfin"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SKI","description":"Gemfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SLK","description":"Slickhead"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SMC","description":"Small-headed Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SNA","description":"Snapper"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SOR","description":"Spiky Oreo"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPE","description":"Sea Perch"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPF","description":"Scarlet Wrasse"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPP","description":"Splendid Perch"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPR","description":"Sprats"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPZ","description":"Spotted Stargazer"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SSI","description":"Silverside"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SSO","description":"Smooth Oreo"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"STA","description":"Giant Stargazer"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SUN","description":"Sunfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SWA","description":"Silver Warehou"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TAR","description":"Tarakihi"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TOA","description":"Toadfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TRE","description":"Trevally"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TRS","description":"Capescorpionfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TRU","description":"Trumpeter"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"VCO","description":"Violet Cod"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WAR","description":"Common Warehou"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WOE","description":"Warty Oreo"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WSE","description":"Wrasses"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WWA","description":"White Warehou"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"YEM","description":"Yellow-eyed Mullet"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"COL","description":"Olivers Rattail"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"JAV","description":"Javelin Fish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MCA","description":"Ridge Scaled Rattail"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RAT","description":"Rattails"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WGR","description":"Macrouruswhitsoni"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WHR","description":"White Rattail"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WHX","description":"Unicorn Rattail"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BEE","description":"Basketwork Eel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CON","description":"Conger Eel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DWE","description":"Deepwater Eel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"EEL","description":"Eels"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MOR","description":"Moray Eel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SBK","description":"Spineback"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SCO","description":"Swollenhead Conger"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BEA","description":"Eatons Skate"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BRA","description":"Short-tailed Black Ray"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DSK","description":"Deepwater Spiny Skate"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"EGR","description":"Eagle Ray"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ERA","description":"Electric Ray"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"RSK","description":"Rough Skate"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SKA","description":"Skate"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SRR","description":"Amblyrajageorgiana"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SSK","description":"Smooth Skate"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"STR","description":"Stingray"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WRA","description":"Whiptail Ray"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BSH","description":"Seal Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BSK","description":"Basking Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BWH","description":"Bronze Whaler Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BWS","description":"Blue Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CAR","description":"Carpet Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CSQ","description":"Leafscalegulpershark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CYO","description":"Smooth Skin Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CYP","description":"Longnosedvelvetdogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DWD","description":"Deepwater Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ECO","description":"Prickly Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ETB","description":"Baxters Lantern Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ETL","description":"Lucifer Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HEP","description":"Sharpsnouted Sevengill Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HHS","description":"Hammerhead Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MAK","description":"Mako Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"NSD","description":"Northern Spiny Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OSD","description":"Other Sharks And Dogs"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PDG","description":"Prickly Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"POS","description":"Porbeagle Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SCH","description":"School Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SCM","description":"Roughskin Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SEV","description":"Broadsnouted Sevengill Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SND","description":"Shovelnose Spiny Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPD","description":"Spiny Dogfish"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SPO","description":"Rig"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"Rig","description":"Musteluslenticulatus"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SSH","description":"Slender Smooth-hound"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"THR","description":"Thresher Shark"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ALB","description":"Albacore Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BIG","description":"Bigeye Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BTU","description":"Butterfly Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"EMA","description":"Blue Mackerel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"NTU","description":"Northern Bluefin Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SKJ","description":"Skipjack Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"STN","description":"Southern Bluefin Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"STU","description":"Slender Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TOR","description":"Pacific Bluefin Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WAH","description":"Wahoo"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"YFN","description":"Yellowfin Tuna"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BYA","description":"Frilled Venus Shell"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"COC","description":"Cockle"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DAN","description":"Ringed Dosinia"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"DSU","description":"Fine Dosinia"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"HOR","description":"Horse Mussel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MDI","description":"Large Trough Shell"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MMI","description":"Trough Shell"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MSG","description":"Green-lipped Mussel"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MSP","description":"Green Mussel Spat"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"MUS","description":"Mussels"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OYS","description":"Oysters Dredge"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OYU","description":"Oysters Dredge"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PDO","description":"Deepwater Tuata"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"POY","description":"Oysters Pacific"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PPI","description":"Pipi"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"QSC","description":"Queen Scallop"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SAE","description":"Triangle Shell"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SCA","description":"Scallop"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"TUA","description":"Tuatua"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"OCT","description":"Octopus"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"BSQ","description":"Broad Squid"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GSQ","description":"Giant Squid"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SQU","description":"Arrow Squid"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SQX","description":"Squid"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WSQ","description":"Warty Squid"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"CTU","description":"Cooks Turban Shell"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LIM","description":"Limpets"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PAU","description":"Black Paua & Yellowfoot Paua"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"WHE","description":"Whelks"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"COE","description":"Coelenterata"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"ONG","description":"Sponges"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SAL","description":"Salps"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"SLG","description":"Sea Slug"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"GRA","description":"Gracilaria Weed"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"KBB","description":"Bladder Kelp"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"KBL","description":"Kelp Bull"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"LES","description":"Lessonia"}},
-  {"model":"reporting.species","fields":{"speciesType":"fish","code":"PTE","description":"Pterocladia"}}
+{
+    "model": "reporting.species",
+    "pk": "AGR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ribbonfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ALB",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Albacore Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ANC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Anchovy",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ATO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Antarctic Toothfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BAR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Barracouta",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BAS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Bass Groper",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BBE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Banded Bellowsfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BCA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Barracudina",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BCD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Black Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BCO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Blue Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BCR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Blue Cusk Eel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BEA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Eatons Skate",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BEE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Basketwork Eel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BEL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Bellowsfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BEM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Blue Marlin",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BFL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Black Flounder",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BGZ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Banded Giant Stargazer",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BIG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Bigeye Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BKM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Black Marlin",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BMA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Blue Maomao",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BNS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Bluenose",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BOA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sowfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BOE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Black Oreo",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BOX",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Boxfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BPF",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Banded Wrasse",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BRA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Short-tailed Black Ray",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BRC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Northern Bastard Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BRI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Brill",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BRZ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Brown Stargazer",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BSH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Seal Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BSK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Basking Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BSP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Big-scale Pomfret",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BSQ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Broad Squid",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BTU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Butterfly Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BUT",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Butterfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BWH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Bronze Whaler Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BWS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Blue Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BYA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Frilled Venus Shell",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "BYX",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Alfonsino & Long-finned Beryx",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CAC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Cancer Crab",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CAN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Brown Brotula",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CAR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Carpet Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CDL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Cardinal Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CHI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Chimaerasp.",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CMO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Copper Moki",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "COC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Cockle",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "COE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Coelenterata",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "COL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Olivers Rattail",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CON",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Conger Eel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CRA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rock Lobster",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CRB",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Crab",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CSQ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Leafscalegulpershark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CTU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Cooks Turban Shell",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CYO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Smooth Skin Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "CYP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Longnosedvelvetdogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DAN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ringed Dosinia",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DEA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Dealfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DIS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Discfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DOF",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Dolphinfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DSK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Deepwater Spiny Skate",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DSS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Deepsea Smelt",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DSU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Fine Dosinia",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DWD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Deepwater Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "DWE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Deepwater Eel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ECO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Prickly Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "EEL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Eels",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "EGR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Eagle Ray",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ELE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Elephant Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "EMA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Blue Mackerel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "EMP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Emperor",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "EPD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "White Cardinalfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "EPL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Bigeye Cardinalfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "EPR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Robust Cardinalfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ERA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Electric Ray",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ESO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "N.Z.Sole",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ETB",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Baxters Lantern Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ETL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Lucifer Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "FHD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Deepsea Flathead",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "FLA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Flats",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "FLY",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Flying Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "FRO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Frostfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GAR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Garfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GFL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Greenback Flounder",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GMU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Grey Mullet",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GRA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Gracilaria Weed",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GSE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Snake Mackerel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GSH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ghost Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GSP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pale Ghost Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GSQ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Giant Squid",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GTR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Marblefish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "GUR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Gurnard",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HAG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Hagfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HAK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Hake",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HAP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Hapuku",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HEP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sharpsnouted Sevengill Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HHS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Hammerhead Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HJO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Johnsons Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HOK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Hoki",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HOR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Horse Mussel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "HPB",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Hapuku&Bass",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ICX",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Icefishes",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "JAV",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Javelin Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "JDO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "John Dory",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "JGU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Japanese Gurnard",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "JMA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Jack Mackerel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "KAH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Kahawai",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "KBB",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Bladder Kelp",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "KBL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Kelp Bull",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "KEL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Kelpfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "KIN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Kingfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "KOH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Koheru",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "KTA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "King Tarakihi",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LAN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Lantern Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LCH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Long-nosed Chimaera",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LDO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Lookdown Dory",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LEA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Leatherjacket",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LEG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Giant Lepidion",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LEP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Escolar",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LES",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Lessonia",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LFB",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Longfinned Boarfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LIM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Limpets",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LIN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ling",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "LSO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Lemon Sole",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MAK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Mako Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MCA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ridge Scaled Rattail",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MDI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Large Trough Shell",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MDO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Mirror Dory",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MMI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Trough Shell",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MOK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Moki",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MOO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Moonfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MOR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Moray Eel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MRL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Moray Cods",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MSG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Green-lipped Mussel",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MSP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Green Mussel Spat",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MUN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Munidagregaria",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "MUS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Mussels",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "NOT",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Antarctic Rock Cods",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "NSD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Northern Spiny Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "NTU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Northern Bluefin Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OAR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Oarfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OCT",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Octopus",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OEO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Oreos",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OFH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Oilfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ONG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sponges",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OPE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Orange Perch",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ORH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Orange Roughy",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OSD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Other Sharks And Dogs",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OYS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Oysters Dredge",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "OYU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Oysters Dredge",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PAD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Paddle Crab",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PAR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Parore",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PAU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Black Paua & Yellowfoot Paua",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PDG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Prickly Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PDO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Deepwater Tuata",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PGR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Plunderfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PHC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Packhorse Rock Lobster",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PIG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pigfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PIL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pilchard",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PIP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pipefish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PMA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pink Maomao",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "POP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Porcupine Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "POR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Porae",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "POS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Porbeagle Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "POY",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Oysters Pacific",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PPI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pipi",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PRA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Prawn",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PRK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Prawn Killer",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PTE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pterocladia",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "PTO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Patagonian Toothfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "QSC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Queen Scallop",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RAG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ragfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RAT",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rattails",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RBM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rays Bream",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RBT",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Redbait",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RBY",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ruby Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RCO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Red Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RDO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rosy Dory",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RHY",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Common Roughy",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RIB",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Ribaldo",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "Rig",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Musteluslenticulatus",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RMO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Red Moki",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "ROC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rock Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RPE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Red Perch",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RRC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Red Scorpion Fish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RSK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rough Skate",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RSN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Red Snapper",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "RUD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rudderfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SAE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Triangle Shell",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SAI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sailfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SAL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Salps",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SAM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Quinnat Salmon",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SAU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Saury",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SBK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Spineback",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SBO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Southern Boarfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SBW",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Southern Blue Whiting",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SCA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Scallop",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SCC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sea Cucumber",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SCG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Scaly Gurnard",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SCH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "School Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SCI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Scampi",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SCM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Roughskin Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SCO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Swollenhead Conger",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SDO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Silver Dory",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SEM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Small Eye Moray Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SEV",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Broadsnouted Sevengill Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SFI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Starfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SFL",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sand Flounder",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SFN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Spinyfin",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SKA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Skate",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SKI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Gemfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SKJ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Skipjack Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SLG",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sea Slug",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SLK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Slickhead",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SLO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Spanish Lobster",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SMC",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Small-headed Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SNA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Snapper",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SND",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Shovelnose Spiny Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SNX",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Small Snapper",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SOR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Spiky Oreo",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPD",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Spiny Dogfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sea Perch",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPF",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Scarlet Wrasse",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Spider Crab",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Rig",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPP",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Splendid Perch",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sprats",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SPZ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Spotted Stargazer",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SQU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Arrow Squid",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SQX",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Squid",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SRR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Amblyrajageorgiana",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SSF",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Shortbill Spearfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SSH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Slender Smooth-hound",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SSI",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Silverside",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SSK",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Smooth Skate",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SSO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Smooth Oreo",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "STA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Giant Stargazer",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "STM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Striped Marlin",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "STN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Southern Bluefin Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "STR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Stingray",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "STU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Slender Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SUN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Sunfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SUR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Kina",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SWA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Silver Warehou",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "SWO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Broadbill Swordfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TAR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Tarakihi",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "THR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Thresher Shark",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TOA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Toadfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TOR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Pacific Bluefin Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TRE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Trevally",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TRS",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Capescorpionfish",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TRU",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Trumpeter",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TUA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Tuatua",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "TUR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Turbot",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "VCO",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Violet Cod",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WAH",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Wahoo",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WAR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Common Warehou",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WGR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Macrouruswhitsoni",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WHE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Whelks",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WHR",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "White Rattail",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WHX",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Unicorn Rattail",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WIT",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Witch",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WOE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Warty Oreo",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WRA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Whiptail Ray",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WSE",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Wrasses",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WSQ",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Warty Squid",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "WWA",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "White Warehou",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "XXX",
+    "fields": {
+        "created": "2017-09-13T22:01:04.352Z",
+        "updated": "2017-09-13T22:01:04.352Z",
+        "active": true,
+        "speciesType": "xfishx",
+        "description": "xxxxx",
+        "otherNames": "iiooii",
+        "fullName": "ccxxcc",
+        "scientificName": "ppoopp",
+        "image": "eimage"
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "YBF",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Yellow-belly Flounder",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "YEM",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Yellow-eyed Mullet",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+},
+{
+    "model": "reporting.species",
+    "pk": "YFN",
+    "fields": {
+        "created": "2017-09-13T03:50:58.673Z",
+        "updated": "2017-09-13T03:50:58.713Z",
+        "active": true,
+        "speciesType": "fish",
+        "description": "Yellowfin Tuna",
+        "otherNames": null,
+        "fullName": null,
+        "scientificName": null,
+        "image": null
+    }
+}
 ]

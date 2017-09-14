@@ -301,7 +301,7 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         serializer = TripSubmitSerializer(data=request.data)
-        serializer.is_valid()
+        serializer.is_valid()  # TODO should this be conditional?
         serializer.validated_data['creator_id'] = self.request.user.id
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
         serializer.create(serializer.validated_data)

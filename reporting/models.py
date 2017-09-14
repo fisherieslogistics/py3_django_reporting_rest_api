@@ -4,6 +4,7 @@ from django.contrib.postgres.fields import JSONField
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
+from couchdb.mapping import TextField
 
 
 class Organisation(models.Model):
@@ -165,3 +166,11 @@ class ProcessedState(models.Model):
 
     def __str__(self):
         return self.code
+
+
+class FishServeEvents(models.Model):
+    json = models.TextField(null=False)
+    status = models.CharField(max_length=20)
+    created = models.DateTimeField(null=False, auto_now_add=True)
+    processed = models.DateTimeField(null=True)
+    response = models.TextField(null=True)
