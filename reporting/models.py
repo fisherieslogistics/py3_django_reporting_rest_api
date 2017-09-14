@@ -4,7 +4,6 @@ from django.contrib.postgres.fields import JSONField
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
-from couchdb.mapping import TextField
 
 
 class Organisation(models.Model):
