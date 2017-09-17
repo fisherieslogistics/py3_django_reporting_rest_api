@@ -6,3 +6,4 @@ pygments
 psycopg2
 djangorestframework-jwt
 django-cors-headers
+simple-rest-client

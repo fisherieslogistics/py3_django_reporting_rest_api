@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import datetime as dt
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 
 AUTH_USER_MODEL = 'reporting.User'
@@ -35,11 +34,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'reporting',
+    'fishserve'
 ]
 
 GRAPH_MODELS = {
-  'all_applications': True,
-  'group_models': True,
+    'all_applications': True,
+    'group_models': True,
 }
 
 MIDDLEWARE = [
