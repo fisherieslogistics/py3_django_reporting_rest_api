@@ -312,5 +312,6 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         fse.event_id = request.data['event_id']
         fse.json = request.data['json']
         fse.headers = request.data['headers']
+        fse.creator = self.request.user
         fse.save()
         return Response(serializer.data)
