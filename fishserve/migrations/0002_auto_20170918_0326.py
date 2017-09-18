@@ -15,13 +15,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='fishserveevents',
             name='event_id',
-            field=models.UUIDField(default=''),
+            field=models.UUIDField(default=None),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='fishserveevents',
             name='event_type',
-            field=models.TextField(default=''),
+            field=models.TextField(default=None),
             preserve_default=False,
         ),
     ]
