@@ -1,6 +1,7 @@
 from rest_framework import serializers, viewsets, filters
 from reporting.models import Trip, FishingEvent, Species, FishCatch, NonFishingEvent,\
     Port, ProcessedState, Vessel, Organisation, User
+from fishserve.models import FishServeEvents
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 
@@ -301,9 +302,15 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         serializer = TripSubmitSerializer(data=request.data)
-        serializer.is_valid()  # TODO should this be conditional?
+        serializer.is_valid()# TODO should this be conditional?
         serializer.validated_data['creator_id'] = self.request.user.id
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
         serializer.create(serializer.validated_data)
         serializer.save()
+        fse = FishServeEvents()
+        fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
+        fse.event_id = request.data['event_id']
+        fse.json = request.data['json']
+        fse.headers = request.data['headers']
+        fse.save()
         return Response(serializer.data)
