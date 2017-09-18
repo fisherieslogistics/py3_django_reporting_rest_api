@@ -1,4 +1,4 @@
-from couchpost.settings_common import *
+from fishserve.settings_common import *
 
 DATABASES = {
   'default': {
