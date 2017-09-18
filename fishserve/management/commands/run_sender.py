@@ -79,7 +79,7 @@ if __name__ == "__main__":
    "manualDateTime": null,
    "manualLocation": null } }""" % installation_id
 
-    send_event("9900159", "event/v1/trip-start", 'aa58aca0-99c4-11e7-b6c4-6fd681ce18ab', {}, body.encode("utf-8"))
+#    send_event("9900159", "event/v1/trip-start", 'aa58aca0-99c4-11e7-b6c4-6fd681ce18ab', {}, body.encode("utf-8"))
 
 
 class Command(BaseCommand):
