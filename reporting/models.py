@@ -9,6 +9,7 @@ from django.db.models.fields.related import ForeignKey
 class Organisation(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     fullName = models.CharField(max_length=120)
+    extra_info = JSONField(null=True)
 
     def __str__(self):
         return self.fullName
@@ -16,6 +17,7 @@ class Organisation(models.Model):
 
 class User(AbstractUser):
     organisation = models.ForeignKey("Organisation", null=True, on_delete=CASCADE)
+    extra_info = JSONField(null=True)
 
     class Meta:
         db_table = 'auth_user'
