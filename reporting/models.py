@@ -6,18 +6,28 @@ from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 
 
-class Organisation(models.Model):
+class ExtraInfoMixIn(models.Model):
+    extra_info = JSONField(null=True)
+
+    class Meta:
+        abstract = True
+
+    def update_extra_info(self, d):
+        if self.extra_info is None:
+            self.extra_info = {}
+        self.extra_info.update(d)
+
+
+class Organisation(ExtraInfoMixIn, models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     fullName = models.CharField(max_length=120)
-    extra_info = JSONField(null=True)
 
     def __str__(self):
         return self.fullName
 
 
-class User(AbstractUser):
+class User(ExtraInfoMixIn, AbstractUser):
     organisation = models.ForeignKey("Organisation", null=True, on_delete=CASCADE)
-    extra_info = JSONField(null=True)
 
     class Meta:
         db_table = 'auth_user'
