@@ -11,10 +11,17 @@ class MyUserAdmin(UserAdmin):
             'organisation',
             'username',
             'email',
+            'extra_info',
             'first_name',
             'last_name',
             'password1',
             'password2',
+        )}),
+    )
+    fieldsets = UserAdmin.fieldsets + (
+        (None, { 'fields': (
+            'organisation',
+            'extra_info',
         )}),
     )
 
