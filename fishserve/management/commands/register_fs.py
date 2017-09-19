@@ -62,7 +62,13 @@ class Command(BaseCommand):
                                  headers={"Authorization": "Bearer " + user_token})
         self.log.debug("%s: %s", response.status_code, response.text)
 
-        u.update_extra_info({'fishserve': {'installationId': installation_id, 'private_key': b64encode(priv_key.to_der()).decode('ascii'), 'public_key': b64encode(pub_key.to_der()).decode('ascii')}})
+        response_json = json.loads(response.text)
+        u.update_extra_info({
+            'fishserve': {'installationId': installation_id,
+                          'private_key': b64encode(priv_key.to_der()).decode('ascii'),
+                          'public_key': b64encode(pub_key.to_der()).decode('ascii'),
+                          'userId': response_json['userId'],
+                          'expiryDateTime': response_json['expiryDateTime']}})
         u.save()
 
         self.log.info("Registration successfull. Installation_id: %s", installation_id)
