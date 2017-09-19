@@ -1,22 +1,14 @@
-import os
-import django
 from base64 import b64encode
 import json
 import logging
 from django.conf import settings
-import time
-from enum import Enum
-from django.utils import timezone
-from fishserve.models import FishServeEvents
 from ecdsa.keys import SigningKey
-import ecdsa
 import requests
 from django.core.management.base import BaseCommand
 import hashlib
 from reporting.models import User
-from ecdsa.curves import SECP256k1
 import uuid
-from fishserve.management.commands.run_sender import installation_id
+from ecdsa import curves
 
 
 class Command(BaseCommand):
@@ -50,26 +42,27 @@ class Command(BaseCommand):
         login = {"username": options['fishserve_username'][0],
                  "password": options['fishserve_password'][0]}
 
-        response = requests.post('https://api.uat.kupe.fishserve.co.nz/authenticate', data=login)
+        response = requests.post(settings.FISHSERVE_AUTH_URL, data=login)
         self.log.debug("%s: %s", response.status_code, response.text)
         user_token = json.loads(response.text)['userToken']
 
         # generate new keys and installation stuff
-        priv_key = SigningKey.generate(curve=SECP256k1, hashfunc=hashlib.sha256)
+        priv_key = SigningKey.generate(curve=curves.NIST256p, hashfunc=hashlib.sha256)
         pub_key = priv_key.get_verifying_key()
         installation_id = str(uuid.uuid4())
 
         reg = {"SoftwareVendor": "Fishery Logistics",
                "DeviceName": "Vessel iPad",
                "SoftwareInstallationId": installation_id,
-               "PublicKey": b64encode(pub_key.to_der())}
+               "PublicKey": b64encode(pub_key.to_der()).decode('ascii')}
+        self.log.debug(reg)
 
-        response = requests.post('https://ers.uat.kupe.fishserve.co.nz/api/security/log-book-registration',
+        response = requests.post(settings.FISHSERVE_API_URL + '/security/log-book-registration',
                                  data=reg,
                                  headers={"Authorization": "Bearer " + user_token})
         self.log.debug("%s: %s", response.status_code, response.text)
 
-        u.update_extra_info({'fishserve': {'installationId': installation_id, 'private_key': str(priv_key.to_pem()), 'public_key': str(pub_key.to_pem())}})
+        u.update_extra_info({'fishserve': {'installationId': installation_id, 'private_key': b64encode(priv_key.to_der()).decode('ascii'), 'public_key': b64encode(pub_key.to_der()).decode('ascii')}})
         u.save()
 
         self.log.info("Registration successfull. Installation_id: %s", installation_id)
