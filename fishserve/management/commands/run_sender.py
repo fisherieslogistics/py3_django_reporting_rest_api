@@ -11,11 +11,13 @@ import requests
 from django.core.management.base import BaseCommand
 import hashlib
 from django.utils import timezone
+from builtins import Exception
 
 
 class Status(Enum):
     OK = "ok"
     ERROR = "error"
+    EXCEPTION = "exception"
 
 
 class Command(BaseCommand):
@@ -26,32 +28,43 @@ class Command(BaseCommand):
         self.log.info("Starting FishServe integration daemon...")
 
         while True:
-            self.send_pending_records()
+            try:
+                self.send_pending_records()
+            except:
+                self.log.exception("Integration service failed.")
+
             time.sleep(settings.FISHSERVE_SEND_INTERVAL)
 
     def send_pending_records(self):
         self.log.debug("Checking for new events...")
         for fse in FishServeEvents.objects.filter(status__isnull=True).order_by('id').all():
-            self.log.debug(fse)
-            json_data = json.loads(fse.json)
+            try:
+                self.log.debug(fse)
+                json_data = json.loads(fse.json)
 
-            # now this is not quite ok, because this should be filled on the frontend.
-            # When we move signing to the app, we need to remove all json manipulations from here.
-            json_data['eventHeader'].update({
-                "softwareInstallationId": fse.creator.extra_info['fishserve']['installationId'],
-                "clientNumber": str(fse.creator.organisation.extra_info['fishserve']['clientNumber']),
-                "completerUserId": str(fse.creator.extra_info['fishserve']['userId'])})
-            payload = json.dumps(json_data).encode('utf-8')  # should be fse.json.encode('utf-8')
+                # now this is not quite ok, because this should be filled on the frontend.
+                # When we move signing to the app, we need to remove all json manipulations from here.
+                json_data['eventHeader'].update({
+                    "softwareInstallationId": fse.creator.extra_info['fishserve']['installationId'],
+                    "clientNumber": str(fse.creator.organisation.extra_info['fishserve']['clientNumber']),
+                    "completerUserId": str(fse.creator.extra_info['fishserve']['userId'])})
+                payload = json.dumps(json_data).encode('utf-8')  # should be fse.json.encode('utf-8')
 
-            client_number = json_data['eventHeader']['clientNumber']
-            event_id = json_data['eventHeader']['eventId']
+                client_number = json_data['eventHeader']['clientNumber']
+                event_id = json_data['eventHeader']['eventId']
 
-            response = self.send_event(client_number, fse.event_type, event_id, fse.headers, payload, fse.creator)
+                response = self.send_event(client_number, fse.event_type, event_id, json.loads(fse.headers), payload, fse.creator)
 
-            fse.processed = timezone.now()
-            fse.response = "%s:%s" % (response.status_code, response.text)
-            fse.status = Status.OK.value if response.status_code in [200, 201] else Status.ERROR.value
-            fse.save()
+                fse.processed = timezone.now()
+                fse.response = "%s:%s" % (response.status_code, response.text)
+                fse.status = Status.OK.value if response.status_code in [200, 201] else Status.ERROR.value
+                fse.save()
+            except Exception as e:
+                self.log.exception("Error processing event %s", fse.id)
+                fse.processed = timezone.now()
+                fse.response = e.__repr__()
+                fse.status = Status.EXCEPTION.value
+                fse.save()
 
     def sign(self, payload, key):
         sk = SigningKey.from_der(b64decode(key), hashfunc=hashlib.sha256)
