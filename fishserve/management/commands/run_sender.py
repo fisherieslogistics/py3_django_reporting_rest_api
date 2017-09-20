@@ -34,10 +34,19 @@ class Command(BaseCommand):
         for fse in FishServeEvents.objects.filter(status__isnull=True).order_by('id').all():
             self.log.debug(fse)
             json_data = json.loads(fse.json)
+
+            # now this is not quite ok, because this should be filled on the frontend.
+            # When we move signing to the app, we need to remove all json manipulations from here.
+            json_data['eventHeader'].update({
+                "softwareInstallationId": fse.creator.extra_info['fishserve']['installationId'],
+                "clientNumber": str(fse.creator.organisation.extra_info['fishserve']['clientNumber']),
+                "completerUserId": str(fse.creator.extra_info['fishserve']['userId'])})
+            payload = json.dumps(json_data).encode('utf-8')  # should be fse.json.encode('utf-8')
+
             client_number = json_data['eventHeader']['clientNumber']
             event_id = json_data['eventHeader']['eventId']
 
-            response = self.send_event(client_number, fse.event_type, event_id, fse.headers, fse.json.encode('utf-8'), fse.creator)
+            response = self.send_event(client_number, fse.event_type, event_id, fse.headers, payload, fse.creator)
 
             fse.processed = timezone.now()
             fse.response = "%s:%s" % (response.status_code, response.text)
