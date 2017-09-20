@@ -4,6 +4,7 @@ from reporting.models import Trip, FishingEvent, Species, FishCatch, NonFishingE
 from fishserve.models import FishServeEvents
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
+import datetime
 
 
 
@@ -232,6 +233,8 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
         fishData = serializer.validated_data.pop('fishCatches')
         serializer.create(serializer.validated_data)
         serializer.save()
+        serializer.instance.id = request.data['id']
+        serializer.save()
         for data in fishData:
             FishCatch.objects.create(fishingEvent=serializer.instance, **data)
         return Response(serializer.data)
@@ -307,6 +310,8 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
         serializer.create(serializer.validated_data)
         serializer.save()
+        serializer.instance.id = request.data['id']
+        serializer.save()
         fse = FishServeEvents()
         fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
         fse.event_id = request.data['event_id']
@@ -315,3 +320,19 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         fse.creator = self.request.user
         fse.save()
         return Response(serializer.data)
+
+    def partial_update(self, request, *args, **kwargs):
+        try:
+            trip = Trip.objects.get(pk=request.data['id'])
+            trip.endTime = datetime.datetime.now()
+            trip.save()
+            fse = FishServeEvents()
+            fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
+            fse.event_id = request.data['event_id']
+            fse.json = request.data['json']
+            fse.headers = request.data['headers']
+            fse.creator = self.request.user
+            fse.save()
+            return Response('trip updated')
+        except Exception as e:
+            print(e)
