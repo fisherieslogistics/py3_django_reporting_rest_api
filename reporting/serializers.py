@@ -237,7 +237,6 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
         serializer.save()
         fse = FishServeEvents()
         fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
-        fse.event_id = request.data['event_id']
         fse.json = request.data['json']
         fse.headers = request.data['headers']
         fse.creator = self.request.user
@@ -321,7 +320,6 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         serializer.save()
         fse = FishServeEvents()
         fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
-        fse.event_id = request.data['event_id']
         fse.json = request.data['json']
         fse.headers = request.data['headers']
         fse.creator = self.request.user
@@ -329,17 +327,13 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def partial_update(self, request, *args, **kwargs):
-        try:
-            trip = Trip.objects.get(pk=request.data['id'])
-            trip.endTime = datetime.datetime.now()
-            trip.save()
-            fse = FishServeEvents()
-            fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
-            fse.event_id = request.data['event_id']
-            fse.json = request.data['json']
-            fse.headers = request.data['headers']
-            fse.creator = self.request.user
-            fse.save()
-            return Response('trip updated')
-        except Exception as e:
-            print(e)
+        trip = Trip.objects.get(pk=request.data['id'])
+        trip.endTime = datetime.datetime.now()
+        trip.save()
+        fse = FishServeEvents()
+        fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
+        fse.json = request.data['json']
+        fse.headers = request.data['headers']
+        fse.creator = self.request.user
+        fse.save()
+        return Response('trip updated')
