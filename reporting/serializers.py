@@ -235,6 +235,13 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
         serializer.save()
         serializer.instance.id = request.data['id']
         serializer.save()
+        fse = FishServeEvents()
+        fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
+        fse.event_id = request.data['event_id']
+        fse.json = request.data['json']
+        fse.headers = request.data['headers']
+        fse.creator = self.request.user
+        fse.save()
         for data in fishData:
             FishCatch.objects.create(fishingEvent=serializer.instance, **data)
         return Response(serializer.data)
