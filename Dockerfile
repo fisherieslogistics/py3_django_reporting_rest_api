@@ -45,7 +45,6 @@ RUN mkdir /home/docker/volatile &&\
 	
 
 EXPOSE 80
-EXPOSE 443
 
 WORKDIR /home/docker/code/app/
 

@@ -1,5 +1,6 @@
 from django.contrib.auth.backends import ModelBackend
 from rest_framework.permissions import DjangoModelPermissions
+from rest_framework_jwt.utils import jwt_payload_handler
 
 _group_permissions = {
     'skipper': {
@@ -33,6 +34,7 @@ _group_permissions = {
     }
 }
 
+
 def _flatten_permissions():
     # transform the permission structure only once at the server start
     fp = {}
@@ -43,7 +45,9 @@ def _flatten_permissions():
                 fp[group].append("%s.%s" % (perm_app, perm))
     return fp
 
+
 _group_permissions_flattened = _flatten_permissions()
+
 
 class UserGroupBackend(ModelBackend):
     def get_all_permissions(self, user_obj, obj=None):
@@ -58,3 +62,10 @@ class ReadWriteModelPermissions(DjangoModelPermissions):
     def __init__(self):
         # django's standard permission model doesn't have the concept of "read" permission - so let's create it here.
         self.perms_map['GET'] = ['%(app_label)s.read_%(model_name)s']
+
+
+def custom_jwt_payload_handler(user):
+    # add our custom stuff to the jwt payload
+    payload = jwt_payload_handler(user)
+    payload['organisation_id'] = str(user.organisation_id)
+    return payload
