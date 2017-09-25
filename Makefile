@@ -15,12 +15,19 @@ build-docker-fishserve:
 	docker build -f Dockerfile.fishserve -t fisherylogistics/fishserve-sender:latest .
 	docker push fisherylogistics/fishserve-sender
 
+build-docker-couchpost:
+	docker build -f Dockerfile.couchpost -t fisherylogistics/couchpost:latest .
+	docker push fisherylogistics/couchpost:latest
+
 upgrade-libs:
 	rm -rf .fllenv_upgrade
 	python3 -m venv .fllenv_upgrade
 	.fllenv_upgrade/bin/pip install -r requirements.txt
 	.fllenv_upgrade/bin/pip freeze >requirements_frozen.txt
 	rm -rf .fllenv_upgrade
+
+test-unit:
+	$(ENV_BIN)/python manage.py test
 
 test-rest:
 	$(ENV_BIN)pip install -r requirements_tests.txt
