@@ -37,7 +37,6 @@ RUN mkdir /home/docker/volatile &&\
 	echo "daemon off;" >> /etc/nginx/nginx.conf &&\
 	mv /home/docker/code/app/docker/nginx-app.conf /etc/nginx/sites-available/default &&\
 	mv /home/docker/code/app/docker/supervisor-app.conf /etc/supervisor/conf.d/ &&\
-	mv /home/docker/code/app/docker/dhparam.pem /etc/ssl/certs/ &&\
 	mv /home/docker/code/app/docker/syslog.conf /etc/rsyslog.d/catchhub.conf &&\
 	mv /home/docker/code/app/docker/uwsgi* /home/docker/code/ &&\
 	mv /home/docker/code/app/py3_django_reporting_rest_api/settings_dist.py /home/docker/code/app/py3_django_reporting_rest_api/settings.py &&\
