@@ -32,7 +32,6 @@ test-unit:
 
 test-rest:
 	- kill -9 `pgrep -f testserver`
-	sleep 1
 
 	$(ENV_BIN)python manage.py testserver \
 		--noinput \
