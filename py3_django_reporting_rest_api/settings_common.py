@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'reporting',
     'fishserve',
-    'couchpost'
+    'couchpost',
 ]
 
 GRAPH_MODELS = {
