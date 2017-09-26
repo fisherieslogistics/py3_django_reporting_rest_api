@@ -1,0 +1,66 @@
+[
+{
+    "model": "reporting.user",
+    "pk": 103,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$cnZj5pjLGYmk$GOeJLK+bvlh3kqpft3hYv2gmBEYI8ZCz0POpfVRn0vs=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "restadmin",
+        "first_name": "",
+        "last_name": "",
+        "email": "restadmin@test.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-09-26T00:26:10.964Z",
+        "extra_info": null,
+        "organisation": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "reporting.user",
+    "pk": 104,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$GYzLXfGShXuf$Eohr1hyE7xKzZlxABZ9OaLg8JawaOflzoTo6adgYsVY=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "resttester",
+        "first_name": "",
+        "last_name": "",
+        "email": "rest@test.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-09-26T00:26:11.021Z",
+        "extra_info": null,
+        "organisation": "732438ce-d79e-427e-9f75-fd3287f04bbc",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "reporting.user",
+    "pk": 105,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$kTVU67TRstPt$N4aUrZGPcZ6NK9tFYxAaDdy/pHW29UrBGc09PVV2/tE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "resthacker",
+        "first_name": "",
+        "last_name": "",
+        "email": "resthack@test.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-09-26T00:26:11.080Z",
+        "extra_info": null,
+        "organisation": "f11174ca-f996-4f5e-82b5-ae5efd9ca12a",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+}
+]

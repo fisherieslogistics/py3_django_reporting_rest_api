@@ -1,0 +1,18 @@
+[
+{
+    "model": "reporting.organisation",
+    "pk": "732438ce-d79e-427e-9f75-fd3287f04bbc",
+    "fields": {
+        "extra_info": null,
+        "fullName": "Rimu Industries REST"
+    }
+},
+{
+    "model": "reporting.organisation",
+    "pk": "f11174ca-f996-4f5e-82b5-ae5efd9ca12a",
+    "fields": {
+        "extra_info": null,
+        "fullName": "Hackers Inc."
+    }
+}
+]

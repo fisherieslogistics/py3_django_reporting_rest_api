@@ -27,12 +27,30 @@ upgrade-libs:
 	rm -rf .fllenv_upgrade
 
 test-unit:
-	$(ENV_BIN)/python manage.py test
+	- kill -9 `pgrep -f testserver`  # release potential db lock
+	$(ENV_BIN)/python manage.py test --noinput
 
 test-rest:
-	$(ENV_BIN)pip install -r requirements_tests.txt
-	- python manage.py shell <reporting/tests/prepare_test_database.py
-	cd reporting/tests && $(ENV_BIN)resttest.py http://localhost:8000 all.yaml --import_extensions 'dategen;geojsonpoint'
+	- kill -9 `pgrep -f testserver`
+	sleep 1
+
+	$(ENV_BIN)python manage.py testserver \
+		--noinput \
+		reporting/migrations/data/species.json \
+		reporting/migrations/data/groups.json \
+		reporting/tests/data/organisations.json \
+		reporting/tests/data/users.json \
+		--addrport 8001 \
+		&> /tmp/test-rest.log &
+
+	# wait for the server to start
+	until nc -zv 127.0.0.1 8001 &>/dev/null; do sleep 1; done
+	
+	cd reporting/tests && $(ENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint'
+
+	- kill `pgrep -f testserver`
+
+test: setup test-unit test-rest
 
 migrate:
 	$(ENV_BIN)python manage.py migrate
