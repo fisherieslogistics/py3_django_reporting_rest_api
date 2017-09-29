@@ -26,9 +26,12 @@ upgrade-libs:
 	.fllenv_upgrade/bin/pip freeze >requirements_frozen.txt
 	rm -rf .fllenv_upgrade
 
+test-setup: setup
+	$(VENV_BIN)pip install -r requirements_tests.txt
+
 test-unit:
 	- kill -9 `pgrep -f testserver`  # release potential db lock
-	$(VENV_BIN)/python manage.py test --noinput
+	$(VENV_BIN)python manage.py test --noinput
 
 test-rest:
 	- kill -9 `pgrep -f testserver`
@@ -49,7 +52,7 @@ test-rest:
 
 	- kill `pgrep -f testserver`
 
-test: setup test-unit test-rest
+test: test-setup test-unit test-rest
 
 migrate:
 	$(VENV_BIN)python manage.py migrate
