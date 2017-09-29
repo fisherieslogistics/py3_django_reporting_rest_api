@@ -1,12 +1,12 @@
-ENV=~/fllenv
-ENV_BIN=$(ENV)/bin/
+VENV=~/fllenv
+VENV_BIN=$(VENV)/bin/
 setup:
-	python3 -m venv $(ENV)
-	$(ENV_BIN)pip install -r requirements_frozen.txt
+	python3 -m venv $(VENV)
+	$(VENV_BIN)pip install -r requirements_frozen.txt
 
 build-docker: setup
 	rm -rf build
-	$(ENV_BIN)python manage.py collectstatic
+	$(VENV_BIN)python manage.py collectstatic
 	docker build -t fisherylogistics/rest-api:latest .
 	rm -rf build
 	docker push fisherylogistics/rest-api:latest
@@ -28,12 +28,12 @@ upgrade-libs:
 
 test-unit:
 	- kill -9 `pgrep -f testserver`  # release potential db lock
-	$(ENV_BIN)/python manage.py test --noinput
+	$(VENV_BIN)/python manage.py test --noinput
 
 test-rest:
 	- kill -9 `pgrep -f testserver`
 
-	$(ENV_BIN)python manage.py testserver \
+	$(VENV_BIN)python manage.py testserver \
 		--noinput \
 		reporting/migrations/data/species.json \
 		reporting/migrations/data/groups.json \
@@ -45,13 +45,13 @@ test-rest:
 	# wait for the server to start
 	until nc -zv 127.0.0.1 8001 &>/dev/null; do sleep 1; done
 	
-	cd reporting/tests && $(ENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint'
+	cd reporting/tests && $(VENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint'
 
 	- kill `pgrep -f testserver`
 
 test: setup test-unit test-rest
 
 migrate:
-	$(ENV_BIN)python manage.py migrate
-	$(ENV_BIN)python manage.py loaddata reporting/migrations/data/groups.json
-	$(ENV_BIN)python manage.py loaddata reporting/migrations/data/species.json
+	$(VENV_BIN)python manage.py migrate
+	$(VENV_BIN)python manage.py loaddata reporting/migrations/data/groups.json
+	$(VENV_BIN)python manage.py loaddata reporting/migrations/data/species.json
