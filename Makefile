@@ -28,6 +28,7 @@ upgrade-libs:
 
 test-setup: setup
 	$(VENV_BIN)pip install -r requirements_tests.txt
+	# junit-enabled fork of pyresttest from here: https://github.com/netjunki/pyresttest
 	$(VENV_BIN)pip install  --no-index -f file://`pwd` pyresttest
 
 test-unit:
