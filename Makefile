@@ -36,14 +36,14 @@ test-unit:
 test-rest:
 	- kill -9 `pgrep -f testserver`
 
+	# TODO server log - simple redirect to a file doesn't work for some reason
 	$(VENV_BIN)python manage.py testserver \
 		--noinput \
 		reporting/migrations/data/species.json \
 		reporting/migrations/data/groups.json \
 		reporting/tests/data/organisations.json \
 		reporting/tests/data/users.json \
-		--addrport 8001 \
-		> /tmp/test-rest.log &
+		--addrport 8001 &
 
 	# wait for the server to start
 	until nc -zv 127.0.0.1 8001 2>/dev/null; do sleep 1; done
