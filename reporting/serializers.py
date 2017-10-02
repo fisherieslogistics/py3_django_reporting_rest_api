@@ -222,7 +222,7 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
 
     @detail_route(methods=['get'])
     def expanded(self, request, pk=None):
-        FishingEvent = FishingEvent.objects.get(pk=pk)
+        #fishingEvent = FishingEvent.objects.get(pk=pk)
         serializer = FishingEventExpandSerializer(data=request.data)
         serializer.is_valid()
         return Response(serializer.data)
@@ -276,11 +276,16 @@ tripFields = (
 
 class TripSerializer(serializers.ModelSerializer):
 
-    fishingEvents = serializers.PrimaryKeyRelatedField(many=True, queryset=FishingEvent.objects.all())
+    fishingEvents = serializers.PrimaryKeyRelatedField(
+        many=True, queryset=FishingEvent.objects.all())
+    vesselName = serializers.CharField(
+        source='vessel.name', read_only=True)
+    unloadPortName = serializers.CharField(
+        source='unloadPort.name', read_only=True)
 
     class Meta:
         model = Trip
-        fields = tripFields + ("fishingEvents",)
+        fields = tripFields + ("fishingEvents", "vesselName", "unloadPortName")
 
 
 class TripExpandSerializer(serializers.ModelSerializer):
