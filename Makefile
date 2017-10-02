@@ -28,13 +28,21 @@ upgrade-libs:
 
 test-setup: setup
 	$(VENV_BIN)pip install -r requirements_tests.txt
+	pip install  --no-index -f file://`pwd` pyresttest
 
 test-unit:
 	- kill -9 `pgrep -f testserver`  # release potential db lock
-	$(VENV_BIN)python manage.py test --noinput
+	rm -rf test-results/nose
+	mkdir -p test-results/nose
+
+	$(VENV_BIN)python manage.py test --noinput --with-xunit
+
+	mv nosetests.xml test-results/nose/
 
 test-rest:
 	- kill -9 `pgrep -f testserver`
+	rm -rf test-results/rest
+	mkdir -p test-results/rest
 
 	# TODO server log - simple redirect to a file doesn't work for some reason
 	$(VENV_BIN)python manage.py testserver \
@@ -48,8 +56,8 @@ test-rest:
 	# wait for the server to start
 	until nc -zv 127.0.0.1 8001 2>/dev/null; do sleep 1; done
 	
-	cd reporting/tests && $(VENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint'
-
+	- cd reporting/tests && $(VENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint' --junit
+	- mv reporting/tests/test-default.xml test-results/rest/
 	- kill `pgrep -f testserver`
 
 test: test-setup test-unit test-rest
