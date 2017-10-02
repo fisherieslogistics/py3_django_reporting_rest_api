@@ -28,7 +28,7 @@ upgrade-libs:
 
 test-setup: setup
 	$(VENV_BIN)pip install -r requirements_tests.txt
-	pip install  --no-index -f file://`pwd` pyresttest
+	$(VENV_BIN)pip install  --no-index -f file://`pwd` pyresttest
 
 test-unit:
 	- kill -9 `pgrep -f testserver`  # release potential db lock
