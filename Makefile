@@ -43,10 +43,10 @@ test-rest:
 		reporting/tests/data/organisations.json \
 		reporting/tests/data/users.json \
 		--addrport 8001 \
-		&> /tmp/test-rest.log &
+		> /tmp/test-rest.log &
 
 	# wait for the server to start
-	until nc -zv 127.0.0.1 8001 &>/dev/null; do sleep 1; done
+	until nc -zv 127.0.0.1 8001 2>/dev/null; do sleep 1; done
 	
 	cd reporting/tests && $(VENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint'
 
