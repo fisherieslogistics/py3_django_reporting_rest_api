@@ -105,10 +105,7 @@ class TestDocumentImporter(CatchHubTestCase):
                  "tags": ["1234"],
                  "isVesselUsed": True,
                  "archived": False,  # TODO add default to the model
-                 "completed": timezone.now().isoformat(),  # TODO fix the model
                  "completedDateTime": timezone.now().isoformat(),
-                 "eventHeader": {},  # what is this for?
-                 "eventVersion": timezone.now().isoformat(),  # what is this for?
                  "trip_id": str(trip.id)}
 
         pd = PendingDocument(user=self.user, doc=dict(event))

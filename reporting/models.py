@@ -4,6 +4,7 @@ from django.contrib.postgres.fields import JSONField
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
+from django.contrib.postgres.fields.array import ArrayField
 
 
 class ExtraInfoMixIn(models.Model):
@@ -127,21 +128,31 @@ class NonFishingEvent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     seabirdCaptureCode = models.CharField(max_length=3)
     nonFishProtectedSpecies = models.ForeignKey("Species", on_delete=CASCADE)
-    estimatedWeightKg = models.DecimalField(decimal_places=4, max_digits=12)
+    estimatedWeightKg = models.IntegerField(null=True)
     numberUninjured = models.IntegerField(null=True)
     numberInjured = models.IntegerField(null=True)
     numberDead = models.IntegerField(null=True)
-    tags = JSONField()
-    eventHeader = JSONField()
+    tags = ArrayField(models.CharField(max_length=1024))
     fishingEvent = models.ForeignKey("FishingEvent", null=True, on_delete=CASCADE)
     trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE)
     isVesselUsed = models.BooleanField()
-    completed = models.DateTimeField()
-    eventVersion = models.DateTimeField()
     notes = models.TextField()
     completedDateTime = models.DateTimeField()
-    amendmentReason = models.TextField()
     archived = models.BooleanField()
+
+
+class LandingEvent(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE)
+    species = models.ForeignKey("Species", on_delete=CASCADE, null=False)
+    landedState = models.CharField(max_length=3, null=False)
+    containers = models.IntegerField(null=True)
+    containerType = models.CharField(max_length=3, null=True)
+    contentWeight = models.IntegerField(null=True)
+    destinationType = models.CharField(max_length=1, null=False)
+    destinationNumber = models.CharField(max_length=32, null=True)
+    greenWeight = models.IntegerField(null=False)
+    invoiceNumber = models.CharField(max_length=32, null=True)
 
 
 class Vessel(ReplicationReadyModel):
