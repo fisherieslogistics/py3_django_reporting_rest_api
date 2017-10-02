@@ -222,6 +222,7 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
 
     @detail_route(methods=['get'])
     def expanded(self, request, pk=None):
+        FishingEvent = FishingEvent.objects.get(pk=pk)
         serializer = FishingEventExpandSerializer(data=request.data)
         serializer.is_valid()
         return Response(serializer.data)
@@ -284,7 +285,7 @@ class TripSerializer(serializers.ModelSerializer):
 
 class TripExpandSerializer(serializers.ModelSerializer):
 
-    fishingEvents = FishingEventViewSet(many=True, queryset=FishingEvent.objects.all())
+    fishingEvents = FishingEventExpandSerializer(many=True)
 
     class Meta:
         model = Trip
@@ -306,7 +307,8 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
 
     @detail_route(methods=['get'])
     def expanded(self, request, pk=None):
-        serializer = TripExpandSerializer(data=request.data)
+        trip = Trip.objects.get(pk=pk)
+        serializer = TripExpandSerializer(trip)
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
