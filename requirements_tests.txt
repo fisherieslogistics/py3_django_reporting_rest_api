@@ -1,2 +1,4 @@
 future
+pyyaml
+pycurl
 django-nose
