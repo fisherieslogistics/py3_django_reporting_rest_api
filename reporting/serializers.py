@@ -5,6 +5,7 @@ from fishserve.models import FishServeEvents
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.response import Response
 import datetime
+import logging
 
 
 
@@ -237,13 +238,16 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
         serializer.instance.id = request.data['id']
         serializer.save()
         fse = FishServeEvents()
+
         fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
         fse.json = request.data['json']
         fse.headers = request.data['headers']
         fse.creator = self.request.user
         fse.save()
+
         for data in fishData:
             FishCatch.objects.create(fishingEvent=serializer.instance, **data)
+
         return Response(serializer.data)
 
 

@@ -21,7 +21,7 @@
     method: POST
     headers: {"Content-Type": "application/json"}
     url: "/api-token-auth/"
-    body: '{"username": "resttester", "password": "testrester"}'
+    body: '{"username": "skip", "password": "cbr400rr"}'
     extract_binds:
         - 'jwt': {'jsonpath_mini': 'token'}
 
@@ -61,16 +61,21 @@
     <<: *post
     body: { template:
       '{
-      "RAId": "de61697f-748f-498b-90a8-8afafa7e3b4f",
-      "personInCharge": "Steeeve",
-      "ETA": "$t2",
-      "startTime": "$t1",
-      "endTime": "$t3",
-      "startLocation": "$home",
-      "endLocation": "$home",
-      "unloadPort": "$port_id",
-      "vessel": "$vessel_id"
-      }'
+  "event_type": "v1/trip",
+  "id": "de61697f-748f-498b-90a8-8afafa7e3b4f",
+  "RAId": "de61697f-748f-498b-90a8-8afafa7e3b4f",
+  "personInCharge": "Steeeve",
+  "ETA": "$t2",
+  "startTime": "2017-10-02T19:24:28-07:00",
+  "endTime": "2017-10-02T19:24:28-07:00",
+  "startLocation": "$home",
+  "endLocation": "$home",
+  "unloadPort": "$port_id",
+  "vessel": "$vessel_id",
+  "headers": "{\"Accept\":\"application/json\",\"Signature\":null,\"Content-Type\":\"application/json\"}",
+  "json": "{\"eventHeader\":{\"isVesselUsed\":true,\"notes\":\"Some notes.\",\"vesselNumber\":\"99\",\"softwareVendor\":\"Fishery Logistics\",\"softwareVersion\":\"1.10.01.0\",\"eventId\":\"cc0f06b0-a7dc-11e7-93d1-5bc5d3d6381b\",\"tripId\":\"c53e5610-a7dc-11e7-93d1-5bc5d3d6381b\",\"completedDateTime\":\"2017-10-03T14:47:21+13:00\"},\"personInCharge\":\"skip\",\"startLocation\":{\"systemDateTime\":\"2017-10-03T14:47:18+13:00\",\"systemLocation\":{\"longitude\":\"-122.0216\",\"latitude\":\"37.3248\"},\"manualDateTime\":null,\"manualLocation\":null}}"
+}
+      '
     }
     url: "/rest-api/trips/"
     extract_binds:
@@ -83,29 +88,42 @@
     generator_binds: { t1: today, t2: today, start: geopoint, end: geopoint, t3: today }
     <<: *post
     body: { template:
-       '{
-        "fishCatches": [{ "weightKgs": 100, "species": "XXX" }],
-        "numberInTrip": 1,
-        "targetSpecies": "COC",
-        "datetimeAtStart": "$t1",
-        "datetimeAtEnd": "$t2",
-        "committed": true,
-        "locationAtStart": "$start",
-        "locationAtEnd": "$end",
-        "lineString": null,
-        "eventSpecificDetails": "{\"fishingMethod\": \"H\", \"numberOfPeople\": 1}",
-        "mitigationDeviceCodes": "[]",
-        "vesselNumber": 123213123,
-        "isVesselUsed": true,
-        "completedDateTime": "$t3",
-        "trip": "$trip_id",
-        "RAId": "80293305-f619-4c38-8b21-09369ae6a4e3"
-       }'
+       '
+        {
+          "event_type": "v1/hand-gathering",
+          "fishCatches": [
+            {
+              "weightKgs": 34,
+              "species": "PAD"
+            },
+            {
+              "weightKgs": 3445,
+              "species": "SNX"
+            }
+          ],
+          "numberInTrip": 1,
+          "targetSpecies": "PAD",
+          "datetimeAtStart": "$t1",
+          "datetimeAtEnd": "$t2",
+          "committed": true,
+          "locationAtStart": "POINT (-122.02685 37.32721667)",
+          "locationAtEnd": "POINT (-122.02685 37.32746667)",
+          "lineString": null,
+          "eventSpecificDetails": "{\"fishingMethod\":\"H\",\"numberOfPeople\":3}",
+          "mitigationDeviceCodes": "[]",
+          "vesselNumber": "99",
+          "isVesselUsed": true,
+          "completedDateTime": "2017-10-03T01:36:02.895Z",
+          "trip": "$trip_id",
+          "RAId": "80293305-f619-4c38-8b21-09369ae6a4e3",
+          "id": "2823ca00-a7db-11e7-93d1-5bc5d3d6381b",
+          "headers": "{\"Accept\":\"application/json\",\"Signature\":null,\"Content-Type\":\"application/json\"}",
+          "json": "{\"eventHeader\":{\"isVesselUsed\":true,\"notes\":\"Some notes.\",\"vesselNumber\":\"99\",\"tripId\":\"0cfbe280-a7db-11e7-93d1-5bc5d3d6381b\",\"softwareVendor\":\"Fishery        Logistics\",\"softwareVersion\":\"1.10.01.0\",\"eventId\":\"378048c0-a7db-11e7-93d1-5bc5d3d6381b\",\"completedDateTime\":\"2017-10-03T14:36:02+13:00\"},\"targetSpeciesCode\":\"PAD\",\"mitigationDevicesUsed\":[],\"fishingMethodCode\":\"H\",\"timeSpentHours\":1,\"completedDateTime\":\"2017-10-03T14:36:02+13:00\",\"numberOfPeople\":3,\"finishLocation\":{\"systemDateTime\":\"2017-10-03T14:35:44+13:00\",\"systemLocation\":{\"longitude\":-122.02685,\"latitude\":37.32746667,\"manualDateTime\":null,\"manualLocation\":null}},\"startLocation\":{\"systemDateTime\":\"2017-10-03T14:35:36+13:00\",\"systemLocation\":{\"longitude\":-122.02685,\"latitude\":37.32721667,\"manualDateTime\":null,\"manualLocation\":null}},\"catches\":[{\"speciesCode\":\"PAD\",\"greenWeightEstimateKg\":34},{\"speciesCode\":\"SNX\",\"greenWeightEstimateKg\":3445}],\"isNonFishOrProtectedSpeciesCatchPresent\":false}"
+       }
+      '
     }
     url: "/rest-api/fishingEvents/"
     extract_binds:
         - 'fishing_event_id': {'jsonpath_mini': 'id'}
     validators:
         - compare: {raw_body: , comparator: 'contains', expected: 'numberOfPeople'}
-
-
