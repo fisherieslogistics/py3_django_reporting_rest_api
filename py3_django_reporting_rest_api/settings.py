@@ -35,6 +35,11 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     },
 }
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
