@@ -215,7 +215,6 @@ class FishingEventExpandSerializer(serializers.ModelSerializer):
 class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
 
     queryset = FishingEvent.objects.all()
-    serializer_class = FishingEventSerializer
 
     @detail_route(methods=['get'])
     def expanded(self, request, pk=None):
