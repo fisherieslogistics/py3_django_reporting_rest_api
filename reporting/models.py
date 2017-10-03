@@ -113,6 +113,19 @@ class Trip(models.Model):
     def __str__(self):
         return "%s %s" % (self.vessel.name, self.startTime)
 
+    @property
+    def totals(self):
+        fishCatchSets = [x.fishCatches.all() for x in self.fishingEvents.all()]
+        fishCatches = [fc for sublist in fishCatchSets for fc in sublist]
+        totals = {}
+        print(fishCatches)
+        for fc in [f for f in fishCatches if f.weightKgs > 0]:
+            if fc.species.code in totals:
+                totals[fc.species.code] += fc.weightKgs
+            else:
+                totals[fc.species.code] = fc.weightKgs
+        
+        return totals.items()
 
 class Port(ReplicationReadyModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

@@ -215,6 +215,16 @@ class FishingEventExpandSerializer(serializers.ModelSerializer):
 class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
 
     queryset = FishingEvent.objects.all()
+<<<<<<< Updated upstream
+=======
+    serializer_class = FishingEventSerializer
+
+    @detail_route(methods=['get'])
+    def expanded(self, request, pk=None):
+        fishingEvent = FishingEvent.objects.get(pk=pk)
+        serializer = FishingEventExpandSerializer(fishingEvent)
+        return Response(serializer.data)
+>>>>>>> Stashed changes
 
     def create(self, request, *args, **kwargs):
         serializer = FishingEventSubmitSerializer(data=request.data)
@@ -259,6 +269,8 @@ tripFields = (
     "endLocation",
     "unloadPort",
     "vessel",
+    "fishingEvents",
+    "totals",
 )
 
 
@@ -273,17 +285,21 @@ class TripSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Trip
-        fields = tripFields + ("fishingEvents", "vesselName", "unloadPortName")
+        fields = tripFields + ("vesselName", "unloadPortName", )
 
 
 class TripExpandSerializer(serializers.ModelSerializer):
 
     fishingEvents = FishingEventExpandSerializer(many=True)
     landingEvents = LandingEventSerializer(many=True)
+    vessel = VesselSerializer(many=False)
+    unloadPort = PortSerializer(many=False)
+    totals = serializers.ReadOnlyField()
+
 
     class Meta:
         model = Trip
-        fields = tripFields + ("fishingEvents", "landingEvents")
+        fields = tripFields + ("landingEvents", )
 
 
 class TripSubmitSerializer(serializers.ModelSerializer):
