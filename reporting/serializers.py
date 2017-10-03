@@ -215,8 +215,6 @@ class FishingEventExpandSerializer(serializers.ModelSerializer):
 class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
 
     queryset = FishingEvent.objects.all()
-<<<<<<< Updated upstream
-=======
     serializer_class = FishingEventSerializer
 
     @detail_route(methods=['get'])
@@ -224,7 +222,6 @@ class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
         fishingEvent = FishingEvent.objects.get(pk=pk)
         serializer = FishingEventExpandSerializer(fishingEvent)
         return Response(serializer.data)
->>>>>>> Stashed changes
 
     def create(self, request, *args, **kwargs):
         serializer = FishingEventSubmitSerializer(data=request.data)
