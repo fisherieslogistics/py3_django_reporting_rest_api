@@ -222,8 +222,6 @@ class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
         serializer.validated_data['creator_id'] = self.request.user.id
         fishData = serializer.validated_data.pop('fishCatches')
         serializer.save()
-        serializer.instance.id = request.data['id']
-        serializer.save()
         fse = FishServeEvents()
 
         fse.event_type = request.data['event_type']  # tripStart, trawl, etc.
