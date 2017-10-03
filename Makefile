@@ -57,7 +57,7 @@ test-rest:
 	# wait for the server to start
 	until nc -zv 127.0.0.1 8001 2>/dev/null; do sleep 1; done
 	
-	- cd reporting/tests && $(VENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint' --junit
+	- cd reporting/tests && $(VENV_BIN)resttest.py http://localhost:8001 all.yaml --import_extensions 'dategen;geojsonpoint;uuidgen' --junit
 	- mv reporting/tests/test-default.xml test-results/rest/
 	- kill `pgrep -f testserver`
 

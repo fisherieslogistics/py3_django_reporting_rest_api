@@ -218,10 +218,9 @@ class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
 
     def create(self, request, *args, **kwargs):
         serializer = FishingEventSubmitSerializer(data=request.data)
-        serializer.is_valid()
+        serializer.is_valid(raise_exception=True)
         serializer.validated_data['creator_id'] = self.request.user.id
         fishData = serializer.validated_data.pop('fishCatches')
-        serializer.create(serializer.validated_data)
         serializer.save()
         serializer.instance.id = request.data['id']
         serializer.save()
@@ -315,14 +314,22 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         serializer = LandingEventSerializer(trip.loadingEvents, many=True)
         return Response(serializer.data)
 
+    @detail_route(methods=['post'])
+    def add_landing(self, request, pk=None):
+        trip = self.get_object()
+        serializer = LandingEventSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        #serializer.validated_data['creator_id'] = self.request.user.id
+        serializer.validated_data['trip_id'] = trip.id
+        serializer.save()
+        return Response(serializer.data['id'])
+
     def create(self, request, *args, **kwargs):
         serializer = TripSubmitSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.validated_data['creator_id'] = self.request.user.id
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
-        serializer.create(serializer.validated_data)
-        serializer.save()
-        serializer.instance.id = request.data['id']
+        serializer.validated_data['id'] = request.data['id']
         serializer.save()
         fse = FishServeEvents()
         fse.event_type = request.data['event_type']  # tripStart, trawl, etc.

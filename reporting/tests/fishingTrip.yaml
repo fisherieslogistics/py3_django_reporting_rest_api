@@ -11,6 +11,7 @@
 - config:
     - testset: "Test Fishing Trip"
     - generators:
+      - 'uuid': {type: 'uuidgen'}
       - 'today': {type: 'dategen', hours: 0}
       - 'tomorrow': {type: 'dategen', hours: 24}
       - 'geopoint': {type: 'geojsonpoint', lat: -45.879068, lon: 170.511046}
@@ -57,12 +58,12 @@
 
 - test:
     name: "Create a Trip"
-    generator_binds: { t1: today,t2: tomorrow,t3: tomorrow, home: geopoint}
+    generator_binds: { t1: today, t2: tomorrow, t3: tomorrow, home: geopoint, trip_id: uuid}
     <<: *post
     body: { template:
       '{
           "event_type": "v1/trip",
-          "id": "de61697f-748f-498b-90a8-8afafa7e3b4f",
+          "id": "$trip_id",
           "RAId": "de61697f-748f-498b-90a8-8afafa7e3b4f",
           "personInCharge": "Steeeve",
           "ETA": "$t2",
@@ -85,7 +86,7 @@
 
 - test:
     name: "Create a Fishing Event With Catches"
-    generator_binds: { t1: today, t2: today, start: geopoint, end: geopoint, t3: today }
+    generator_binds: { t1: today, t2: today, start: geopoint, end: geopoint, t3: today, event_id: uuid }
     <<: *post
     body: { template:
        '
@@ -116,7 +117,7 @@
           "completedDateTime": "2017-10-03T01:36:02.895Z",
           "trip": "$trip_id",
           "RAId": "80293305-f619-4c38-8b21-09369ae6a4e3",
-          "id": "2823ca00-a7db-11e7-93d1-5bc5d3d6381b",
+          "id": "$event_id",
           "headers": "{\"Accept\":\"application/json\",\"Signature\":null,\"Content-Type\":\"application/json\"}",
           "json": "{\"eventHeader\":{\"isVesselUsed\":true,\"notes\":\"Some notes.\",\"vesselNumber\":\"99\",\"tripId\":\"0cfbe280-a7db-11e7-93d1-5bc5d3d6381b\",\"softwareVendor\":\"Fishery        Logistics\",\"softwareVersion\":\"1.10.01.0\",\"eventId\":\"378048c0-a7db-11e7-93d1-5bc5d3d6381b\",\"completedDateTime\":\"2017-10-03T14:36:02+13:00\"},\"targetSpeciesCode\":\"PAD\",\"mitigationDevicesUsed\":[],\"fishingMethodCode\":\"H\",\"timeSpentHours\":1,\"completedDateTime\":\"2017-10-03T14:36:02+13:00\",\"numberOfPeople\":3,\"finishLocation\":{\"systemDateTime\":\"2017-10-03T14:35:44+13:00\",\"systemLocation\":{\"longitude\":-122.02685,\"latitude\":37.32746667,\"manualDateTime\":null,\"manualLocation\":null}},\"startLocation\":{\"systemDateTime\":\"2017-10-03T14:35:36+13:00\",\"systemLocation\":{\"longitude\":-122.02685,\"latitude\":37.32721667,\"manualDateTime\":null,\"manualLocation\":null}},\"catches\":[{\"speciesCode\":\"PAD\",\"greenWeightEstimateKg\":34},{\"speciesCode\":\"SNX\",\"greenWeightEstimateKg\":3445}],\"isNonFishOrProtectedSpeciesCatchPresent\":false}"
        }
@@ -127,3 +128,20 @@
         - 'fishing_event_id': {'jsonpath_mini': 'id'}
     validators:
         - compare: {raw_body: , comparator: 'contains', expected: 'numberOfPeople'}
+
+
+- test:
+    name: "Add Landing"
+    <<: *post
+    body: '{
+      "species": "COC",
+      "landedState": "GRE",
+      "containers": 9,
+      "containerType": "BIN",
+      "contentWeight": 750,
+      "destinationType": "A",
+      "destinationNumber": "123456",
+      "greenWeight": 5432,
+      "invoiceNumber": "a123"
+    }'
+    url: {template: "/rest-api/trips/$trip_id/add_landing/"}
