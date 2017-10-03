@@ -61,20 +61,20 @@
     <<: *post
     body: { template:
       '{
-  "event_type": "v1/trip",
-  "id": "de61697f-748f-498b-90a8-8afafa7e3b4f",
-  "RAId": "de61697f-748f-498b-90a8-8afafa7e3b4f",
-  "personInCharge": "Steeeve",
-  "ETA": "$t2",
-  "startTime": "2017-10-02T19:24:28-07:00",
-  "endTime": "2017-10-02T19:24:28-07:00",
-  "startLocation": "$home",
-  "endLocation": "$home",
-  "unloadPort": "$port_id",
-  "vessel": "$vessel_id",
-  "headers": "{\"Accept\":\"application/json\",\"Signature\":null,\"Content-Type\":\"application/json\"}",
-  "json": "{\"eventHeader\":{\"isVesselUsed\":true,\"notes\":\"Some notes.\",\"vesselNumber\":\"99\",\"softwareVendor\":\"Fishery Logistics\",\"softwareVersion\":\"1.10.01.0\",\"eventId\":\"cc0f06b0-a7dc-11e7-93d1-5bc5d3d6381b\",\"tripId\":\"c53e5610-a7dc-11e7-93d1-5bc5d3d6381b\",\"completedDateTime\":\"2017-10-03T14:47:21+13:00\"},\"personInCharge\":\"skip\",\"startLocation\":{\"systemDateTime\":\"2017-10-03T14:47:18+13:00\",\"systemLocation\":{\"longitude\":\"-122.0216\",\"latitude\":\"37.3248\"},\"manualDateTime\":null,\"manualLocation\":null}}"
-}
+          "event_type": "v1/trip",
+          "id": "de61697f-748f-498b-90a8-8afafa7e3b4f",
+          "RAId": "de61697f-748f-498b-90a8-8afafa7e3b4f",
+          "personInCharge": "Steeeve",
+          "ETA": "$t2",
+          "startTime": "2017-10-02T19:24:28-07:00",
+          "endTime": "2017-10-02T19:24:28-07:00",
+          "startLocation": "$home",
+          "endLocation": "$home",
+          "unloadPort": "$port_id",
+          "vessel": "$vessel_id",
+          "headers": "{\"Accept\":\"application/json\",\"Signature\":null,\"Content-Type\":\"application/json\"}",
+          "json": "{\"eventHeader\":{\"isVesselUsed\":true,\"notes\":\"Some notes.\",\"vesselNumber\":\"99\",\"softwareVendor\":\"Fishery Logistics\",\"softwareVersion\":\"1.10.01.0\",\"eventId\":\"cc0f06b0-a7dc-11e7-93d1-5bc5d3d6381b\",\"tripId\":\"c53e5610-a7dc-11e7-93d1-5bc5d3d6381b\",\"completedDateTime\":\"2017-10-03T14:47:21+13:00\"},\"personInCharge\":\"skip\",\"startLocation\":{\"systemDateTime\":\"2017-10-03T14:47:18+13:00\",\"systemLocation\":{\"longitude\":\"-122.0216\",\"latitude\":\"37.3248\"},\"manualDateTime\":null,\"manualLocation\":null}}"
+        }
       '
     }
     url: "/rest-api/trips/"

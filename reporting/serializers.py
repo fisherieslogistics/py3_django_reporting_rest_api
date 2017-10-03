@@ -1,12 +1,14 @@
 from rest_framework import serializers, viewsets, filters
 from reporting.models import Trip, FishingEvent, Species, FishCatch, NonFishingEvent,\
-    Port, ProcessedState, Vessel, Organisation, User
+    Port, ProcessedState, Vessel, Organisation, User, LandingEvent
 from fishserve.models import FishServeEvents
-from rest_framework.decorators import detail_route, list_route
+from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 import datetime
 import logging
-
+from rest_framework.mixins import RetrieveModelMixin, ListModelMixin,\
+    CreateModelMixin
+from rest_framework.viewsets import GenericViewSet
 
 
 class MyOrganisationFilter(filters.BaseFilterBackend):
@@ -15,7 +17,7 @@ class MyOrganisationFilter(filters.BaseFilterBackend):
         if user.organisation:
             return queryset.filter(organisation=user.organisation)
         else:
-            return queryset # for staff/superuser
+            return queryset  # for staff/superuser
 
 
 class MyOrganisationMixIn():
@@ -65,7 +67,7 @@ class SpeciesSerializer(serializers.ModelSerializer):
         )
 
 
-class SpeciesViewSet(viewsets.ModelViewSet):
+class SpeciesViewSet(RetrieveModelMixin, ListModelMixin, GenericViewSet):
     queryset = Species.objects.all()
     serializer_class = SpeciesSerializer
 
@@ -80,6 +82,7 @@ class PortSerializer(serializers.ModelSerializer):
             "location",
         )
     # TODO owner = serializers.ReadOnlyField(source='owner.username')
+
 
 class PortViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = Port.objects.all()
@@ -152,7 +155,6 @@ class ProcessedStateViewSet(viewsets.ModelViewSet):
     serializer_class = ProcessedStateSerializer
 
 
-# Serializers define the API representation.
 class FishCatchSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -160,10 +162,12 @@ class FishCatchSerializer(serializers.ModelSerializer):
         fields = ("species", "weightKgs")
 
 
-# ViewSets define the view behavior.
-class FishCatchViewSet(viewsets.ModelViewSet):
-    queryset = FishCatch.objects.all()
-    serializer_class = FishCatchSerializer
+class LandingEventSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = LandingEvent
+        fields = ("id", "trip_id", "species", "landedState", "containers", "containerType", "contentWeight",
+                  "destinationType", "destinationNumber", "greenWeight", "invoiceNumber")
 
 
 fishingEventFields = (
@@ -189,14 +193,6 @@ fishingEventFields = (
 )
 
 
-class FishingEventSerializer(serializers.ModelSerializer):
-
-    fishCatches = serializers.PrimaryKeyRelatedField(many=True, queryset=FishCatch.objects.all())
-
-    class Meta:
-        model = FishingEvent
-        fields = fishingEventFields
-
 class FishingEventSubmitSerializer(serializers.ModelSerializer):
 
     trip = serializers.PrimaryKeyRelatedField(many=False, queryset=Trip.objects.all())
@@ -216,17 +212,9 @@ class FishingEventExpandSerializer(serializers.ModelSerializer):
         fields = fishingEventFields
 
 
-class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
+class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
 
     queryset = FishingEvent.objects.all()
-    serializer_class = FishingEventSerializer
-
-    @detail_route(methods=['get'])
-    def expanded(self, request, pk=None):
-        #fishingEvent = FishingEvent.objects.get(pk=pk)
-        serializer = FishingEventExpandSerializer(data=request.data)
-        serializer.is_valid()
-        return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         serializer = FishingEventSubmitSerializer(data=request.data)
@@ -249,7 +237,6 @@ class FishingEventViewSet(MyUserMixIn, viewsets.ModelViewSet):
             FishCatch.objects.create(fishingEvent=serializer.instance, **data)
 
         return Response(serializer.data)
-
 
 
 class OrganisationSerializer(serializers.ModelSerializer):
@@ -295,10 +282,12 @@ class TripSerializer(serializers.ModelSerializer):
 class TripExpandSerializer(serializers.ModelSerializer):
 
     fishingEvents = FishingEventExpandSerializer(many=True)
+    loadingEvents = LandingEventSerializer(many=True)
 
     class Meta:
         model = Trip
-        fields = tripFields + ("fishingEvents",)
+        fields = tripFields + ("fishingEvents", "loadingEvents")
+
 
 class TripSubmitSerializer(serializers.ModelSerializer):
     unloadPort = serializers.PrimaryKeyRelatedField(many=False, queryset=Port.objects.all())
@@ -316,13 +305,19 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
 
     @detail_route(methods=['get'])
     def expanded(self, request, pk=None):
-        trip = Trip.objects.get(pk=pk)
+        trip = self.get_object()
         serializer = TripExpandSerializer(trip)
+        return Response(serializer.data)
+
+    @detail_route(methods=['get'])
+    def landings(self, request, pk=None):
+        trip = self.get_object()
+        serializer = LandingEventSerializer(trip.loadingEvents, many=True)
         return Response(serializer.data)
 
     def create(self, request, *args, **kwargs):
         serializer = TripSubmitSerializer(data=request.data)
-        serializer.is_valid()# TODO should this be conditional?
+        serializer.is_valid(raise_exception=True)
         serializer.validated_data['creator_id'] = self.request.user.id
         serializer.validated_data['organisation_id'] = self.request.user.organisation.id
         serializer.create(serializer.validated_data)
@@ -338,7 +333,7 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def partial_update(self, request, *args, **kwargs):
-        trip = Trip.objects.get(pk=request.data['id'])
+        trip = self.get_object()
         trip.endTime = datetime.datetime.now()
         trip.save()
         fse = FishServeEvents()

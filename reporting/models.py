@@ -143,7 +143,7 @@ class NonFishingEvent(models.Model):
 
 class LandingEvent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE)
+    trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE, related_name="loadingEvents")
     species = models.ForeignKey("Species", on_delete=CASCADE, null=False)
     landedState = models.CharField(max_length=3, null=False)
     containers = models.IntegerField(null=True)

@@ -17,20 +17,18 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
-from reporting.serializers import TripViewSet, SpeciesViewSet, PortViewSet, NonFishEventViewSet,\
-    VesselViewSet, ProcessedStateViewSet, FishCatchViewSet, FishingEventViewSet,\
-    OrganisationViewSet, UserViewSet
+from reporting.serializers import TripViewSet, SpeciesViewSet, PortViewSet,\
+    VesselViewSet, ProcessedStateViewSet, FishingEventViewSet, UserViewSet,\
+    OrganisationViewSet
 
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r"fishCatches", FishCatchViewSet)
 router.register(r"fishingEvents", FishingEventViewSet)
 router.register(r"trips", TripViewSet)
 router.register(r"users", UserViewSet)
 router.register(r"ports", PortViewSet)
 router.register(r"vessels", VesselViewSet)
 router.register(r"species", SpeciesViewSet)
-router.register(r"nonfishprotecteds", NonFishEventViewSet)
 router.register(r"processedStates", ProcessedStateViewSet)
 router.register(r"species", SpeciesViewSet)
 router.register(r"organisations", OrganisationViewSet)
