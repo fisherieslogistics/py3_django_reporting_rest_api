@@ -145,3 +145,20 @@
       "invoiceNumber": "a123"
     }'
     url: {template: "/rest-api/trips/$trip_id/add_landing/"}
+
+- test:
+    name: "List trips"
+    <<: *get
+    url: {template: "/rest-api/trips/"}
+    validators:
+        - compare: {raw_body: , comparator: 'contains', expected: {template: $trip_id}}
+
+- test:
+    name: "Get trip details"
+    <<: *get
+    url: {template: "/rest-api/trips/$trip_id/expanded/"}
+    validators:
+        - compare: {raw_body: , comparator: 'contains', expected: {template: $trip_id}}
+        - compare: {jsonpath_mini: "landingEvents", comparator: 'count_eq', expected: 1}
+        - compare: {jsonpath_mini: "fishingEvents", comparator: 'count_eq', expected: 1}
+        

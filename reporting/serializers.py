@@ -279,11 +279,11 @@ class TripSerializer(serializers.ModelSerializer):
 class TripExpandSerializer(serializers.ModelSerializer):
 
     fishingEvents = FishingEventExpandSerializer(many=True)
-    loadingEvents = LandingEventSerializer(many=True)
+    landingEvents = LandingEventSerializer(many=True)
 
     class Meta:
         model = Trip
-        fields = tripFields + ("fishingEvents", "loadingEvents")
+        fields = tripFields + ("fishingEvents", "landingEvents")
 
 
 class TripSubmitSerializer(serializers.ModelSerializer):
@@ -309,7 +309,7 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
     @detail_route(methods=['get'])
     def landings(self, request, pk=None):
         trip = self.get_object()
-        serializer = LandingEventSerializer(trip.loadingEvents, many=True)
+        serializer = LandingEventSerializer(trip.landingEvents, many=True)
         return Response(serializer.data)
 
     @detail_route(methods=['post'])
