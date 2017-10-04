@@ -264,8 +264,8 @@ tripFields = (
 
 class TripSerializer(serializers.ModelSerializer):
 
-    fishingEvents = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=FishingEvent.objects.all())
+    # TODO remove these - this makes the LIST action slooooooooooow!
+    # it has to be some kind of view/custom sql to do it efficiently
     vesselName = serializers.CharField(
         source='vessel.name', read_only=True)
     unloadPortName = serializers.CharField(
@@ -273,7 +273,7 @@ class TripSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Trip
-        fields = tripFields + ("vesselName", "unloadPortName", "fishingEvents")
+        fields = tripFields + ("vesselName", "unloadPortName")
 
 
 class TripExpandSerializer(serializers.ModelSerializer):
