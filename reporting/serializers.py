@@ -266,7 +266,6 @@ tripFields = (
     "unloadPort",
     "vessel",
     "fishingEvents",
-    "totals",
 )
 
 
@@ -281,7 +280,7 @@ class TripSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Trip
-        fields = tripFields + ("vesselName", "unloadPortName", )
+        fields = tripFields + ("vesselName", "unloadPortName", "fishingEvents")
 
 
 class TripExpandSerializer(serializers.ModelSerializer):
@@ -295,7 +294,7 @@ class TripExpandSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Trip
-        fields = tripFields + ("landingEvents", )
+        fields = tripFields + ("landingEvents", "fishingEvents", "totals", )
 
 
 class TripSubmitSerializer(serializers.ModelSerializer):
