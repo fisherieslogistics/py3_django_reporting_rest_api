@@ -265,7 +265,6 @@ tripFields = (
     "endLocation",
     "unloadPort",
     "vessel",
-    "fishingEvents",
 )
 
 
