@@ -166,7 +166,7 @@ class LandingEventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LandingEvent
-        fields = ("id", "trip_id", "species", "landedState", "containers", "containerType", "contentWeight",
+        fields = ("id",  "trip_id", "species", "landedState", "containers", "containerType", "contentWeight",
                   "destinationType", "destinationNumber", "greenWeight", "invoiceNumber")
 
 
