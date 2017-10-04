@@ -216,12 +216,6 @@ class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
 
     queryset = FishingEvent.objects.all()
 
-    @detail_route(methods=['get'])
-    def expanded(self, request, pk=None):
-        fishingEvent = FishingEvent.objects.get(pk=pk)
-        serializer = FishingEventExpandSerializer(fishingEvent)
-        return Response(serializer.data)
-
     def create(self, request, *args, **kwargs):
         serializer = FishingEventSubmitSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
