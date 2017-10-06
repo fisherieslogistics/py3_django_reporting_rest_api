@@ -23,7 +23,7 @@ source ~/fllenv/bin/activate
 
 How to run things:
 * postgres:
-  * docker run -p 5432:5432 --mount source=fllpostgres_data,target=/var/lib/postgresql/data/pgdata -d fisherylogistics/fllpostgres:latest
+  * docker run -p 5432:5432 --mount source=fllpostgres_data,target=/var/lib/postgresql/data/pgdata -d --name postgres --restart always fisherylogistics/fllpostgres:latest
 * couchdb:
   * docker run --rm -p 5984:5984 -v couchdb_data:/opt/couchdb/data -v couchdb_ini:/opt/couchdb/etc/local.d -d --network fllnet --name couchdb apache/couchdb:2.1
 * couchpost (couchdb <-> postgres replication service)
