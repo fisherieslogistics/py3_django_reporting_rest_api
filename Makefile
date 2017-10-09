@@ -1,5 +1,7 @@
 VENV=~/fllenv
 VENV_BIN=$(VENV)/bin/
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+
 setup:
 	python3 -m venv $(VENV)
 	$(VENV_BIN)pip install -r requirements_frozen.txt
@@ -7,9 +9,9 @@ setup:
 build-docker: setup
 	rm -rf build
 	$(VENV_BIN)python manage.py collectstatic
-	sudo docker build -t fisherylogistics/rest-api:latest .
+	sudo docker build -t fisherylogistics/rest-api:${BRANCH} .
 	rm -rf build
-	sudo docker push fisherylogistics/rest-api:latest
+	sudo docker push fisherylogistics/rest-api:${BRANCH}
 
 build-docker-fishserve:
 	docker build -f Dockerfile.fishserve -t fisherylogistics/fishserve-sender:latest .
