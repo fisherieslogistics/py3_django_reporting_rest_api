@@ -7,9 +7,9 @@ setup:
 build-docker: setup
 	rm -rf build
 	$(VENV_BIN)python manage.py collectstatic
-	docker build -t fisherylogistics/rest-api:latest .
+	sudo docker build -t fisherylogistics/rest-api:latest .
 	rm -rf build
-	docker push fisherylogistics/rest-api:latest
+	sudo docker push fisherylogistics/rest-api:latest
 
 build-docker-fishserve:
 	docker build -f Dockerfile.fishserve -t fisherylogistics/fishserve-sender:latest .
