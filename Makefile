@@ -1,6 +1,7 @@
 VENV=~/fllenv
 VENV_BIN=$(VENV)/bin/
 BRANCH=`git rev-parse --abbrev-ref HEAD`
+SUDO=
 
 setup:
 	python3 -m venv $(VENV)
@@ -9,17 +10,17 @@ setup:
 build-docker: setup
 	rm -rf build
 	$(VENV_BIN)python manage.py collectstatic
-	sudo docker build -t fisherylogistics/rest-api:${BRANCH} .
+	$(SUDO) docker build -t fisherylogistics/rest-api:$(BRANCH) .
 	rm -rf build
-	sudo docker push fisherylogistics/rest-api:${BRANCH}
+	$(SUDO) docker push fisherylogistics/rest-api:$(BRANCH)
 
 build-docker-fishserve:
-	docker build -f Dockerfile.fishserve -t fisherylogistics/fishserve-sender:latest .
-	docker push fisherylogistics/fishserve-sender
+	$(SUDO) docker build -f Dockerfile.fishserve -t fisherylogistics/fishserve-sender:$(BRANCH) .
+	$(SUDO) docker push fisherylogistics/fishserve-sender:$(BRANCH)
 
 build-docker-couchpost:
-	docker build -f Dockerfile.couchpost -t fisherylogistics/couchpost:latest .
-	docker push fisherylogistics/couchpost:latest
+	$(SUDO) docker build -f Dockerfile.couchpost -t fisherylogistics/couchpost:$(BRANCH) .
+	$(SUDO) docker push fisherylogistics/couchpost:$(BRANCH)
 
 upgrade-libs:
 	rm -rf .fllenv_upgrade
