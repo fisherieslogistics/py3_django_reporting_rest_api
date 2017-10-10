@@ -209,7 +209,7 @@ class FishingEventExpandSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FishingEvent
-        fields = fishingEventFields
+        fields = fishingEventFields + ('locationAtStartGeoJSON', 'locationAtEndGeoJSON', )
 
 
 class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):

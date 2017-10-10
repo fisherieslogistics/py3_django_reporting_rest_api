@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
 from django.contrib.postgres.fields.array import ArrayField
+from django.core.serializers import serialize
 
 
 class ExtraInfoMixIn(models.Model):
@@ -70,6 +71,18 @@ class FishingEvent(models.Model):
 
     def __str__(self):
         return "%s %s" % (self.trip.vessel.name, self.datetimeAtStart)
+
+    @property
+    def locationAtStartGeoJSON(self):
+        return serialize('geojson', [self],
+          geometry_field='locationAtStart',
+          fields=('datetimeAtStart',))
+    
+    @property
+    def locationAtEndGeoJSON(self):
+        return serialize('geojson', [self],
+          geometry_field='locationAtEnd',
+          fields=('datetimeAtEnd',))
 
 
 class Species(ReplicationReadyModel):
