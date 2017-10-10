@@ -301,7 +301,7 @@ class TripSubmitSerializer(serializers.ModelSerializer):
 
 class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
 
-    queryset = Trip.objects.all()
+    queryset = Trip.objects.all().filter(active=True).order_by('-endTime', '-startTime')
     serializer_class = TripSerializer
 
     @detail_route(methods=['get'])

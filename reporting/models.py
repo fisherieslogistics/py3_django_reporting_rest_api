@@ -109,6 +109,7 @@ class Trip(models.Model):
     endLocation = models.PointField(geography=True, null=True)
     unloadPort = models.ForeignKey("Port", on_delete=CASCADE)
     vessel = models.ForeignKey("Vessel", on_delete=CASCADE, related_name="trips")
+    active = models.BooleanField(null=False, default=True)
 
     def __str__(self):
         return "%s %s" % (self.vessel.name, self.startTime)
