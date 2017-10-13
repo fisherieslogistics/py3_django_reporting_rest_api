@@ -215,6 +215,7 @@ class FishingEventExpandSerializer(serializers.ModelSerializer):
 class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
 
     queryset = FishingEvent.objects.all()
+    serializer_class = FishingEventExpandSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = FishingEventSubmitSerializer(data=request.data)
@@ -341,7 +342,7 @@ class TripViewSet(MyUserMixIn, MyOrganisationMixIn, viewsets.ModelViewSet):
         fse.save()
         return Response(serializer.data)
 
-    def partial_update(self, request, *args, **kwargs):
+    def partial_update(self, request, pk=None):
         trip = self.get_object()
         trip.endTime = datetime.datetime.now()
         trip.save()
