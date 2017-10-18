@@ -220,6 +220,7 @@ class FishingEventViewSet(MyUserMixIn, CreateModelMixin, GenericViewSet):
         serializer = FishingEventSubmitSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.validated_data['creator_id'] = self.request.user.id
+        serializer.validated_data['id'] = request.data['id']
         fishData = serializer.validated_data.pop('fishCatches')
         serializer.save()
         fse = FishServeEvents()
