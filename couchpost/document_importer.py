@@ -6,6 +6,9 @@ from reporting.models import Trip, FishingEvent, NonFishingEvent, FishCatch,\
     VesselLocation, Vessel
 from django.db import transaction
 from django.utils import timezone
+from reporting.serializers import TripSerializer, FishingEventExpandSerializer,\
+    FishCatchSerializer, NonFishEventSerializer
+from fishserve.serializers import FishServeEventSerializer
 
 
 class Status(Enum):
@@ -24,14 +27,14 @@ class DocumentFactory():
         organisation_id = pd.doc['organisation_id']
         if organisation_id != str(pd.user.organisation_id):
             raise ValidationError("Organisation ID's don't match: %s != %s" % (organisation_id, pd.user.organisation_id))
-        return Trip(creator=pd.user, **pd.doc)
+        return TripSerializer().create({**{"creator": pd.user}, **pd.doc})
 
     @classmethod
     def fishingEvent(cls, pd):
         trip = Trip.objects.get(pk=pd.doc['trip_id'])
         if trip.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (trip.organisation_id, pd.user.organisation_id))
-        return FishingEvent(creator=pd.user, **pd.doc)
+        return FishingEventExpandSerializer().create({**{'creator': pd.user}, **pd.doc})
 
     @classmethod
     def fishCatch(cls, pd):
@@ -39,25 +42,25 @@ class DocumentFactory():
         trip = event.trip
         if trip.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (trip.organisation_id, pd.user.organisation_id))
-        return FishCatch(**pd.doc)
+        return FishCatchSerializer().create(pd.doc)
 
     @classmethod
     def nonFishingEvent(cls, pd):
         trip = Trip.objects.get(pk=pd.doc['trip_id'])
         if trip.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (trip.organisation_id, pd.user.organisation_id))
-        return NonFishingEvent(**pd.doc)
+        return NonFishEventSerializer().create(pd.doc)
 
     @classmethod
     def vesselLocation(cls, pd):
         vessel = Vessel.objects.get(pk=pd.doc['vessel_id'])
         if vessel.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (vessel.organisation_id, pd.user.organisation_id))
-        return VesselLocation(**pd.doc)
+        return VesselLocation(**pd.doc)  # TODO implement serializer
 
     @classmethod
     def fishserveEvent(cls, pd):
-        return FishServeEvents(creator=pd.user, **pd.doc)
+        return FishServeEventSerializer().create({**{'creator': pd.user}, **pd.doc})
 
 
 class CouchDBDocumentImporter():

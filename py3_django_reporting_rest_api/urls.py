@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
-from reporting.serializers import TripViewSet, SpeciesViewSet, PortViewSet,\
+from reporting.views import TripViewSet, SpeciesViewSet, PortViewSet,\
     VesselViewSet, ProcessedStateViewSet, FishingEventViewSet, UserViewSet,\
     OrganisationViewSet
 
