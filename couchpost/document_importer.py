@@ -28,7 +28,7 @@ class DocumentFactory():
     def _cleanInstance(cls, model_cls, data):
         # TODO this is a bit retarded and there must be a better way to do this...
         fields = set([v.name for v in model_cls._meta.get_fields(True, True)] + [v.attname if hasattr(v, 'attname') else v.name for v in model_cls._meta.get_fields(True, True)])
-        for k in [kk for kk in data.keys() if kk not in fields]:
+        for k in set(data.keys()).difference(fields):
             del data[k]
 
         return model_cls(**data)
