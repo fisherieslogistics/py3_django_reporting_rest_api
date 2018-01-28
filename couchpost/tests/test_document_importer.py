@@ -13,6 +13,7 @@ class TestDocumentImporter(CatchHubTestCase):
     def test_fishserve(self):
         d = PendingDocument(user=self.user,
                             doc={"document_type": "fishserveEvent",
+                                 "_id": "whatevs should be ignored",
                                  "event_type": "tripStart",
                                  "json": "{fishserve: 'sucks'}",
                                  "headers": {"fish": "head"}})
@@ -85,6 +86,7 @@ class TestDocumentImporter(CatchHubTestCase):
         event = FishingEvent.objects.create(creator=self.user, **self._get_fishevent(trip))
 
         catch = {"document_type": "fishCatch",
+                 "_id": "whatevs should be ignored",
                  "fishingEvent_id": event.id,
                  "weightKgs": 50,
                  "species_id": "XXX"}
@@ -99,6 +101,7 @@ class TestDocumentImporter(CatchHubTestCase):
     def test_nonfishingevent(self):
         trip = Trip.objects.create(creator=self.user, **self._get_trip())
         event = {"document_type": "nonFishingEvent",
+                 "_id": "whatevs should be ignored",
                  "id": str(uuid.uuid4()),
                  "nonFishProtectedSpecies_id": "XXX",
                  "estimatedWeightKg": 20,
@@ -116,6 +119,7 @@ class TestDocumentImporter(CatchHubTestCase):
 
     def test_vessellocation(self):
         loc = {"document_type": "vesselLocation",
+               "_id": "whatevs should be ignored",
                "vessel_id": str(self.vessel.id),
                "timestamp": timezone.now().isoformat(),
                "location": "POINT(40 40)"}

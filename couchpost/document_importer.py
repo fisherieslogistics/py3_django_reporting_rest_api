@@ -22,19 +22,32 @@ class ValidationError(RuntimeError):
 
 
 class DocumentFactory():
+
+    """ returns instance with given fields, but removes extraneous fields - Dnajgo would fail otherwise """
+    @classmethod
+    def _cleanInstance(cls, model_cls, data):
+        # TODO this is a bit retarded and there must be a better way to do this...
+        fields = set([v.name for v in model_cls._meta.get_fields(True, True)] + [v.attname if hasattr(v, 'attname') else v.name for v in model_cls._meta.get_fields(True, True)])
+        for k in [kk for kk in data.keys() if kk not in fields]:
+            del data[k]
+
+        return model_cls(**data)
+
     @classmethod
     def trip(cls, pd):
+        # TODO implement update
         organisation_id = pd.doc['organisation_id']
         if organisation_id != str(pd.user.organisation_id):
             raise ValidationError("Organisation ID's don't match: %s != %s" % (organisation_id, pd.user.organisation_id))
-        return TripSerializer().create({**{"creator": pd.user}, **pd.doc})
+        return cls._cleanInstance(Trip, {**{'creator': pd.user}, **pd.doc})
 
     @classmethod
     def fishingEvent(cls, pd):
+        # TODO implement update
         trip = Trip.objects.get(pk=pd.doc['trip_id'])
         if trip.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (trip.organisation_id, pd.user.organisation_id))
-        return FishingEventExpandSerializer().create({**{'creator': pd.user}, **pd.doc})
+        return cls._cleanInstance(FishingEvent, {**{'creator': pd.user}, **pd.doc})
 
     @classmethod
     def fishCatch(cls, pd):
@@ -42,25 +55,25 @@ class DocumentFactory():
         trip = event.trip
         if trip.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (trip.organisation_id, pd.user.organisation_id))
-        return FishCatchSerializer().create(pd.doc)
+        return cls._cleanInstance(FishCatch, pd.doc)
 
     @classmethod
     def nonFishingEvent(cls, pd):
         trip = Trip.objects.get(pk=pd.doc['trip_id'])
         if trip.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (trip.organisation_id, pd.user.organisation_id))
-        return NonFishEventSerializer().create(pd.doc)
+        return cls._cleanInstance(NonFishingEvent, pd.doc)
 
     @classmethod
     def vesselLocation(cls, pd):
         vessel = Vessel.objects.get(pk=pd.doc['vessel_id'])
         if vessel.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (vessel.organisation_id, pd.user.organisation_id))
-        return VesselLocation(**pd.doc)  # TODO implement serializer
+        return cls._cleanInstance(VesselLocation, pd.doc)
 
     @classmethod
     def fishserveEvent(cls, pd):
-        return FishServeEventSerializer().create({**{'creator': pd.user}, **pd.doc})
+        return cls._cleanInstance(FishServeEvents, {**{'creator_id': pd.user.id}, **pd.doc})
 
 
 class CouchDBDocumentImporter():
