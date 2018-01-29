@@ -41,6 +41,7 @@ class TestDocumentImporter(CatchHubTestCase):
     def test_trip(self):
         trip = self._get_trip()
         trip["document_type"] = "trip"
+        trip["_id"] = "ignorable garbage"
 
         pd = PendingDocument(user=self.user, doc=dict(trip))
         model = CouchDBDocumentImporter().process_document(pd)
@@ -53,7 +54,17 @@ class TestDocumentImporter(CatchHubTestCase):
         self.assertEqual(model.startTime, trip["startTime"])
         self.assertEqual(model.startLocation.coords, (45.0, 45.0))
 
-        trip['organisation_id'] = str(uuid.uuid4())  # non-existent org
+        # update the same trip
+        trip["RAId"] = "Raiden Updated"
+        pd = PendingDocument(user=self.user, doc=dict(trip))
+        pd = PendingDocument(user=self.user, doc=dict(trip))
+        model = CouchDBDocumentImporter().process_document(pd)
+        self.assertEqual(model.RAId, "Raiden Updated")
+
+        # TODO test updating of a trip that belongs to different org (must fail)
+
+        # non-existent org
+        trip['organisation_id'] = str(uuid.uuid4())
         pd = PendingDocument(user=self.user, doc=dict(trip))
         model = CouchDBDocumentImporter().process_document(pd)
         self.assertIsNone(model)
@@ -81,11 +92,18 @@ class TestDocumentImporter(CatchHubTestCase):
         self.assertEqual(model.creator.id, self.user.id)
         self.assertEqual(model.eventSpecificDetails, event["eventSpecificDetails"])
 
+        # update event
+        event["RAId"] = "Raiden Updated"
+        pd = PendingDocument(user=self.user, doc=dict(event))
+        model = CouchDBDocumentImporter().process_document(pd)
+        self.assertEqual(model.RAId, "Raiden Updated")
+
     def test_fishcatch(self):
         trip = Trip.objects.create(creator=self.user, **self._get_trip())
         event = FishingEvent.objects.create(creator=self.user, **self._get_fishevent(trip))
 
         catch = {"document_type": "fishCatch",
+                 "id": str(uuid.uuid4()),
                  "_id": "whatevs should be ignored",
                  "fishingEvent_id": event.id,
                  "weightKgs": 50,

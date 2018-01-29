@@ -6,9 +6,6 @@ from reporting.models import Trip, FishingEvent, NonFishingEvent, FishCatch,\
     VesselLocation, Vessel
 from django.db import transaction
 from django.utils import timezone
-from reporting.serializers import TripSerializer, FishingEventExpandSerializer,\
-    FishCatchSerializer, NonFishEventSerializer
-from fishserve.serializers import FishServeEventSerializer
 
 
 class Status(Enum):
@@ -25,29 +22,46 @@ class DocumentFactory():
 
     """ returns instance with given fields, but removes extraneous fields - Dnajgo would fail otherwise """
     @classmethod
-    def _cleanInstance(cls, model_cls, data):
+    def _cleanInstance(cls, model_cls, data, updatable=False):
         # TODO this is a bit retarded and there must be a better way to do this...
         fields = set([v.name for v in model_cls._meta.get_fields(True, True)] + [v.attname if hasattr(v, 'attname') else v.name for v in model_cls._meta.get_fields(True, True)])
         for k in set(data.keys()).difference(fields):
             del data[k]
 
-        return model_cls(**data)
+        try:
+            if not updatable:
+                raise model_cls.DoesNotExist()  # is this too hacky?
+            obj = model_cls.objects.get(pk=data['id'])
+            del data['id']
+            for key, value in data.items():
+                    setattr(obj, key, value)
+            return obj
+        except model_cls.DoesNotExist:
+            return model_cls(**data)
 
     @classmethod
     def trip(cls, pd):
-        # TODO implement update
         organisation_id = pd.doc['organisation_id']
         if organisation_id != str(pd.user.organisation_id):
             raise ValidationError("Organisation ID's don't match: %s != %s" % (organisation_id, pd.user.organisation_id))
-        return cls._cleanInstance(Trip, {**{'creator': pd.user}, **pd.doc})
+
+        trip = cls._cleanInstance(Trip, {**{'creator': pd.user}, **pd.doc}, updatable=True)
+
+        if organisation_id != str(trip.organisation_id):
+            raise ValidationError("Organisation ID's don't match for existing record: %s != %s" % (organisation_id, trip.organisation_id))
+
+        return trip
 
     @classmethod
     def fishingEvent(cls, pd):
-        # TODO implement update
         trip = Trip.objects.get(pk=pd.doc['trip_id'])
         if trip.organisation_id != pd.user.organisation_id:
             raise ValidationError("Organisation ID's don't match: %s != %s" % (trip.organisation_id, pd.user.organisation_id))
-        return cls._cleanInstance(FishingEvent, {**{'creator': pd.user}, **pd.doc})
+
+        event = cls._cleanInstance(FishingEvent, {**{'creator': pd.user}, **pd.doc}, updatable=True)
+        if str(trip.id) != str(event.trip_id):
+            raise ValidationError("Trip ID's don't match: %s != %s" % (trip.id, event.trip_id))
+        return event
 
     @classmethod
     def fishCatch(cls, pd):
@@ -97,10 +111,8 @@ class CouchDBDocumentImporter():
             except (AttributeError):
                 raise ValidationError("Unknown document type: %s" % pd.doc.get('document_type', "None"))
 
-            del pd.doc["document_type"]
-
-            model = factory(pd)
             with transaction.atomic():
+                model = factory(pd)
                 model.save()
                 pd.process_status = Status.OK.value
                 pd.processed = timezone.now()
