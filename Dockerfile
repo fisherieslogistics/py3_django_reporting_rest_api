@@ -1,31 +1,9 @@
-# forked from from https://github.com/dockerfiles/django-uwsgi-nginx
-FROM ubuntu:16.04
-ENV TZ=Pacific/Auckland
-
-# Install required packages and remove the apt packages cache when done.
-RUN apt-get update && \
-    apt-get install -y \
-		python3 \
-		python3-dev \
-		python3-setuptools \
-		python3-pip \
-		nginx \
-		supervisor \
-		binutils libproj-dev gdal-bin \
-		rsyslog \
-		tzdata \
-	&& pip3 install -U pip setuptools \
-	&& cp /usr/share/zoneinfo/$TZ /etc/localtime \
-	&& echo $TZ > /etc/timezone \
-    && rm -rf /var/lib/apt/lists/*
+# git branch passed from Makefile
+ARG BRANCH=master
+FROM fisherylogistics/ubuntu-python3:$BRANCH
 
 # install uwsgi now because it takes a little while
 RUN pip3 install uwsgi
-
-# COPY requirements.txt and RUN pip install BEFORE adding the rest of your code, this will cause Docker's caching mechanism to prevent re-installing (all your) dependencies when you made a change a line or two in your app.
-COPY requirements_frozen.txt /home/docker/code/
-RUN pip3 install -r /home/docker/code/requirements_frozen.txt
-
 
 # copy our code
 ADD . /home/docker/code/app/

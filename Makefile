@@ -7,7 +7,10 @@ setup:
 	python3 -m venv $(VENV)
 	$(VENV_BIN)pip install -r requirements_frozen.txt
 
-build-docker: setup
+
+build-docker: setup build-docker-ubuntu build-docker-django build-docker-couchpost build-docker-fishserve build-docker-prestashop
+
+build-docker-django:
 	rm -rf build
 	$(VENV_BIN)python manage.py collectstatic
 	$(SUDO) docker build -t fisherylogistics/rest-api:$(BRANCH) .
@@ -22,12 +25,22 @@ build-docker-couchpost:
 	$(SUDO) docker build -f Dockerfile.couchpost -t fisherylogistics/couchpost:$(BRANCH) .
 	$(SUDO) docker push fisherylogistics/couchpost:$(BRANCH)
 
+build-docker-prestashop:
+	$(SUDO) docker build -f Dockerfile.prestashop -t fisherylogistics/prestashop:$(BRANCH) --build-arg BRANCH=$(BRANCH) .
+	$(SUDO) docker push fisherylogistics/prestashop:$(BRANCH)
+
+build-docker-ubuntu:
+	$(SUDO) docker build -f Dockerfile.ubuntu -t fisherylogistics/ubuntu-python3:$(BRANCH) .
+	$(SUDO) docker push fisherylogistics/ubuntu-python3:$(BRANCH)
+
+
 upgrade-libs:
 	rm -rf .fllenv_upgrade
 	python3 -m venv .fllenv_upgrade
-	.fllenv_upgrade/bin/pip install -r requirements.txt
+	.fllenv_upgrade/bin/pip install -r reporting/requirements.txt -r couchpost/requirements.txt -r fishserve/requirements.txt -r prestashop/requirements.txt
 	.fllenv_upgrade/bin/pip freeze >requirements_frozen.txt
 	rm -rf .fllenv_upgrade
+
 
 test-setup: setup
 	$(VENV_BIN)pip install -r requirements_tests.txt

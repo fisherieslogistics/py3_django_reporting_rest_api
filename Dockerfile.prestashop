@@ -6,7 +6,9 @@ FROM fisherylogistics/ubuntu-python3:$BRANCH
 ADD . /home/docker/code/app/
 
 # setup all the configfiles
-RUN mv /home/docker/code/app/docker/supervisor-fishserve.conf /etc/supervisor/conf.d/ &&\
+RUN mv /home/docker/code/app/docker/supervisor-prestashop.conf /etc/supervisor/conf.d/ &&\
 	mv /home/docker/code/app/docker/syslog.conf /etc/rsyslog.d/catchhub.conf &&\
 	mv /home/docker/code/app/py3_django_reporting_rest_api/settings_dist.py /home/docker/code/app/py3_django_reporting_rest_api/settings.py &&\
-	mv /home/docker/code/app/fishserve/settings_dist.py /home/docker/code/app/fishserve/settings.py
+	mv /home/docker/code/app/couchpost/settings_dist.py /home/docker/code/app/couchpost/settings.py
+	
+CMD ["supervisord", "-n"]
