@@ -13,6 +13,7 @@ class TestDocumentImporter(CatchHubTestCase):
     def test_fishserve(self):
         d = PendingDocument(user=self.user,
                             doc={"document_type": "fishserveEvent",
+                                 "documentReady": True,
                                  "_id": "whatevs should be ignored",
                                  "event_type": "tripStart",
                                  "json": "{fishserve: 'sucks'}",
@@ -38,10 +39,20 @@ class TestDocumentImporter(CatchHubTestCase):
                 "unloadPort_id": str(self.port.id),
                 "vessel_id": str(self.vessel.id)}
 
+    def test_documentReady(self):
+        trip = self._get_trip()
+        trip.update({"document_type": "trip"})
+
+        pd = PendingDocument(user=self.user, doc=dict(trip))
+        self.assertIsNone(CouchDBDocumentImporter().process_document(pd), "Document not ready, should not be saved.")
+        # pending doc must be marked as processed to prevent future retries
+        self.assertEqual(pd.process_status, Status.OK.value)
+
     def test_trip(self):
         trip = self._get_trip()
-        trip["document_type"] = "trip"
-        trip["_id"] = "ignorable garbage"
+        trip.update({"document_type": "trip",
+                     "documentReady": True,
+                     "_id": "ignorable garbage"})
 
         pd = PendingDocument(user=self.user, doc=dict(trip))
         model = CouchDBDocumentImporter().process_document(pd)
@@ -82,7 +93,8 @@ class TestDocumentImporter(CatchHubTestCase):
     def test_fishingevent(self):
         trip = Trip.objects.create(creator=self.user, **self._get_trip())
         event = self._get_fishevent(trip)
-        event["document_type"] = "fishingEvent"
+        event.update({"document_type": "fishingEvent",
+                     "documentReady": True})
 
         pd = PendingDocument(user=self.user, doc=dict(event))
         model = CouchDBDocumentImporter().process_document(pd)
@@ -103,6 +115,7 @@ class TestDocumentImporter(CatchHubTestCase):
         event = FishingEvent.objects.create(creator=self.user, **self._get_fishevent(trip))
 
         catch = {"document_type": "fishCatch",
+                 "documentReady": True,
                  "id": str(uuid.uuid4()),
                  "_id": "whatevs should be ignored",
                  "fishingEvent_id": event.id,
@@ -119,6 +132,7 @@ class TestDocumentImporter(CatchHubTestCase):
     def test_nonfishingevent(self):
         trip = Trip.objects.create(creator=self.user, **self._get_trip())
         event = {"document_type": "nonFishingEvent",
+                 "documentReady": True,
                  "_id": "whatevs should be ignored",
                  "id": str(uuid.uuid4()),
                  "nonFishProtectedSpecies_id": "XXX",
@@ -137,6 +151,7 @@ class TestDocumentImporter(CatchHubTestCase):
 
     def test_vessellocation(self):
         loc = {"document_type": "vesselLocation",
+               "documentReady": True,
                "_id": "whatevs should be ignored",
                "vessel_id": str(self.vessel.id),
                "timestamp": timezone.now().isoformat(),

@@ -112,8 +112,13 @@ class CouchDBDocumentImporter():
                 raise ValidationError("Unknown document type: %s" % pd.doc.get('document_type', "None"))
 
             with transaction.atomic():
-                model = factory(pd)
-                model.save()
+                if pd.doc.get('documentReady', False):
+                    # only process documents that are complete and ready for replication
+                    model = factory(pd)
+                    model.save()
+                else:
+                    model = None
+
                 pd.process_status = Status.OK.value
                 pd.processed = timezone.now()
                 pd.save()
