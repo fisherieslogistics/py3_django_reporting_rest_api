@@ -1,11 +1,19 @@
 import datetime
+import itertools
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.db.models.functions import TruncDay
+from django.db.models import Sum
 
 from rest_framework import viewsets
-from rest_framework.decorators import detail_route
+from rest_framework.decorators import detail_route, api_view, permission_classes
 from rest_framework.mixins import CreateModelMixin, RetrieveModelMixin, \
     ListModelMixin
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
+from rest_framework import permissions
+
 
 from fishserve.models import FishServeEvents
 from reporting.models import Organisation, Trip, FishingEvent, FishCatch, \
@@ -131,5 +139,18 @@ class SpeciesViewSet(RetrieveModelMixin, ListModelMixin, GenericViewSet):
 class UserViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+@api_view(['GET'])
+@csrf_exempt
+@permission_classes((permissions.AllowAny,))
+def active_trip_totals(request):
+    species_totals = FishCatch.objects.filter(fishingEvent__in=FishingEvent.objects.filter(trip__in=Trip.objects.filter(active=True, organisation=request.user.organisation)))\
+                              .annotate(day=TruncDay('fishingEvent__datetimeAtEnd'))\
+                              .values('day')\
+                              .annotate(total=Sum('weightKgs')).values('species', 'total', 'day')
+    totals_list = list(species_totals)
+    return JsonResponse(totals_list, safe=False)
+
 
 
