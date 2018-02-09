@@ -68,6 +68,8 @@ class FishingEvent(models.Model):
     trip = models.ForeignKey("Trip", null=False, on_delete=CASCADE, related_name="fishingEvents")
     creator = models.ForeignKey("User", null=False, on_delete=CASCADE)
     archived = models.BooleanField(default=False)
+    finished = models.BooleanField(null=False, default=False)
+    sentToShop = models.BooleanField(null=False, default=False)
 
     def __str__(self):
         return "%s %s" % (self.trip.vessel.name, self.datetimeAtStart)
@@ -77,7 +79,7 @@ class FishingEvent(models.Model):
         return serialize('geojson', [self],
           geometry_field='locationAtStart',
           fields=('datetimeAtStart',))
-    
+
     @property
     def locationAtEndGeoJSON(self):
         return serialize('geojson', [self],
