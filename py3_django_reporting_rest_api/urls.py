@@ -19,7 +19,7 @@ from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from reporting.views import TripViewSet, SpeciesViewSet, PortViewSet,\
     VesselViewSet, ProcessedStateViewSet, FishingEventViewSet, UserViewSet,\
-    OrganisationViewSet
+    OrganisationViewSet, active_trip_totals
 
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -42,5 +42,6 @@ urlpatterns = [
     url(r"^admin/", admin.site.urls),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
-    url(r'^rest-api/trip-end/(?P<pk>[^/]+)/$', TripViewSet.as_view({'post': 'partial_update'}))
+    url(r'^rest-api/trip-end/(?P<pk>[^/]+)/$', TripViewSet.as_view({'post': 'partial_update'})),
+    url(r'^totals/', active_trip_totals)
 ]
