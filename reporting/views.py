@@ -145,7 +145,8 @@ class UserViewSet(MyOrganisationMixIn, viewsets.ModelViewSet):
 @csrf_exempt
 @permission_classes((permissions.AllowAny,))
 def active_trip_totals(request):
-    species_totals = FishCatch.objects.filter(fishingEvent__in=FishingEvent.objects.filter(trip__in=Trip.objects.filter(active=True, organisation=request.user.organisation)))\
+    species_totals = FishCatch.objects.filter(fishingEvent__in=FishingEvent.objects\
+                              .filter(trip__in=Trip.objects.filter(active=True, organisation=request.user.organisation)))\
                               .annotate(day=TruncDay('fishingEvent__datetimeAtEnd'))\
                               .values('day')\
                               .annotate(total=Sum('weightKgs')).values('species', 'total', 'day')
