@@ -46,7 +46,7 @@ class TestDocumentImporter(CatchHubTestCase):
         pd = PendingDocument(user=self.user, doc=dict(trip))
         self.assertIsNone(CouchDBDocumentImporter().process_document(pd), "Document not ready, should not be saved.")
         # pending doc must be marked as processed to prevent future retries
-        self.assertEqual(pd.process_status, Status.OK.value)
+        self.assertEqual(pd.process_status, Status.SKIPPED.value)
 
     def test_trip(self):
         trip = self._get_trip()

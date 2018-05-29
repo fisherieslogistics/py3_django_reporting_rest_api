@@ -12,6 +12,7 @@ class Status(Enum):
     OK = "ok"
     ERROR = "error"
     EXCEPTION = "exception"
+    SKIPPED = "skipped"
 
 
 class ValidationError(RuntimeError):
@@ -116,10 +117,11 @@ class CouchDBDocumentImporter():
                     # only process documents that are complete and ready for replication
                     model = factory(pd)
                     model.save()
+                    pd.process_status = Status.OK.value
                 else:
                     model = None
+                    pd.process_status = Status.SKIPPED.value
 
-                pd.process_status = Status.OK.value
                 pd.processed = timezone.now()
                 pd.save()
 
