@@ -55,7 +55,6 @@ class Migration(migrations.Migration):
             name='FishingEvent',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('RAId', models.CharField(blank=True, max_length=100)),
                 ('numberInTrip', models.IntegerField(blank=True)),
                 ('targetSpecies', models.CharField(blank=True, max_length=50)),
                 ('datetimeAtStart', models.DateTimeField()),
@@ -136,7 +135,6 @@ class Migration(migrations.Migration):
             name='Trip',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('RAId', models.CharField(blank=True, max_length=100)),
                 ('personInCharge', models.CharField(max_length=50)),
                 ('ETA', models.DateTimeField()),
                 ('startTime', models.DateTimeField()),

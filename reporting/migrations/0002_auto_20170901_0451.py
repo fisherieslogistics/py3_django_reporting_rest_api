@@ -28,27 +28,22 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='fishingevent',
-            name='RAId',
-            field=models.CharField(max_length=100, null=True),
-        ),
-        migrations.AlterField(
-            model_name='fishingevent',
             name='datetimeAtEnd',
             field=models.DateTimeField(null=True),
         ),
         migrations.RemoveField(
             model_name='fishingevent',
-            name='lineString'            
+            name='lineString'
         ),
         migrations.AddField(
             model_name='fishingevent',
             name='lineString',
             field=django.contrib.gis.db.models.fields.LineStringField(geography=True, null=True, srid=4326),
-            
+
         ),
         migrations.RemoveField(
             model_name='fishingevent',
-            name='locationAtEnd'            
+            name='locationAtEnd'
         ),
         migrations.AddField(
             model_name='fishingevent',
@@ -57,7 +52,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveField(
             model_name='fishingevent',
-            name='locationAtStart'            
+            name='locationAtStart'
         ),
         migrations.AddField(
             model_name='fishingevent',
@@ -86,7 +81,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveField(
             model_name='port',
-            name='location'            
+            name='location'
         ),
         migrations.AddField(
             model_name='port',
@@ -98,14 +93,9 @@ class Migration(migrations.Migration):
             name='species',
             field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='reporting.Species'),
         ),
-        migrations.AlterField(
-            model_name='trip',
-            name='RAId',
-            field=models.CharField(max_length=100, null=True),
-        ),
         migrations.RemoveField(
             model_name='trip',
-            name='startLocation'            
+            name='startLocation'
         ),
         migrations.AddField(
             model_name='trip',
@@ -114,7 +104,7 @@ class Migration(migrations.Migration):
         ),
         migrations.RemoveField(
             model_name='trip',
-            name='endLocation'            
+            name='endLocation'
         ),
         migrations.AddField(
             model_name='trip',

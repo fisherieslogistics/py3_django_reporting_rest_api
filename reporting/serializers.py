@@ -129,7 +129,6 @@ class LandingEventSerializer(serializers.ModelSerializer):
 
 fishingEventFields = (
     "id",
-    "RAId",
     "numberInTrip",
     "targetSpecies",
     "datetimeAtStart",
@@ -177,7 +176,6 @@ class OrganisationSerializer(serializers.ModelSerializer):
 
 
 tripFields = (
-    "RAId",
     "id",
     "personInCharge",
     "ETA",

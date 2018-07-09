@@ -50,7 +50,6 @@ class ReplicationReadyModel(models.Model):
 
 class FishingEvent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    RAId = models.CharField(max_length=100, null=True)
     numberInTrip = models.IntegerField(null=True)
     targetSpecies = models.ForeignKey("Species", on_delete=CASCADE, null=True)
     datetimeAtStart = models.DateTimeField(null=True)
@@ -61,7 +60,7 @@ class FishingEvent(models.Model):
     lineString = models.LineStringField(null=True, geography=True)
     eventSpecificDetails = JSONField()
     mitigationDeviceCodes = JSONField(null=True)
-    vesselNumber = models.IntegerField()
+    vesselNumber = models.IntegerField(null=True)
     isVesselUsed = models.BooleanField(default=True)
     notes = models.TextField(null=True)
     amendmentReason = models.TextField(null=True)
@@ -105,7 +104,7 @@ class FishCatch(models.Model):
     species = models.ForeignKey("Species", on_delete=CASCADE)
     weightKgs = models.IntegerField()
     fishingEvent = models.ForeignKey("FishingEvent",
-                                     related_name="fishCatches", on_delete=CASCADE)
+                                     related_name="fishCatches", on_delete=CASCADE, null=True)
 
     def __str__(self):
         return "%s %s" % (self.species.code, self.fishingEvent.trip.vessel.name)
@@ -115,7 +114,6 @@ class Trip(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     organisation = models.ForeignKey("Organisation", null=False, on_delete=CASCADE)
     creator = models.ForeignKey("User", null=False, on_delete=CASCADE)
-    RAId = models.CharField(max_length=100, null=True)
     personInCharge = models.CharField(max_length=50)
     ETA = models.DateTimeField()
     startTime = models.DateTimeField()

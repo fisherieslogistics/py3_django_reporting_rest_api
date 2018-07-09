@@ -14,11 +14,6 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='fishingevent',
-            name='RAId',
-            field=models.CharField(max_length=100, null=True),
-        ),
-        migrations.AlterField(
-            model_name='fishingevent',
             name='datetimeAtEnd',
             field=models.DateTimeField(null=True),
         ),
@@ -36,10 +31,5 @@ class Migration(migrations.Migration):
             model_name='fishingevent',
             name='targetSpecies',
             field=models.CharField(max_length=50, null=True),
-        ),
-        migrations.AlterField(
-            model_name='trip',
-            name='RAId',
-            field=models.CharField(max_length=100, null=True),
         ),
     ]

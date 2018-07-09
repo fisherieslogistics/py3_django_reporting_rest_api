@@ -64,7 +64,6 @@
       '{
           "event_type": "v1/trip",
           "id": "$trip_id",
-          "RAId": "de61697f-748f-498b-90a8-8afafa7e3b4f",
           "personInCharge": "Steeeve",
           "ETA": "$t2",
           "startTime": "2017-10-02T19:24:28-07:00",
@@ -80,7 +79,6 @@
     }
     url: "/rest-api/trips/"
     extract_binds:
-        - 'tripRAId': {'jsonpath_mini': 'RAId'}
         - 'trip_id': {'jsonpath_mini': 'id'}
 
 
@@ -116,7 +114,6 @@
           "isVesselUsed": true,
           "completedDateTime": "2017-10-03T01:36:02.895Z",
           "trip": "$trip_id",
-          "RAId": "80293305-f619-4c38-8b21-09369ae6a4e3",
           "id": "$event_id",
           "headers": "{\"Accept\":\"application/json\",\"Signature\":null,\"Content-Type\":\"application/json\"}",
           "json": "{\"eventHeader\":{\"isVesselUsed\":true,\"notes\":\"Some notes.\",\"vesselNumber\":\"99\",\"tripId\":\"0cfbe280-a7db-11e7-93d1-5bc5d3d6381b\",\"softwareVendor\":\"Fishery        Logistics\",\"softwareVersion\":\"1.10.01.0\",\"eventId\":\"378048c0-a7db-11e7-93d1-5bc5d3d6381b\",\"completedDateTime\":\"2017-10-03T14:36:02+13:00\"},\"targetSpeciesCode\":\"PAD\",\"mitigationDevicesUsed\":[],\"fishingMethodCode\":\"H\",\"timeSpentHours\":1,\"completedDateTime\":\"2017-10-03T14:36:02+13:00\",\"numberOfPeople\":3,\"finishLocation\":{\"systemDateTime\":\"2017-10-03T14:35:44+13:00\",\"systemLocation\":{\"longitude\":-122.02685,\"latitude\":37.32746667,\"manualDateTime\":null,\"manualLocation\":null}},\"startLocation\":{\"systemDateTime\":\"2017-10-03T14:35:36+13:00\",\"systemLocation\":{\"longitude\":-122.02685,\"latitude\":37.32721667,\"manualDateTime\":null,\"manualLocation\":null}},\"catches\":[{\"speciesCode\":\"PAD\",\"greenWeightEstimateKg\":34},{\"speciesCode\":\"SNX\",\"greenWeightEstimateKg\":3445}],\"isNonFishOrProtectedSpeciesCatchPresent\":false}"
@@ -161,4 +158,3 @@
         - compare: {raw_body: , comparator: 'contains', expected: {template: $trip_id}}
         - compare: {jsonpath_mini: "landingEvents", comparator: 'count_eq', expected: 1}
         - compare: {jsonpath_mini: "fishingEvents", comparator: 'count_eq', expected: 1}
-        
