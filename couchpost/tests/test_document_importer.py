@@ -30,7 +30,6 @@ class TestDocumentImporter(CatchHubTestCase):
     def _get_trip(self):
         return {"id": str(uuid.uuid4()),
                 "organisation_id": str(self.org.id),
-                "RAId": "Raiden",
                 "personInCharge": "Raiden",
                 "startTime": timezone.now().isoformat(),
                 "endTime": timezone.now().isoformat(),
@@ -61,16 +60,13 @@ class TestDocumentImporter(CatchHubTestCase):
         self.assertIsInstance(model, Trip)
         self.assertEqual(model.creator.id, self.user.id)
         self.assertEqual(model.organisation_id, str(self.org.id))
-        self.assertEqual(model.RAId, "Raiden")
         self.assertEqual(model.startTime, trip["startTime"])
         self.assertEqual(model.startLocation.coords, (45.0, 45.0))
 
         # update the same trip
-        trip["RAId"] = "Raiden Updated"
         pd = PendingDocument(user=self.user, doc=dict(trip))
         pd = PendingDocument(user=self.user, doc=dict(trip))
         model = CouchDBDocumentImporter().process_document(pd)
-        self.assertEqual(model.RAId, "Raiden Updated")
 
         # TODO test updating of a trip that belongs to different org (must fail)
 
@@ -84,7 +80,6 @@ class TestDocumentImporter(CatchHubTestCase):
 
     def _get_fishevent(self, trip):
         return {"id": str(uuid.uuid4()),
-                "RAId": "Raiden",
                 "targetSpecies_id": "XXX",
                 "vesselNumber": "123",
                 "trip_id": str(trip.id),
@@ -105,10 +100,8 @@ class TestDocumentImporter(CatchHubTestCase):
         self.assertEqual(model.eventSpecificDetails, event["eventSpecificDetails"])
 
         # update event
-        event["RAId"] = "Raiden Updated"
         pd = PendingDocument(user=self.user, doc=dict(event))
         model = CouchDBDocumentImporter().process_document(pd)
-        self.assertEqual(model.RAId, "Raiden Updated")
 
     def test_fishcatch(self):
         trip = Trip.objects.create(creator=self.user, **self._get_trip())
