@@ -32,3 +32,11 @@ How to run things:
   * python manage.py run_document_importer --settings couchpost.settings
 * fishserve integration
   * python manage.py run_sender --settings fishserve.settings
+
+* NOTES -- On 1st Time Setup
+  * setup couchdb
+  * follow these steps to make it workable as a single node (couchdb 2.0)
+    curl -X PUT http://127.0.0.1:5984/_users
+    curl -X PUT http://127.0.0.1:5984/_replicator
+    curl -X PUT http://127.0.0.1:5984/_global_changes
+  * create admin user using credentials from couchpost.settings
