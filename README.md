@@ -40,3 +40,8 @@ How to run things:
     curl -X PUT http://127.0.0.1:5984/_replicator
     curl -X PUT http://127.0.0.1:5984/_global_changes
   * create admin user using credentials from couchpost.settings
+  * sudo ufw allow 5984/tcp
+  * vim /etc/couchdb/ --- uncomment the http settings change 127.0.0.1 to 0.0.0.0
+  * curl -X POST username:pass@0.0.0.0:5984/_restart -H"Content-Type: application/json"
+
+  nohup sh -c "python3 manage.py runserver 0.0.0.0:8000 && python3 manage.py run_couch_listener --settings couchpost.settings && python3 manage.py run_post_poller --settings couchpost.settings && python3 manage.py run_document_importer --settings couchpost.settings" &
